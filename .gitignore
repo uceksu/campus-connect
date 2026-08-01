@@ -1,6 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# ---------------------------------
+# Dependencies
+# ---------------------------------
 /node_modules
 /.pnp
 .pnp.*
@@ -10,32 +10,80 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# ---------------------------------
+# Next.js
+# ---------------------------------
 /.next/
 /out/
 
-# production
+# ---------------------------------
+# Production
+# ---------------------------------
 /build
 
-# misc
-.DS_Store
-*.pem
+# ---------------------------------
+# Coverage
+# ---------------------------------
+/coverage
 
-# debug
+# ---------------------------------
+# Environment Variables
+# ---------------------------------
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ---------------------------------
+# Vercel
+# ---------------------------------
+.vercel
+
+# ---------------------------------
+# TypeScript
+# ---------------------------------
+*.tsbuildinfo
+next-env.d.ts
+
+# ---------------------------------
+# Logs
+# ---------------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
+# ---------------------------------
+# Operating System
+# ---------------------------------
+.DS_Store
+Thumbs.db
+*.pem
 
-# vercel
-.vercel
+# ---------------------------------
+# VS Code
+# ---------------------------------
+.vscode/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# ---------------------------------
+# AI Assistant Folders
+# ---------------------------------
+.agents/
+.claude/
+.windsurf/
+
+# ---------------------------------
+# Local Testing Files
+# ---------------------------------
+cookie.txt
+csrf.txt
+csrf.json
+
+# ---------------------------------
+# Prisma Generated (Ignored)
+# Uncomment ONLY if you regenerate Prisma Client during install/build
+# ---------------------------------
+# src/generated/prisma/
+# lib/generated/prisma/

@@ -1,0 +1,66 @@
+import PublicPageHero from "@/components/PublicPageHero";
+import { getNotices } from "@/lib/actions/notice";
+import { Bell, Calendar, AlertCircle } from "lucide-react";
+
+function timeAgo(date: Date) {
+  const diff = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
+  if (diff < 60) return "Just now";
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  return new Date(date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+}
+
+export default async function NoticesPage() {
+  const notices = await getNotices();
+
+  return (
+    <main className="min-h-screen bg-[#456be5] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] bg-size-[18px_18px]">
+      <PublicPageHero
+        eyebrow="Campus updates"
+        title="Latest"
+        accent="notices."
+        description="Stay up to date with official announcements, events, and updates from KSU UCE."
+      />
+
+      <section className="mx-auto max-w-4xl px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
+        {notices.length === 0 ? (
+          <div className="rounded-3xl border border-white/30 bg-white p-10 text-center text-slate-500">
+            <Bell className="mx-auto mb-4 size-10 text-slate-300" />
+            No notices have been published yet.
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {notices.map((notice) => (
+              <article key={notice.id} className={`rounded-3xl border bg-white shadow-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl ${notice.isImportant ? "border-red-200" : "border-white/30"}`}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${notice.isImportant ? "bg-red-50" : "bg-[#e8eeff]"}`}>
+                      {notice.isImportant
+                        ? <AlertCircle size={18} className="text-red-500" />
+                        : <Bell size={18} className="text-[#456be5]" />}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h2 className="font-black text-[#071333] text-lg">{notice.title}</h2>
+                        {notice.isImportant && (
+                          <span className="px-2 py-0.5 rounded-full bg-red-50 border border-red-200 text-red-600 text-xs font-bold">Important</span>
+                        )}
+                      </div>
+                      <span className="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-[#e8eeff] text-[#456be5] text-xs font-semibold">
+                        {notice.category}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="flex items-center gap-1 text-xs text-slate-400 shrink-0">
+                    <Calendar size={11} /> {timeAgo(notice.createdAt)}
+                  </span>
+                </div>
+                <p className="mt-4 text-slate-600 leading-relaxed pl-13">{notice.content}</p>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
+  );
+}
