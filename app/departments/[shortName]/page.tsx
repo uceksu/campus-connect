@@ -55,11 +55,11 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
               <div className="flex justify-center">
                 <div className="group flex flex-col items-center text-center p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[#456be5]/50 transition-all w-full max-w-sm">
                   <div className="relative mb-6">
-                    <div className="absolute inset-0 bg-[#456be5] rounded-full blur-[20px] opacity-40 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute inset-0 bg-[#456be5] rounded-2xl blur-[20px] opacity-40 group-hover:opacity-60 transition-opacity" />
                     {hod.image ? (
-                      <img src={hod.image} alt={hod.name} className="relative w-40 h-40 rounded-full object-cover border-4 border-white/10" />
+                      <img src={hod.image} alt={hod.name} className="relative w-40 h-40 rounded-2xl object-cover border-4 border-white/10" />
                     ) : (
-                      <div className="relative w-40 h-40 rounded-full bg-white/10 border-4 border-white/10 flex items-center justify-center">
+                      <div className="relative w-40 h-40 rounded-2xl bg-white/10 border-4 border-white/10 flex items-center justify-center">
                         <User size={64} className="text-slate-400" />
                       </div>
                     )}
@@ -100,9 +100,9 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
                 {staff.map((f) => (
                   <div key={f.id} className="group flex flex-col items-center text-center p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all">
                     {f.image ? (
-                      <img src={f.image} alt={f.name} className="w-24 h-24 rounded-full object-cover border-2 border-white/10 mb-4" />
+                      <img src={f.image} alt={f.name} className="w-24 h-24 rounded-2xl object-cover border-2 border-white/10 mb-4" />
                     ) : (
-                      <div className="w-24 h-24 rounded-full bg-white/10 border-2 border-white/10 flex items-center justify-center mb-4">
+                      <div className="w-24 h-24 rounded-2xl bg-white/10 border-2 border-white/10 flex items-center justify-center mb-4">
                         <User size={32} className="text-slate-400" />
                       </div>
                     )}
