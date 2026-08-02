@@ -21,12 +21,12 @@ export async function authorizeCredentials({
   });
 
   if (!user) {
-    return null;
+    throw new Error("User not found");
   }
 
   const passwordMatches = await bcrypt.compare(password, user.password);
   if (!passwordMatches) {
-    return null;
+    throw new Error("Wrong password");
   }
 
   return {

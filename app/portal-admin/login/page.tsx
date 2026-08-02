@@ -38,6 +38,16 @@ export default function LoginPage() {
       return;
     }
 
+    if (result.error === "wrong_password") {
+      setError("Wrong password entered. Please try again.");
+      return;
+    }
+
+    if (result.error === "user_not_found") {
+      setError("User not found. Please check your email.");
+      return;
+    }
+
     if (result.error) {
       setError("Invalid email or password. Please try again.");
       return;

@@ -3,6 +3,15 @@ import Credentials from "@auth/core/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import { authorizeCredentials } from "@/lib/auth";
+import { CredentialsSignin } from "next-auth";
+
+class WrongPasswordError extends CredentialsSignin {
+  code = "wrong_password";
+}
+
+class UserNotFoundError extends CredentialsSignin {
+  code = "user_not_found";
+}
 
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET;
 
@@ -12,6 +21,7 @@ if (process.env.NODE_ENV === "production" && !NEXTAUTH_SECRET) {
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  trustHost: true,
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -35,10 +45,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           return null;
         }
 
-        return await authorizeCredentials({
-          email: cred.email,
-          password: cred.password,
-        });
+        try {
+          return await authorizeCredentials({
+            email: cred.email,
+            password: cred.password,
+          });
+        } catch (error: any) {
+          if (error.message === "Wrong password") {
+            throw new WrongPasswordError();
+          }
+          if (error.message === "User not found") {
+            throw new UserNotFoundError();
+          }
+          throw error;
+        }
       },
     }),
   ],
