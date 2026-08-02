@@ -51,7 +51,7 @@ export default async function RootLayout({
   const isAdminPortalVisible = await getAdminPortalVisibility();
   const session = await auth();
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-YCQKVK38P2";
 
   return (
     <html
