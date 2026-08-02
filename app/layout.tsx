@@ -8,6 +8,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PwaRegistry } from "@/components/PwaRegistry";
 import { AddToHomeScreen } from "@/components/AddToHomeScreen";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
@@ -70,6 +71,7 @@ export default async function RootLayout({
           </main>
           {(!isMaintenanceOn || isAdmin) && <Footer />}
           {(!isMaintenanceOn || isAdmin) && <AddToHomeScreen />}
+          <ThemeToggle />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

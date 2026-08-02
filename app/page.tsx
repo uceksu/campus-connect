@@ -67,7 +67,7 @@ const features = [
 
 export default function HomePage() {
   return (
-    <main className="bg-[#f8faff] text-[#071333]">
+    <main className="bg-[#f8faff] dark:bg-[#060b18] text-[#071333] dark:text-slate-100 transition-colors duration-300">
       <section className="relative overflow-hidden bg-[#071333] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(68,104,231,0.5),_transparent_42%)]" />
         <div className="relative mx-auto max-w-7xl">
@@ -100,18 +100,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="explore" className="bg-[radial-gradient(rgba(69,107,229,0.2)_1px,transparent_1px)] bg-size-[18px_18px] px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
+      {/* Grid Section */}
+      <section id="explore" className="px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-[#456be5]">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-[#456be5] dark:text-blue-400">
                 Start here
               </p>
-              <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.04em] sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.04em] sm:text-4xl text-[#071333] dark:text-white">
                 Everything you need
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-6 text-slate-600">
+            <p className="max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">
               Choose a section to find the information and services that matter to you.
             </p>
           </div>
@@ -119,21 +120,21 @@ export default function HomePage() {
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {features.map((item) => (
               <Link key={item.title} href={item.href} className="group">
-                <Card className="h-full rounded-3xl border border-[#dce5ff] bg-white py-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#91aaf5] hover:shadow-xl">
+                <Card className="h-full rounded-3xl border border-[#dce5ff] bg-white py-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#91aaf5] hover:shadow-xl dark:bg-[#0f172a] dark:border-[#1e293b] dark:hover:border-[#334155]">
                   <CardContent className="flex min-h-56 flex-col p-7 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
-                      <span className="rounded-full bg-[#e8eeff] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#456be5]">
+                      <span className="rounded-full bg-[#e8eeff] dark:bg-blue-950/40 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">
                         {item.label}
                       </span>
-                      <item.icon className="size-6 text-[#456be5]" aria-hidden="true" />
+                      <item.icon className="size-6 text-[#456be5] dark:text-blue-400" aria-hidden="true" />
                     </div>
-                    <h3 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em]">
+                    <h3 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em] text-[#071333] dark:text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
+                    <p className="mt-3 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">
                       {item.description}
                     </p>
-                    <span className="mt-auto flex size-10 items-center justify-center self-end rounded-full bg-[#456be5] text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                    <span className="mt-auto flex size-10 items-center justify-center self-end rounded-full bg-[#456be5] dark:bg-blue-600 text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                       <ArrowUpRight className="size-5" aria-hidden="true" />
                       <span className="sr-only">Open {item.title}</span>
                     </span>
@@ -143,35 +144,33 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Help & Support Desk Section */}
-      <section className="bg-slate-50 border-t border-slate-100 px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
+      </section>      {/* Help & Support Desk Section */}
+      <section className="bg-slate-50 dark:bg-[#090e1a] border-t border-slate-100 dark:border-[#1e293b]/50 px-6 py-16 sm:px-10 lg:px-16 lg:py-24 transition-colors duration-300">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-[#456be5]">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-[#456be5] dark:text-blue-400">
               Get Support
             </p>
-            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.04em] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.04em] sm:text-4xl text-[#071333] dark:text-white">
               Student Help & Support Desk
             </h2>
-            <p className="mt-2 text-sm text-slate-600 max-w-xl">
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-xl">
               Have a question or need to report a problem? Get direct support from Team KSU via WhatsApp.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {/* Card 1: Got Questions? */}
-            <Link href="/support/enquiry" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 bg-[#eef3ff] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0">
-                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5]">
+            <Link href="/support/enquiry" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 dark:border-[#1e293b] bg-[#eef3ff] dark:bg-[#0f172a]/55 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0 bg-white/20 dark:bg-white/5">
+                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] dark:bg-blue-950/40 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">
                   Enquiry
                 </span>
                 <div className="relative w-36 h-36 transition-transform duration-300 group-hover:scale-105">
                   <Image src="/question-bubble-3d.jpg" alt="Got Questions" fill className="object-contain" />
                 </div>
               </div>
-              <div className="bg-[#456be5] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
+              <div className="bg-[#456be5] dark:bg-[#254cc4] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
                 <div>
                   <span className="inline-block rounded-full bg-white/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider mb-3">
                     Ask
@@ -183,23 +182,23 @@ export default function HomePage() {
                     Ask Team KSU anything. We'll make sure your question reaches the right person.
                   </p>
                 </div>
-                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] dark:text-[#254cc4] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <ArrowUpRight className="size-6" />
                 </span>
               </div>
             </Link>
 
             {/* Card 2: Raise Issue */}
-            <Link href="/support/report" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 bg-[#eef3ff] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0">
-                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5]">
+            <Link href="/support/report" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 dark:border-[#1e293b] bg-[#eef3ff] dark:bg-[#0f172a]/55 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0 bg-white/20 dark:bg-white/5">
+                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] dark:bg-blue-950/40 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">
                   Report
                 </span>
                 <div className="relative w-36 h-36 transition-transform duration-300 group-hover:scale-105">
                   <Image src="/megaphone-warning-3d.jpg" alt="Raise Issue" fill className="object-contain" />
                 </div>
               </div>
-              <div className="bg-[#456be5] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
+              <div className="bg-[#456be5] dark:bg-[#254cc4] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
                 <div>
                   <span className="inline-block rounded-full bg-white/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider mb-3">
                     Student Welfare
@@ -211,23 +210,23 @@ export default function HomePage() {
                     Report hostel problems directly to KSU via WhatsApp.
                   </p>
                 </div>
-                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] dark:text-[#254cc4] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <ArrowUpRight className="size-6" />
                 </span>
               </div>
             </Link>
 
             {/* Card 3: Suggestion */}
-            <Link href="/support/suggestion" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 bg-[#eef3ff] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0">
-                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5]">
+            <Link href="/support/suggestion" className="group flex flex-col h-full overflow-hidden rounded-3xl border border-blue-200 dark:border-[#1e293b] bg-[#eef3ff] dark:bg-[#0f172a]/55 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="relative h-56 w-full flex items-center justify-center p-4 shrink-0 bg-white/20 dark:bg-white/5">
+                <span className="absolute top-4 left-4 rounded-full bg-[#cbdcff] dark:bg-blue-950/40 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">
                   Suggestion
                 </span>
                 <div className="relative w-36 h-36 transition-transform duration-300 group-hover:scale-105">
                   <Image src="/lightbulb-idea-3d.jpg" alt="Suggestions" fill className="object-contain" />
                 </div>
               </div>
-              <div className="bg-[#456be5] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
+              <div className="bg-[#456be5] dark:bg-[#254cc4] p-8 text-white relative flex-1 flex flex-col justify-between min-h-[180px] rounded-b-[22px]">
                 <div>
                   <span className="inline-block rounded-full bg-white/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider mb-3">
                     Ideas
@@ -239,7 +238,7 @@ export default function HomePage() {
                     Give ideas and suggestions to improve campus life.
                   </p>
                 </div>
-                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span className="absolute bottom-8 right-8 flex size-12 items-center justify-center rounded-full bg-white text-[#456be5] dark:text-[#254cc4] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <ArrowUpRight className="size-6" />
                 </span>
               </div>
