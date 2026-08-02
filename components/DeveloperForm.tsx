@@ -70,11 +70,11 @@ export default function DeveloperForm({ submitLabel, developerId, initialData }:
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6 space-y-4">
         {/* Image Upload */}
         <div className="sm:col-span-2">
-          <label className="block text-sm font-medium text-slate-300 mb-1.5">Photo *</label>
-          <ImageUpload
-            initialImageUrl={initialData?.image}
+          <ImageUpload 
+            label="Photo *" 
+            initialImageUrl={initialData?.image ?? undefined}
             onFileSelect={setSelectedFile}
-            label="Upload photo"
+            cropShape="round"
           />
         </div>
 

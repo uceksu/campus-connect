@@ -155,6 +155,7 @@ export default function CommitteeForm({ submitLabel, initialData, memberId }: Co
           initialImageUrl={initialData?.image}
           required={!initialData?.image}
           onFileSelect={setSelectedFile}
+          cropShape="round"
         />
       </div>
 

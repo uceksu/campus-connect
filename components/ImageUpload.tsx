@@ -19,6 +19,7 @@ type ImageUploadProps = {
   initialImageUrl?: string;
   required?: boolean;
   aspect?: number;
+  cropShape?: "rect" | "round";
   onFileSelect: (file: File | null) => void;
 };
 
@@ -27,6 +28,7 @@ export default function ImageUpload({
   initialImageUrl,
   required = false,
   aspect = 1, // Default 1:1 square aspect ratio
+  cropShape = "rect",
   onFileSelect,
 }: ImageUploadProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialImageUrl ?? null);
@@ -128,6 +130,7 @@ export default function ImageUpload({
             crop={crop}
             zoom={zoom}
             aspect={aspect}
+            cropShape={cropShape}
             onCropChange={setCrop}
             onCropComplete={onCropComplete}
             onZoomChange={setZoom}
