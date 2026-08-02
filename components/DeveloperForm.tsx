@@ -104,25 +104,23 @@ export default function DeveloperForm({ submitLabel, developerId, initialData }:
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">WhatsApp Link *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">WhatsApp Number</label>
             <input
               name="whatsapp"
               value={values.whatsapp}
               onChange={handleChange}
-              placeholder="e.g. https://wa.me/..."
-              required
+              placeholder="e.g. 919876543210"
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Instagram Link *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Instagram Link</label>
             <input
               name="instagram"
               value={values.instagram}
               onChange={handleChange}
               placeholder="e.g. https://instagram.com/..."
-              required
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             />
           </div>
