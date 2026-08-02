@@ -40,7 +40,7 @@ export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boo
     { href: "/academics", label: "Academics" },
     { href: "/calendar", label: "Calendar" },
     { href: "/clubs", label: "Clubs" },
-    { href: "/departments", label: "Departments" },
+    { href: "/notices", label: "Notices" },
     { href: "/scholarships", label: "Scholarships" },
     { href: "/campus", label: "Around Campus" },
   ];
