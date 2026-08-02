@@ -5,7 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Shield, Sparkles, Download } from "lucide-react";
 
-export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boolean }) {
+export default function Navbar({ 
+  isAdminVisible = true,
+  logoUrl = null
+}: { 
+  isAdminVisible?: boolean;
+  logoUrl?: string | null;
+}) {
   const pathname = usePathname();
   const [isInstalled, setIsInstalled] = useState(true); // Default true to prevent flash
 
@@ -55,8 +61,12 @@ export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boo
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group w-fit">
-          <div className="w-9 h-9 rounded-xl bg-[#456be5] flex items-center justify-center shadow-lg shadow-[#456be5]/30 group-hover:scale-105 transition-transform shrink-0">
-            <Shield size={18} className="text-white" />
+          <div className="w-9 h-9 rounded-xl bg-[#456be5] overflow-hidden flex items-center justify-center shadow-lg shadow-[#456be5]/30 group-hover:scale-105 transition-transform shrink-0">
+            {logoUrl ? (
+              <img src={logoUrl} alt="Logo" className="w-full h-full object-cover" />
+            ) : (
+              <Shield size={18} className="text-white" />
+            )}
           </div>
           <div>
             <div className="flex items-center gap-1.5 leading-none">

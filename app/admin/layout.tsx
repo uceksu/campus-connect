@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import AdminSidebar from "@/components/AdminSidebar";
+import { getSiteLogo } from "@/lib/actions/settings";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,8 @@ export default async function AdminLayout({
     redirect("/portal-admin/login");
   }
 
+  const logoUrl = await getSiteLogo();
+
   return (
     <div className="min-h-screen bg-[#060b1a] flex">
       <AdminSidebar
@@ -26,6 +29,7 @@ export default async function AdminLayout({
         userEmail={session.user.email}
         userRole={session.user.role}
         userPermissions={(session.user as any).permissions}
+        logoUrl={logoUrl}
       />
 
       <main className="flex-1 min-h-screen overflow-auto">
