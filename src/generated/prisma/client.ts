@@ -111,3 +111,8 @@ export type CommitteeMember = Prisma.CommitteeMemberModel
  * 
  */
 export type AcademicSubject = Prisma.AcademicSubjectModel
+/**
+ * Model Setting
+ * 
+ */
+export type Setting = Prisma.SettingModel

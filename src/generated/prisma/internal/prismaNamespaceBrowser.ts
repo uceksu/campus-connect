@@ -64,7 +64,8 @@ export const ModelName = {
   Scholarship: 'Scholarship',
   VerificationToken: 'VerificationToken',
   CommitteeMember: 'CommitteeMember',
-  AcademicSubject: 'AcademicSubject'
+  AcademicSubject: 'AcademicSubject',
+  Setting: 'Setting'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -290,6 +291,17 @@ export const AcademicSubjectScalarFieldEnum = {
 } as const
 
 export type AcademicSubjectScalarFieldEnum = (typeof AcademicSubjectScalarFieldEnum)[keyof typeof AcademicSubjectScalarFieldEnum]
+
+
+export const SettingScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SettingScalarFieldEnum = (typeof SettingScalarFieldEnum)[keyof typeof SettingScalarFieldEnum]
 
 
 export const SortOrder = {

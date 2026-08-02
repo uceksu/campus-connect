@@ -7,6 +7,9 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from '@vercel/analytics/next';
 import { PwaRegistry } from "@/components/PwaRegistry";
 import { AddToHomeScreen } from "@/components/AddToHomeScreen";
+import { getMaintenanceMode } from "@/lib/actions/settings";
+import { auth } from "@/auth";
+import MaintenanceView from "@/components/MaintenanceView";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +26,15 @@ export const metadata: Metadata = {
   description: "Campus Connect Portal",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isMaintenanceOn = await getMaintenanceMode();
+  const session = await auth();
+  const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
+
   return (
     <html
       lang="en"
@@ -39,10 +46,14 @@ export default function RootLayout({
           <PwaRegistry />
           <Navbar />
           <main className="flex-1">
-            {children}
+            {isMaintenanceOn && !isAdmin ? (
+              <MaintenanceView />
+            ) : (
+              children
+            )}
           </main>
-          <Footer />
-          <AddToHomeScreen />
+          {(!isMaintenanceOn || isAdmin) && <Footer />}
+          {(!isMaintenanceOn || isAdmin) && <AddToHomeScreen />}
         </ThemeProvider>
         <Analytics />
       </body>

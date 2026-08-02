@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
+import MaintenanceToggle from "@/components/MaintenanceToggle";
+import { getMaintenanceMode } from "@/lib/actions/settings";
 import {
   Building2,
   Hospital,
@@ -162,6 +164,8 @@ export default async function AdminDashboardPage() {
   // Calculate total items only for visible cards
   const totalItems = visibleCards.reduce((total, card) => total + stats[card.key], 0);
 
+  const isMaintenanceOn = await getMaintenanceMode();
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -172,6 +176,10 @@ export default async function AdminDashboardPage() {
           <span className="text-white font-medium">{totalItems} total items</span> across {visibleCards.length} sections
         </p>
       </div>
+
+      {userRole === "SUPER_ADMIN" && (
+        <MaintenanceToggle initialStatus={isMaintenanceOn} />
+      )}
 
       {/* Total banner */}
       <div className="rounded-2xl bg-gradient-to-r from-[#1a2644] to-[#0f1628] border border-[#456be5]/20 p-6 flex items-center gap-4">
