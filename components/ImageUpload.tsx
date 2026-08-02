@@ -20,6 +20,7 @@ type ImageUploadProps = {
   required?: boolean;
   aspect?: number;
   preserveAspectRatio?: boolean;
+  disableCropping?: boolean;
   cropShape?: "rect" | "round";
   onFileSelect: (file: File | null) => void;
   onImageRemove?: () => void;
@@ -31,6 +32,7 @@ export default function ImageUpload({
   required = false,
   aspect = 1, // Default 1:1 square aspect ratio
   preserveAspectRatio = false,
+  disableCropping = false,
   cropShape = "rect",
   onFileSelect,
   onImageRemove,
@@ -69,6 +71,12 @@ export default function ImageUpload({
 
     if (file.size > MAX_FILE_SIZE) {
       setError("File is too large. Max size is 5MB.");
+      return;
+    }
+
+    if (disableCropping) {
+      setPreviewUrl(URL.createObjectURL(file));
+      onFileSelect(file);
       return;
     }
 

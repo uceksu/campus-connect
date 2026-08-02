@@ -135,7 +135,7 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
               initialImageUrl={initialData?.image && !removeInitialImage ? initialData.image : undefined}
               onFileSelect={setSelectedFile}
               onImageRemove={() => setRemoveInitialImage(true)}
-              preserveAspectRatio={true}
+              disableCropping={true}
             />
           </div>
         </div>
