@@ -54,7 +54,7 @@ export default async function AdminFacultyPage({ params }: { params: Promise<{ i
                       {f.image ? (
                         <img src={f.image} alt={f.name} className="w-9 h-9 rounded-lg object-cover border border-white/10" />
                       ) : (
-                        <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                        <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                           <User size={16} className="text-slate-400" />
                         </div>
                       )}

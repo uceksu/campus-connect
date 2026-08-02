@@ -156,7 +156,8 @@ export default function FacultyForm({ submitLabel, departmentId, facultyId, init
             initialImageUrl={initialData?.image && !removeInitialImage ? initialData.image : undefined}
             onFileSelect={setSelectedFile}
             onImageRemove={() => setRemoveInitialImage(true)}
-            cropShape="round"
+            cropShape="rect"
+            aspect={1}
           />
         </div>
 

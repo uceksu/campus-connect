@@ -142,37 +142,42 @@ export default function ImageUpload({
       </label>
 
       {isCropping && imageSrc ? (
-        <div className="relative w-full h-[400px] bg-slate-900 rounded-3xl overflow-hidden mb-4 border border-white/10">
-          <Cropper
-            image={imageSrc}
-            crop={crop}
-            zoom={zoom}
-            aspect={dynamicAspect}
-            cropShape={cropShape}
-            onCropChange={setCrop}
-            onCropComplete={onCropComplete}
-            onZoomChange={setZoom}
-            onMediaLoaded={(mediaSize) => {
-              if (preserveAspectRatio) {
-                setDynamicAspect(mediaSize.width / mediaSize.height);
-              }
-            }}
-          />
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10 bg-black/60 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 rounded-xl bg-yellow-500/10 border border-yellow-500/20 px-4 py-2.5">
+            <CropIcon size={16} className="text-yellow-400 shrink-0" />
+            <p className="text-sm text-yellow-300 font-medium">Adjust the crop area, then click <strong>"Use This Image"</strong> below before saving.</p>
+          </div>
+          <div className="relative w-full h-[360px] bg-slate-900 rounded-2xl overflow-hidden border border-white/10">
+            <Cropper
+              image={imageSrc}
+              crop={crop}
+              zoom={zoom}
+              aspect={dynamicAspect}
+              cropShape={cropShape}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+              onMediaLoaded={(mediaSize) => {
+                if (preserveAspectRatio) {
+                  setDynamicAspect(mediaSize.width / mediaSize.height);
+                }
+              }}
+            />
+          </div>
+          <div className="flex gap-3">
             <button
               type="button"
               onClick={handleCancelCrop}
-              className="text-white hover:text-red-400 px-3 py-1 text-sm font-medium transition-colors"
+              className="flex-shrink-0 rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
             >
               Cancel
             </button>
-            <div className="w-px h-4 bg-white/20"></div>
             <button
               type="button"
               onClick={handleSaveCrop}
-              className="text-[#456be5] hover:text-[#5b7df0] px-3 py-1 text-sm font-bold transition-colors flex items-center gap-1"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#456be5] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#5b7df0] transition-colors shadow-lg shadow-[#456be5]/30"
             >
-              <CropIcon size={16} /> Save Crop
+              <CropIcon size={16} /> Use This Image
             </button>
           </div>
         </div>
