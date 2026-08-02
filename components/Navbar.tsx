@@ -92,16 +92,6 @@ export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boo
             );
           })}
 
-          {!isInstalled && (
-            <button
-              onClick={() => window.dispatchEvent(new Event("show-pwa-prompt"))}
-              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#456be5]/20 text-[#456be5] hover:bg-[#456be5] hover:text-white transition-colors border border-[#456be5]/30"
-            >
-              <Download size={14} />
-              <span>Install App</span>
-            </button>
-          )}
-
           {isAdminVisible && (
             <Link
               href="/portal-admin/login"
