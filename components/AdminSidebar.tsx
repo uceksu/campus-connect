@@ -30,6 +30,7 @@ const navItems = [
   { href: "/admin/clubs", label: "Clubs", icon: Users },
   { href: "/admin/notices", label: "Notices", icon: Bell },
   { href: "/admin/scholarships", label: "Scholarships", icon: GraduationCap },
+  { href: "/admin/committee", label: "Committee", icon: Users },
 ];
 
 type SidebarProps = {

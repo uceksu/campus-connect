@@ -84,22 +84,22 @@ export default function HomePage() {
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
-              href="/campus"
+              href="#explore"
               className="rounded-full bg-[#456be5] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#5b7df0]"
             >
               Explore campus
             </Link>
             <Link
-              href="/campus/hostels"
+              href="/about-ksu"
               className="rounded-full border border-white/30 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
-              Find a hostel
+              About KSU
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(rgba(69,107,229,0.2)_1px,transparent_1px)] bg-size-[18px_18px] px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
+      <section id="explore" className="bg-[radial-gradient(rgba(69,107,229,0.2)_1px,transparent_1px)] bg-size-[18px_18px] px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>

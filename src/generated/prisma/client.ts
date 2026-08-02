@@ -101,3 +101,8 @@ export type Scholarship = Prisma.ScholarshipModel
  * 
  */
 export type VerificationToken = Prisma.VerificationTokenModel
+/**
+ * Model CommitteeMember
+ * 
+ */
+export type CommitteeMember = Prisma.CommitteeMemberModel

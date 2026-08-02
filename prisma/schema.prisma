@@ -160,6 +160,18 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
+model CommitteeMember {
+  id           String   @id @default(cuid())
+  name         String
+  role         String
+  organization String   // "KSU" or "Priyadarshini"
+  image        String
+  whatsapp     String
+  instagram    String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
 enum Role {
   SUPER_ADMIN
   ADMIN

@@ -62,7 +62,8 @@ export const ModelName = {
   NearbyPlace: 'NearbyPlace',
   Notice: 'Notice',
   Scholarship: 'Scholarship',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  CommitteeMember: 'CommitteeMember'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -260,6 +261,21 @@ export const VerificationTokenScalarFieldEnum = {
 } as const
 
 export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+export const CommitteeMemberScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  role: 'role',
+  organization: 'organization',
+  image: 'image',
+  whatsapp: 'whatsapp',
+  instagram: 'instagram',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommitteeMemberScalarFieldEnum = (typeof CommitteeMemberScalarFieldEnum)[keyof typeof CommitteeMemberScalarFieldEnum]
 
 
 export const SortOrder = {
