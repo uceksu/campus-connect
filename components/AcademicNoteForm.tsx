@@ -95,26 +95,6 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Subject *</label>
-            <select
-              name="subject"
-              value={values.subject}
-              onChange={handleChange}
-              required
-              className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
-            >
-              <option value="">Select a Subject</option>
-              {subjects
-                .filter((s) => s.branch === values.branch && s.semester === values.semester && s.scheme === values.scheme)
-                .map((s) => (
-                  <option key={s.id} value={s.name}>
-                    {s.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-
-          <div>
             <label className="block text-sm font-medium text-slate-300 mb-1.5">Branch *</label>
             <select
               name="branch"
@@ -131,16 +111,38 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Type *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Semester *</label>
             <select
-              name="type"
-              value={values.type}
+              name="semester"
+              value={values.semester}
               onChange={handleChange}
               required
               className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             >
-              <option value="Note">Note</option>
-              <option value="Question Paper">Question Paper</option>
+              <option value="">Select Semester</option>
+              {SEMESTERS.map((s) => (
+                <option key={s} value={s}>{s} Semester</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Subject *</label>
+            <select
+              name="subject"
+              value={values.subject}
+              onChange={handleChange}
+              required
+              className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            >
+              <option value="">Select a Subject</option>
+              {subjects
+                .filter((s) => s.branch === values.branch && s.semester === values.semester && s.scheme === values.scheme)
+                .map((s) => (
+                  <option key={s.id} value={s.name}>
+                    {s.name}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -164,18 +166,16 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
           )}
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Semester *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Type *</label>
             <select
-              name="semester"
-              value={values.semester}
+              name="type"
+              value={values.type}
               onChange={handleChange}
               required
               className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             >
-              <option value="">Select Semester</option>
-              {SEMESTERS.map((s) => (
-                <option key={s} value={s}>{s} Semester</option>
-              ))}
+              <option value="Note">Note</option>
+              <option value="Question Paper">Question Paper</option>
             </select>
           </div>
 
