@@ -10,12 +10,14 @@ const AVAILABLE_PERMISSIONS = [
   { id: "hospitals", label: "Hospitals" },
   { id: "academic-notes", label: "Academic Notes" },
   { id: "subjects", label: "Subjects" },
+  { id: "departments", label: "Departments" },
   { id: "teashops", label: "Tea Shops" },
   { id: "nearby-places", label: "Nearby Places" },
   { id: "notices", label: "Notices" },
   { id: "scholarships", label: "Scholarships" },
   { id: "clubs", label: "Clubs" },
   { id: "committee", label: "Committee" },
+  { id: "developers", label: "Developers" },
 ];
 
 type Props = {

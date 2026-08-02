@@ -15,24 +15,52 @@ import {
   ArrowUpRight,
   TrendingUp,
   Users,
+  Code2,
 } from "lucide-react";
 
 async function getDashboardStats() {
-  const [hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs, committeeMembers, academicSubjects] =
-    await Promise.all([
-      prisma.hostel.count(),
-      prisma.hospital.count(),
-      prisma.academicNote.count(),
-      prisma.teaShop.count(),
-      prisma.nearbyPlace.count(),
-      prisma.notice.count(),
-      prisma.scholarship.count(),
-      prisma.club.count(),
-      prisma.committeeMember.count(),
-      prisma.academicSubject.count(),
-    ]);
+  const [
+    hostels,
+    hospitals,
+    academicNotes,
+    teaShops,
+    nearbyPlaces,
+    notices,
+    scholarships,
+    clubs,
+    committeeMembers,
+    academicSubjects,
+    departments,
+    developers,
+  ] = await Promise.all([
+    prisma.hostel.count(),
+    prisma.hospital.count(),
+    prisma.academicNote.count(),
+    prisma.teaShop.count(),
+    prisma.nearbyPlace.count(),
+    prisma.notice.count(),
+    prisma.scholarship.count(),
+    prisma.club.count(),
+    prisma.committeeMember.count(),
+    prisma.academicSubject.count(),
+    prisma.department.count(),
+    prisma.developer.count(),
+  ]);
 
-  return { hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs, committeeMembers, academicSubjects };
+  return {
+    hostels,
+    hospitals,
+    academicNotes,
+    teaShops,
+    nearbyPlaces,
+    notices,
+    scholarships,
+    clubs,
+    committeeMembers,
+    academicSubjects,
+    departments,
+    developers,
+  };
 }
 
 const cards = [
@@ -145,6 +173,28 @@ const cards = [
     bg: "bg-fuchsia-500/10",
     border: "border-fuchsia-500/20",
     text: "text-fuchsia-400",
+  },
+  {
+    label: "Departments",
+    key: "departments" as const,
+    href: "/admin/departments",
+    addHref: "/admin/departments/add",
+    icon: Building2,
+    color: "from-blue-600 to-indigo-800",
+    bg: "bg-blue-600/10",
+    border: "border-blue-600/20",
+    text: "text-blue-400",
+  },
+  {
+    label: "Developers",
+    key: "developers" as const,
+    href: "/admin/developers",
+    addHref: "/admin/developers/add",
+    icon: Code2,
+    color: "from-slate-600 to-slate-800",
+    bg: "bg-slate-500/10",
+    border: "border-slate-500/20",
+    text: "text-slate-400",
   },
 ];
 
