@@ -6,6 +6,8 @@ import { X, Share, PlusSquare, Download } from "lucide-react";
 export function AddToHomeScreen() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
+  const [showAndroidFallback, setShowAndroidFallback] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
@@ -21,13 +23,16 @@ export function AddToHomeScreen() {
       return;
     }
 
-    // Detect iOS
+    // Detect iOS and Android
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
+    const isAndroidDevice = /android/.test(userAgent);
+    
     setIsIOS(isIosDevice);
+    setIsAndroid(isAndroidDevice);
 
-    if (isIosDevice) {
-      // For iOS, just show the prompt after a slight delay
+    if (isIosDevice || isAndroidDevice) {
+      // Show the prompt after a slight delay for all mobile devices
       setTimeout(() => setShowPrompt(true), 3000);
     }
 
@@ -63,6 +68,9 @@ export function AddToHomeScreen() {
         setShowPrompt(false);
       }
       setDeferredPrompt(null);
+    } else {
+      // Fallback if the native prompt didn't fire
+      setShowAndroidFallback(true);
     }
   };
 
@@ -99,6 +107,12 @@ export function AddToHomeScreen() {
               <p className="flex items-center gap-2">
                 2. Select <PlusSquare size={16} className="text-[#456be5]" /> <strong>Add to Home Screen</strong>.
               </p>
+            </div>
+          ) : showAndroidFallback ? (
+            <div className="rounded-xl bg-white/5 border border-white/10 p-3.5 text-sm text-slate-200">
+              <p className="mb-2 font-semibold text-white">To install manually:</p>
+              <p className="mb-1">1. Tap the <strong>3-dots menu</strong> (⋮) in Chrome</p>
+              <p>2. Select <strong>Add to Home screen</strong> or <strong>Install app</strong></p>
             </div>
           ) : (
             <button
