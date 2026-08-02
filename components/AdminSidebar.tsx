@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
+import { logOut } from "@/lib/actions/authActions";
 import {
   LayoutDashboard,
   Building2,
@@ -125,7 +125,7 @@ export default function AdminSidebar({ userName, userEmail, userRole, userPermis
         </div>
         <button
           id="admin-logout-btn"
-          onClick={() => signOut({ callbackUrl: "/portal-admin/login" })}
+          onClick={() => logOut()}
           className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200"
         >
           <LogOut size={16} />
