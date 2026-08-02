@@ -4,7 +4,14 @@ import { useEffect } from "react";
 
 export function PwaRegistry() {
   useEffect(() => {
-    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+    if (typeof window !== "undefined") {
+      // Catch beforeinstallprompt globally as early as possible
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        (window as any).deferredPwaPrompt = e;
+      });
+
+      if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
           .register("/sw.js")
@@ -15,6 +22,7 @@ export function PwaRegistry() {
             console.error("Service Worker registration failed:", error);
           });
       });
+      }
     }
   }, []);
 

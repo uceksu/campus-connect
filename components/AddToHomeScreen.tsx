@@ -36,13 +36,10 @@ export function AddToHomeScreen() {
       setTimeout(() => setShowPrompt(true), 3000);
     }
 
-    // For Android/Chrome, listen for the beforeinstallprompt event
+    // For Android/Chrome, listen for the beforeinstallprompt event just in case it fires late
     window.addEventListener("beforeinstallprompt", (e) => {
-      // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
-      // Stash the event so it can be triggered later
-      setDeferredPrompt(e);
-      // Update UI to notify the user they can install the PWA
+      (window as any).deferredPwaPrompt = e;
       setShowPrompt(true);
     });
 
@@ -67,16 +64,18 @@ export function AddToHomeScreen() {
   };
 
   const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
+    const promptEvent = (window as any).deferredPwaPrompt;
+    
+    if (promptEvent) {
+      promptEvent.prompt();
+      const { outcome } = await promptEvent.userChoice;
       if (outcome === "accepted") {
         console.log("User accepted the install prompt");
         localStorage.setItem("pwaInstalled", "true");
         window.dispatchEvent(new Event("pwa-installed-manual"));
         setShowPrompt(false);
       }
-      setDeferredPrompt(null);
+      (window as any).deferredPwaPrompt = null;
     } else {
       // Fallback if the native prompt didn't fire
       setShowAndroidFallback(true);
