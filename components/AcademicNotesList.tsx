@@ -132,14 +132,14 @@ export function NotesList({ notes, subjects }: Props) {
       </div>
 
       {/* Selected Header Card */}
-      <div className="rounded-3xl border border-white/30 bg-white p-8 shadow-xl">
-        <span className={`text-xs font-mono font-bold uppercase tracking-widest ${theme.text}`}>
+      <div className="rounded-3xl border border-white/30 dark:border-white/10 bg-white dark:bg-[#0f172a]/65 p-8 shadow-xl backdrop-blur-md transition-colors duration-300">
+        <span className={`text-xs font-mono font-bold uppercase tracking-widest ${theme.text} dark:text-blue-400`}>
           {activeSemester} Semester
         </span>
-        <h2 className="mt-1 text-3xl font-black uppercase tracking-[-0.04em] text-[#071333]">
+        <h2 className="mt-1 text-3xl font-black uppercase tracking-[-0.04em] text-[#071333] dark:text-white">
           {BRANCH_FULL_NAMES[activeBranch]}
         </h2>
-        <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
           Browse study materials grouped by module and download previous years' question papers for Semester {activeSemester[0]} {activeBranch}.
         </p>
 
@@ -152,10 +152,10 @@ export function NotesList({ notes, subjects }: Props) {
                 <button
                   key={sub.id}
                   onClick={() => setActiveSubject(sub.name)}
-                  className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? `${theme.bg} ${theme.border} ${theme.text}`
-                      : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100"
+                      ? `${theme.bg} ${theme.border} ${theme.text} dark:bg-white/10 dark:border-white/20 dark:text-white`
+                      : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400 dark:hover:bg-slate-900/80"
                   }`}
                 >
                   {sub.name}
@@ -164,7 +164,7 @@ export function NotesList({ notes, subjects }: Props) {
             })}
           </div>
         ) : (
-          <div className="mt-8 text-sm font-medium text-slate-500 italic">
+          <div className="mt-8 text-sm font-medium text-slate-500 dark:text-slate-400 italic">
             No subjects added for this semester yet.
           </div>
         )}
@@ -199,22 +199,22 @@ export function NotesList({ notes, subjects }: Props) {
                   </div>
 
                   {moduleNotes.length === 0 ? (
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center text-sm text-white/50 italic">
+                    <div className="rounded-2xl border border-white/10 dark:border-white/5 bg-white/5 p-4 text-center text-sm text-white/50 dark:text-slate-500 italic">
                       No notes uploaded in {moduleName} yet.
                     </div>
                   ) : (
                     <div className="grid gap-4">
                       {moduleNotes.map((note) => (
-                        <article key={note.id} className="rounded-3xl border border-white/30 bg-white shadow-lg p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                        <article key={note.id} className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/65 shadow-md dark:shadow-none p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:hover:shadow-white/5 backdrop-blur-md">
                           <div>
-                            <h5 className="font-black text-[#071333] leading-snug">{note.title}</h5>
-                            <p className="text-sm text-slate-500 mt-0.5">{note.subject}</p>
+                            <h5 className="font-black text-[#071333] dark:text-white leading-snug">{note.title}</h5>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{note.subject}</p>
                           </div>
-                          <p className="text-sm text-slate-600 line-clamp-2">{note.description}</p>
-                          <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-auto">
-                            <span className="text-xs text-slate-400">by {note.uploadedBy}</span>
+                          <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{note.description}</p>
+                          <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 mt-auto">
+                            <span className="text-xs text-slate-400 dark:text-slate-500">by {note.uploadedBy}</span>
                             <a href={note.fileUrl} target="_blank" rel="noopener noreferrer"
-                              className="flex items-center gap-1.5 rounded-xl bg-[#456be5] px-4 py-2 text-xs font-bold text-white hover:bg-[#3659c8] transition-colors">
+                              className="flex items-center gap-1.5 rounded-xl bg-[#456be5] dark:bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-[#3659c8] dark:hover:bg-blue-500 transition-colors">
                               Open Notes <ExternalLink size={12} />
                             </a>
                           </div>
@@ -242,19 +242,19 @@ export function NotesList({ notes, subjects }: Props) {
 
           <div className="space-y-4">
             {questionPapers.length === 0 ? (
-              <div className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-sm p-8 text-center text-white/80">
+              <div className="rounded-3xl border border-white/20 dark:border-white/5 bg-white/10 dark:bg-slate-900/30 backdrop-blur-sm p-8 text-center text-white/80 dark:text-slate-400">
                 No question papers uploaded for Semester {activeSemester[0]} yet.
               </div>
             ) : (
               questionPapers.map((paper) => (
-                <article key={paper.id} className="rounded-3xl border border-white/30 bg-white shadow-lg p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                <article key={paper.id} className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/65 shadow-md dark:shadow-none p-6 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:hover:shadow-white/5 backdrop-blur-md">
                   <div>
-                    <h4 className="font-black text-[#071333] leading-snug">{paper.title}</h4>
-                    <p className="text-sm text-slate-500 mt-0.5">{paper.subject}</p>
+                    <h4 className="font-black text-[#071333] dark:text-white leading-snug">{paper.title}</h4>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{paper.subject}</p>
                   </div>
-                  <p className="text-sm text-slate-600 line-clamp-2">{paper.description}</p>
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 mt-auto">
-                    <span className="text-xs text-slate-400">by {paper.uploadedBy}</span>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{paper.description}</p>
+                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800 mt-auto">
+                    <span className="text-xs text-slate-400 dark:text-slate-500">by {paper.uploadedBy}</span>
                     <a href={paper.fileUrl} target="_blank" rel="noopener noreferrer"
                       className="flex items-center gap-1.5 rounded-xl bg-red-500 px-4 py-2 text-xs font-bold text-white hover:bg-red-600 transition-colors">
                       Download PDF <Download size={12} />

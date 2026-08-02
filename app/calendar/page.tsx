@@ -283,7 +283,7 @@ export default function AcademicCalendarPage() {
   });
 
   return (
-    <main className="min-h-screen bg-[#456be5] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] bg-size-[18px_18px]">
+    <main className="min-h-screen bg-[#456be5] dark:bg-[#060b18] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[18px_18px] transition-colors duration-300">
       <PublicPageHero
         eyebrow="KTU B.Tech S3/S5/S7"
         title="Academic"
@@ -293,8 +293,8 @@ export default function AcademicCalendarPage() {
 
       <section className="mx-auto max-w-4xl px-6 py-14 sm:px-10 lg:px-16 lg:py-20">
         {/* Notice/Disclaimer Box */}
-        <div className="mb-10 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-6 text-white flex gap-4 items-start">
-          <Info className="size-6 shrink-0 text-white mt-0.5" />
+        <div className="mb-10 rounded-3xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5 backdrop-blur-md p-6 text-white dark:text-slate-200 flex gap-4 items-start">
+          <Info className="size-6 shrink-0 text-white dark:text-slate-300 mt-0.5" />
           <div>
             <h3 className="font-bold text-lg mb-1">KTU Official Calendar</h3>
             <p className="text-sm opacity-90 leading-relaxed">
@@ -304,10 +304,10 @@ export default function AcademicCalendarPage() {
         </div>
 
         {/* Filters Section */}
-        <div className="mb-10 space-y-6 bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-sm">
+        <div className="mb-10 space-y-6 bg-white/5 border border-white/10 dark:border-white/5 p-6 rounded-3xl backdrop-blur-sm">
           {/* Month Filter */}
           <div>
-            <label className="block text-xs font-mono font-bold uppercase tracking-wider text-white/70 mb-3">
+            <label className="block text-xs font-mono font-bold uppercase tracking-wider text-white/70 dark:text-slate-400 mb-3">
               Filter by Month
             </label>
             <div className="flex flex-wrap gap-2">
@@ -317,8 +317,8 @@ export default function AcademicCalendarPage() {
                   onClick={() => setSelectedMonth(month)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all touch-manipulation cursor-pointer ${
                     selectedMonth === month
-                      ? "bg-white text-[#456be5] shadow-md md:scale-[1.02]"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-white text-[#456be5] dark:bg-white dark:text-slate-900 shadow-md md:scale-[1.02]"
+                      : "bg-white/10 text-white hover:bg-white/20 dark:text-slate-300 dark:hover:bg-white/10"
                   }`}
                 >
                   {month}
@@ -329,7 +329,7 @@ export default function AcademicCalendarPage() {
 
           {/* Category Filter */}
           <div>
-            <label className="block text-xs font-mono font-bold uppercase tracking-wider text-white/70 mb-3">
+            <label className="block text-xs font-mono font-bold uppercase tracking-wider text-white/70 dark:text-slate-400 mb-3">
               Filter by Category
             </label>
             <div className="flex flex-wrap gap-2">
@@ -339,8 +339,8 @@ export default function AcademicCalendarPage() {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all touch-manipulation cursor-pointer ${
                     selectedCategory === category
-                      ? "bg-white text-[#456be5] shadow-md md:scale-[1.02]"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-white text-[#456be5] dark:bg-white dark:text-slate-900 shadow-md md:scale-[1.02]"
+                      : "bg-white/10 text-white hover:bg-white/20 dark:text-slate-300 dark:hover:bg-white/10"
                   }`}
                 >
                   {category === "All" ? "All Categories" : category}
@@ -355,49 +355,49 @@ export default function AcademicCalendarPage() {
           {filteredEvents.map((event, idx) => (
             <div
               key={idx}
-              className="relative pl-8 sm:pl-10 before:absolute before:left-3.5 before:top-4 before:bottom-[-2.5rem] before:w-[2px] before:bg-white/30 last:before:hidden"
+              className="relative pl-8 sm:pl-10 before:absolute before:left-3.5 before:top-4 before:bottom-[-2.5rem] before:w-[2px] before:bg-white/30 dark:before:bg-slate-800 last:before:hidden"
             >
               {/* Timeline dot */}
-              <div className="absolute left-0 top-1.5 size-7 rounded-full bg-white/20 border border-white flex items-center justify-center text-white shrink-0">
-                <div className="size-2 rounded-full bg-white" />
+              <div className="absolute left-0 top-1.5 size-7 rounded-full bg-white/20 dark:bg-slate-900 border border-white dark:border-slate-800 flex items-center justify-center text-white shrink-0">
+                <div className="size-2 rounded-full bg-white dark:bg-slate-300" />
               </div>
 
               {/* Card content */}
-              <article className="rounded-3xl border border-white/30 bg-white shadow-lg p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+              <article className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/65 shadow-md dark:shadow-none p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:hover:shadow-white/5 backdrop-blur-md">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap gap-2 mb-2">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${
                         event.category === "Exam"
-                          ? "bg-red-50 text-red-600 border border-red-200"
+                          ? "bg-red-50 text-red-600 border border-red-200 dark:bg-red-950/20 dark:text-red-400 dark:border-red-900/50"
                           : event.category === "Holiday"
-                          ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
+                          ? "bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-900/50"
                           : event.category === "Event"
-                          ? "bg-purple-50 text-purple-600 border border-purple-200"
-                          : "bg-blue-50 text-blue-600 border border-blue-200"
+                          ? "bg-purple-50 text-purple-600 border border-purple-200 dark:bg-purple-950/20 dark:text-purple-400 dark:border-purple-900/50"
+                          : "bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-950/20 dark:text-blue-400 dark:border-blue-900/50"
                       }`}>
                         {event.category}
                       </span>
-                      <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800">
                         {event.month}
                       </span>
                     </div>
-                    <h2 className="text-xl font-black uppercase tracking-[-0.04em] text-[#071333] leading-snug">
+                    <h2 className="text-xl font-black uppercase tracking-[-0.04em] text-[#071333] dark:text-white leading-snug">
                       {event.title}
                     </h2>
                   </div>
 
                   <div className="flex flex-col items-end gap-1 shrink-0 text-right">
-                    <span className="flex items-center gap-1.5 text-sm font-semibold text-[#456be5]">
+                    <span className="flex items-center gap-1.5 text-sm font-semibold text-[#456be5] dark:text-blue-400">
                       <Calendar size={14} /> {event.date}
                     </span>
-                    <span className="text-xs text-slate-400 font-medium">
+                    <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">
                       Status: {event.status}
                     </span>
                   </div>
                 </div>
 
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {event.description}
                 </p>
               </article>
@@ -405,7 +405,7 @@ export default function AcademicCalendarPage() {
           ))}
 
           {filteredEvents.length === 0 && (
-            <div className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-md p-10 text-center text-white">
+            <div className="rounded-3xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-slate-900/30 backdrop-blur-md p-10 text-center text-white dark:text-slate-400">
               No calendar events found matching the selected filters.
             </div>
           )}
