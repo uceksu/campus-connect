@@ -10,6 +10,7 @@ import { AddToHomeScreen } from "@/components/AddToHomeScreen";
 import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <NextTopLoader color="#456be5" height={3} showSpinner={false} />
           <PwaRegistry />
           <Navbar isAdminVisible={isAdminPortalVisible} />
           <main className="flex-1">
