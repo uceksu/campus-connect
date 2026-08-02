@@ -51,6 +51,14 @@ export function AddToHomeScreen() {
       localStorage.setItem("pwaInstalled", "true");
       setShowPrompt(false);
     });
+
+    // Listen for manual trigger from Navbar
+    const handleManualTrigger = () => setShowPrompt(true);
+    window.addEventListener("show-pwa-prompt", handleManualTrigger);
+
+    return () => {
+      window.removeEventListener("show-pwa-prompt", handleManualTrigger);
+    };
   }, []);
 
   const dismissPrompt = () => {
@@ -65,6 +73,7 @@ export function AddToHomeScreen() {
       if (outcome === "accepted") {
         console.log("User accepted the install prompt");
         localStorage.setItem("pwaInstalled", "true");
+        window.dispatchEvent(new Event("pwa-installed-manual"));
         setShowPrompt(false);
       }
       setDeferredPrompt(null);

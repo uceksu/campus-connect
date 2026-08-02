@@ -1,11 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Shield, Sparkles } from "lucide-react";
+import { Shield, Sparkles, Download } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isInstalled, setIsInstalled] = useState(true); // Default true to prevent flash
+
+  useEffect(() => {
+    // Check if installed on mount
+    const hasInstalled = localStorage.getItem("pwaInstalled") === "true";
+    const isStandalone = window.matchMedia("(display-mode: standalone)").matches || 
+                         (window.navigator as any).standalone;
+    
+    if (!hasInstalled && !isStandalone) {
+      setIsInstalled(false);
+    }
+
+    const handleInstalled = () => setIsInstalled(true);
+    window.addEventListener("appinstalled", handleInstalled);
+    
+    // Also listen to a custom event we can emit from the manual Android fallback
+    window.addEventListener("pwa-installed-manual", handleInstalled);
+
+    return () => {
+      window.removeEventListener("appinstalled", handleInstalled);
+      window.removeEventListener("pwa-installed-manual", handleInstalled);
+    };
+  }, []);
 
   // Hide the public navbar on admin dashboard and login routes
   const isAdminPage = pathname?.startsWith("/admin") || pathname?.startsWith("/portal-admin");
@@ -66,6 +90,16 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {!isInstalled && (
+            <button
+              onClick={() => window.dispatchEvent(new Event("show-pwa-prompt"))}
+              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#456be5]/20 text-[#456be5] hover:bg-[#456be5] hover:text-white transition-colors border border-[#456be5]/30"
+            >
+              <Download size={14} />
+              <span>Install App</span>
+            </button>
+          )}
         </div>
       </div>
     </nav>
