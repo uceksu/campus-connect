@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from '@vercel/analytics/next';
+import { PwaRegistry } from "@/components/PwaRegistry";
+import { AddToHomeScreen } from "@/components/AddToHomeScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +36,13 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <PwaRegistry />
           <Navbar />
           <main className="flex-1">
             {children}
           </main>
           <Footer />
+          <AddToHomeScreen />
         </ThemeProvider>
         <Analytics />
       </body>
