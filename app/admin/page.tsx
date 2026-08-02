@@ -70,6 +70,18 @@ async function getDashboardStats() {
 
 const cards = [
   {
+    label: "Sub-Admins",
+    key: "subAdmins" as const,
+    href: "/admin/sub-admins",
+    addHref: "/admin/sub-admins/add",
+    icon: Shield,
+    color: "from-amber-600 to-amber-800",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/20",
+    text: "text-amber-400",
+    superAdminOnly: true,
+  },
+  {
     label: "Hostels",
     key: "hostels" as const,
     href: "/admin/hostels",
@@ -200,18 +212,6 @@ const cards = [
     bg: "bg-slate-500/10",
     border: "border-slate-500/20",
     text: "text-slate-400",
-  },
-  {
-    label: "Sub-Admins",
-    key: "subAdmins" as const,
-    href: "/admin/sub-admins",
-    addHref: "/admin/sub-admins/add",
-    icon: Shield,
-    color: "from-amber-600 to-amber-800",
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/20",
-    text: "text-amber-400",
-    superAdminOnly: true,
   },
 ];
 
