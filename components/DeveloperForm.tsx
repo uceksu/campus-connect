@@ -23,6 +23,7 @@ export default function DeveloperForm({ submitLabel, developerId, initialData }:
     description: initialData?.description ?? "",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [removeInitialImage, setRemoveInitialImage] = useState(false);
   const [status, setStatus] = useState<"idle" | "uploading" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -43,20 +44,23 @@ export default function DeveloperForm({ submitLabel, developerId, initialData }:
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedFile && !initialData?.image) {
+    if (!selectedFile && (!initialData?.image || removeInitialImage)) {
       setError("Please upload an image.");
       return;
     }
     setError(null);
     try {
       setStatus("uploading");
-      const image = selectedFile ? await uploadImage(selectedFile) : initialData!.image!;
+      const image = selectedFile 
+        ? await uploadImage(selectedFile) 
+        : (removeInitialImage ? null : initialData?.image ?? null);
+      
       setStatus("saving");
       
       if (developerId) {
-        await updateDeveloper(developerId, { ...values, image });
+        await updateDeveloper(developerId, { ...values, image: image as string });
       } else {
-        await createDeveloper({ ...values, image });
+        await createDeveloper({ ...values, image: image as string });
       }
       router.push("/admin/developers");
     } catch (err) {
@@ -72,8 +76,9 @@ export default function DeveloperForm({ submitLabel, developerId, initialData }:
         <div className="sm:col-span-2">
           <ImageUpload 
             label="Photo *" 
-            initialImageUrl={initialData?.image ?? undefined}
+            initialImageUrl={initialData?.image && !removeInitialImage ? initialData.image : undefined}
             onFileSelect={setSelectedFile}
+            onImageRemove={() => setRemoveInitialImage(true)}
             cropShape="round"
           />
         </div>

@@ -22,6 +22,7 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
     isImportant: initialData?.isImportant ?? false,
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [removeInitialImage, setRemoveInitialImage] = useState(false);
   const [status, setStatus] = useState<"idle" | "uploading" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -46,7 +47,9 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
     setError(null);
     try {
       setStatus("uploading");
-      const image = selectedFile ? await uploadImage(selectedFile) : initialData?.image ?? null;
+      const image = selectedFile 
+        ? await uploadImage(selectedFile) 
+        : (removeInitialImage ? null : initialData?.image ?? null);
       
       setStatus("saving");
       if (noticeId) {
@@ -129,8 +132,9 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
           <div className="sm:col-span-2">
             <label className="block text-sm font-medium text-slate-300 mb-1.5">Notice Image (Optional)</label>
             <ImageUpload 
-              initialImageUrl={initialData?.image ?? undefined}
+              initialImageUrl={initialData?.image && !removeInitialImage ? initialData.image : undefined}
               onFileSelect={setSelectedFile}
+              onImageRemove={() => setRemoveInitialImage(true)}
               preserveAspectRatio={true}
             />
           </div>

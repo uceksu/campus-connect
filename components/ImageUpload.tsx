@@ -22,6 +22,7 @@ type ImageUploadProps = {
   preserveAspectRatio?: boolean;
   cropShape?: "rect" | "round";
   onFileSelect: (file: File | null) => void;
+  onImageRemove?: () => void;
 };
 
 export default function ImageUpload({
@@ -32,6 +33,7 @@ export default function ImageUpload({
   preserveAspectRatio = false,
   cropShape = "rect",
   onFileSelect,
+  onImageRemove,
 }: ImageUploadProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialImageUrl ?? null);
   const [error, setError] = useState<string | null>(null);
@@ -121,6 +123,7 @@ export default function ImageUpload({
   const handleRemoveImage = () => {
     setPreviewUrl(null);
     onFileSelect(null);
+    if (onImageRemove) onImageRemove();
   };
 
   return (

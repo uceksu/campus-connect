@@ -31,6 +31,7 @@ export default function CommitteeForm({ submitLabel, initialData, memberId }: Co
     instagram: initialData?.instagram ?? "",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [removeInitialImage, setRemoveInitialImage] = useState(false);
   const [status, setStatus] = useState<"idle" | "uploading" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -52,18 +53,21 @@ export default function CommitteeForm({ submitLabel, initialData, memberId }: Co
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!selectedFile && !initialData?.image) {
+    if (!selectedFile && (!initialData?.image || removeInitialImage)) {
       setError("Please upload an image.");
       return;
     }
     try {
       setStatus("uploading");
-      const imageUrl = selectedFile ? await uploadImage(selectedFile) : initialData!.image!;
+      const imageUrl = selectedFile 
+        ? await uploadImage(selectedFile) 
+        : (removeInitialImage ? null : initialData?.image ?? null);
+      
       setStatus("saving");
       if (memberId) {
-        await updateCommitteeMember(memberId, { ...values, imageUrl });
+        await updateCommitteeMember(memberId, { ...values, imageUrl: imageUrl as string });
       } else {
-        await createCommitteeMember({ ...values, imageUrl });
+        await createCommitteeMember({ ...values, imageUrl: imageUrl as string });
       }
       router.push("/admin/committee");
     } catch (err) {
@@ -152,9 +156,10 @@ export default function CommitteeForm({ submitLabel, initialData, memberId }: Co
 
         <ImageUpload
           label="Profile Photo"
-          initialImageUrl={initialData?.image}
-          required={!initialData?.image}
+          initialImageUrl={initialData?.image && !removeInitialImage ? initialData.image : undefined}
+          required={!initialData?.image || removeInitialImage}
           onFileSelect={setSelectedFile}
+          onImageRemove={() => setRemoveInitialImage(true)}
           cropShape="round"
         />
       </div>
