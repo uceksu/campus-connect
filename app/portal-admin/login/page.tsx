@@ -52,8 +52,7 @@ export default function LoginPage() {
       setError("Invalid email or password. Please try again.");
       return;
     }
-
-    router.push("/admin");
+    window.location.href = "/admin";
   }
 
   if (status === "loading") {
