@@ -41,6 +41,7 @@ model User {
   email         String    @unique
   password      String
   role          Role      @default(ADMIN)
+  permissions   String[]  @default([])
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   emailVerified DateTime?

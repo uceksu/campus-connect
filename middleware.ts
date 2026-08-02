@@ -33,6 +33,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/portal-admin/login", request.url));
   }
 
+  // RBAC for ADMINs (Sub-admins)
+  if (token.role === "ADMIN" && pathname.startsWith("/admin/")) {
+    const permissions = (token.permissions as string[]) || [];
+    
+    // Sub-admins can NEVER access the sub-admins management page
+    if (pathname.startsWith("/admin/sub-admins")) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
+
+    // Extract the section from the pathname, e.g. "/admin/hostels/add" -> "hostels"
+    const pathParts = pathname.split("/");
+    const section = pathParts[2]; // e.g. "hostels"
+
+    // If it's a specific section (not just "/admin"), check permissions
+    if (section && section !== "sub-admins") {
+      if (!permissions.includes(section)) {
+        return NextResponse.redirect(new URL("/admin", request.url));
+      }
+    }
+  }
+
   return NextResponse.next();
 }
 

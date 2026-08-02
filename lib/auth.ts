@@ -34,5 +34,6 @@ export async function authorizeCredentials({
     name: user.name,
     email: user.email,
     role: user.role,
+    permissions: user.permissions,
   };
 }

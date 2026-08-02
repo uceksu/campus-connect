@@ -25,6 +25,7 @@ export default async function AdminLayout({
         userName={session.user.name}
         userEmail={session.user.email}
         userRole={session.user.role}
+        userPermissions={(session.user as any).permissions}
       />
 
       <main className="flex-1 min-h-screen overflow-auto">

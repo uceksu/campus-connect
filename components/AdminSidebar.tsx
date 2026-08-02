@@ -38,9 +38,10 @@ type SidebarProps = {
   userName?: string | null;
   userEmail?: string | null;
   userRole?: string | null;
+  userPermissions?: string[];
 };
 
-export default function AdminSidebar({ userName, userEmail, userRole }: SidebarProps) {
+export default function AdminSidebar({ userName, userEmail, userRole, userPermissions = [] }: SidebarProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -65,6 +66,12 @@ export default function AdminSidebar({ userName, userEmail, userRole }: SidebarP
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {navItems.map((item) => {
+          // If ADMIN, check if they have permission for this section (based on the href path)
+          const section = item.href.split("/")[2];
+          if (userRole !== "SUPER_ADMIN" && section) {
+            if (!userPermissions.includes(section)) return null;
+          }
+
           const active = isActive(item.href, item.exact);
           return (
             <Link
@@ -85,6 +92,24 @@ export default function AdminSidebar({ userName, userEmail, userRole }: SidebarP
             </Link>
           );
         })}
+
+        {userRole === "SUPER_ADMIN" && (
+          <Link
+            href="/admin/sub-admins"
+            onClick={() => setMobileOpen(false)}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group mt-4 border-t border-white/10 pt-4 ${
+              isActive("/admin/sub-admins")
+                ? "bg-rose-500/20 text-rose-400 border border-rose-500/30"
+                : "text-slate-400 hover:text-white hover:bg-white/5"
+            }`}
+          >
+            <Shield
+              size={18}
+              className={`shrink-0 ${isActive("/admin/sub-admins") ? "text-rose-400" : "text-slate-500 group-hover:text-slate-300"}`}
+            />
+            Sub-Admins
+          </Link>
+        )}
       </nav>
 
       {/* User info + logout */}

@@ -49,6 +49,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const role = (user as { role?: string }).role;
         if (role === "ADMIN" || role === "SUPER_ADMIN") {
           token.role = role;
+          token.permissions = (user as { permissions?: string[] }).permissions || [];
         }
       }
       return token;
@@ -58,6 +59,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.id = token.id as string;
         if (token.role === "ADMIN" || token.role === "SUPER_ADMIN") {
           session.user.role = token.role;
+          (session.user as any).permissions = (token.permissions as string[]) || [];
         }
       }
       return session;
