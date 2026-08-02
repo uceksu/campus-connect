@@ -17,6 +17,7 @@ import {
   TrendingUp,
   Users,
   Code2,
+  Shield,
 } from "lucide-react";
 
 async function getDashboardStats() {
@@ -33,6 +34,7 @@ async function getDashboardStats() {
     academicSubjects,
     departments,
     developers,
+    subAdmins,
   ] = await Promise.all([
     prisma.hostel.count(),
     prisma.hospital.count(),
@@ -46,6 +48,7 @@ async function getDashboardStats() {
     prisma.academicSubject.count(),
     prisma.department.count(),
     prisma.developer.count(),
+    prisma.user.count({ where: { role: "ADMIN" } }),
   ]);
 
   return {
@@ -61,6 +64,7 @@ async function getDashboardStats() {
     academicSubjects,
     departments,
     developers,
+    subAdmins,
   };
 }
 
@@ -197,6 +201,18 @@ const cards = [
     border: "border-slate-500/20",
     text: "text-slate-400",
   },
+  {
+    label: "Sub-Admins",
+    key: "subAdmins" as const,
+    href: "/admin/sub-admins",
+    addHref: "/admin/sub-admins/add",
+    icon: Shield,
+    color: "from-amber-600 to-amber-800",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/20",
+    text: "text-amber-400",
+    superAdminOnly: true,
+  },
 ];
 
 export default async function AdminDashboardPage() {
@@ -206,6 +222,9 @@ export default async function AdminDashboardPage() {
 
   // Filter cards based on RBAC
   const visibleCards = cards.filter((card) => {
+    if (card.superAdminOnly) {
+      return userRole === "SUPER_ADMIN";
+    }
     if (userRole === "SUPER_ADMIN") return true;
     const section = card.href.split("/")[2];
     return userPermissions.includes(section);
