@@ -11,12 +11,13 @@ export function AddToHomeScreen() {
   useEffect(() => {
     // Check if user has already dismissed or installed
     const hasDismissed = localStorage.getItem("pwaPromptDismissed");
+    const hasInstalled = localStorage.getItem("pwaInstalled");
     
     // Check if already in standalone mode (installed)
     const isStandalone = window.matchMedia("(display-mode: standalone)").matches || 
                          (window.navigator as any).standalone;
 
-    if (hasDismissed === "true" || isStandalone) {
+    if (hasDismissed === "true" || hasInstalled === "true" || isStandalone) {
       return;
     }
 
@@ -39,6 +40,12 @@ export function AddToHomeScreen() {
       // Update UI to notify the user they can install the PWA
       setShowPrompt(true);
     });
+
+    // Listen for successful installation
+    window.addEventListener("appinstalled", () => {
+      localStorage.setItem("pwaInstalled", "true");
+      setShowPrompt(false);
+    });
   }, []);
 
   const dismissPrompt = () => {
@@ -52,6 +59,7 @@ export function AddToHomeScreen() {
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === "accepted") {
         console.log("User accepted the install prompt");
+        localStorage.setItem("pwaInstalled", "true");
         setShowPrompt(false);
       }
       setDeferredPrompt(null);
