@@ -11,124 +11,126 @@ export default function Footer() {
   if (isAdminPage) return null;
 
   return (
-    <footer className="bg-[#071333] border-t border-white/5 text-slate-400 py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-5 lg:gap-16">
-          {/* Logo & Info Column */}
-          <div className="space-y-6 md:col-span-2">
-            <Link href="/" className="inline-block leading-none">
-              <span className="text-xl font-black uppercase tracking-[-0.06em] text-white">
-                Campus
+    <footer className="bg-[#050b1a] text-slate-400 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 space-y-16">
+        
+        {/* Header */}
+        <div>
+          <Link href="/" className="inline-flex items-center gap-2.5 leading-none">
+            <div className="flex items-center">
+              <span className="text-[22px] font-black uppercase tracking-[-0.04em] text-[#456be5]">
+                CAMPUS
               </span>
-              <span className="ml-1 text-xl font-black uppercase tracking-[-0.06em] text-[#456be5]">
-                Connect
+              <span className="text-[22px] font-black uppercase tracking-[-0.04em] text-white">
+                CONNECT
               </span>
-              <span className="mx-2 text-slate-600 font-black">•</span>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 whitespace-nowrap">
-                KSU UCE
-              </span>
-            </Link>
-            <div className="space-y-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#456be5]">
-                About Campus Connect
-              </h4>
-              <p className="text-xs leading-relaxed text-slate-500">
-                Your digital student portal for University College of Engineering Thodupuzha. Find academic notes, notices, calendar timelines, and campus support in one place.
-              </p>
             </div>
-          </div>
+            <span className="text-white font-black text-xl leading-none opacity-80 mt-0.5">•</span>
+            <span className="text-lg font-black uppercase tracking-wider text-white whitespace-nowrap mt-1">
+              KSU UCE
+            </span>
+          </Link>
+        </div>
 
-          {/* Academics Column */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
-              Academics
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 gap-8 sm:gap-16 md:grid-cols-4">
+          
+          {/* Left Column (Academics) */}
+          <div className="space-y-5">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+              ACADEMICS
             </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
+            <ul className="space-y-4 text-[15px] font-medium text-slate-400">
               <li>
-                <Link href="/academics" className="text-white hover:text-[#456be5] transition-colors">
+                <Link href="/academics" className="hover:text-white transition-colors">
                   Academics Workspace
                 </Link>
               </li>
               <li>
-                <Link href="/calendar" className="text-white hover:text-[#456be5] transition-colors">
+                <Link href="/calendar" className="hover:text-white transition-colors">
                   Stay on Schedule
                 </Link>
               </li>
               <li>
-                <Link href="/clubs" className="text-white hover:text-[#456be5] transition-colors">
+                <Link href="/clubs" className="hover:text-white transition-colors">
                   Student Clubs
                 </Link>
               </li>
               <li>
-                <Link href="/scholarships" className="text-white hover:text-[#456be5] transition-colors">
+                <Link href="/scholarships" className="hover:text-white transition-colors">
                   Funding Finder
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Support Column */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
-              Support
-            </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
-              <li>
-                <Link href="/support/enquiry" className="text-white hover:text-[#456be5] transition-colors">
-                  Got Questions
-                </Link>
-              </li>
-              <li>
-                <Link href="/support/report" className="text-white hover:text-[#456be5] transition-colors">
-                  Raise Issue
-                </Link>
-              </li>
-              <li>
-                <Link href="/support/suggestion" className="text-white hover:text-[#456be5] transition-colors">
-                  Suggestion Box
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Right Column (Support & Explore on Mobile) */}
+          <div className="space-y-12 sm:space-y-0 sm:contents">
+            <div className="space-y-5">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+                SUPPORT
+              </h4>
+              <ul className="space-y-4 text-[15px] font-medium text-slate-400">
+                <li>
+                  <Link href="/support/enquiry" className="hover:text-white transition-colors">
+                    Got Questions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/support/report" className="hover:text-white transition-colors">
+                    Raise Issue
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/support/suggestion" className="hover:text-white transition-colors">
+                    Suggestion Box
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Explore Column */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
-              Explore
-            </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
-              <li>
-                <Link href="/campus" className="text-white hover:text-[#456be5] transition-colors">
-                  Explore UCE
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-white hover:text-[#456be5] transition-colors">
-                  About College
-                </Link>
-              </li>
-              <li>
-                <Link href="/campus/places" className="text-white hover:text-[#456be5] transition-colors">
-                  Neighbourhood Cheat Sheet
-                </Link>
-              </li>
-            </ul>
+            <div className="space-y-5">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+                EXPLORE
+              </h4>
+              <ul className="space-y-4 text-[15px] font-medium text-slate-400">
+                <li>
+                  <Link href="/campus" className="hover:text-white transition-colors">
+                    Explore UCE
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-white transition-colors">
+                    About College
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Footer Bottom Area */}
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-6">
-          <div className="space-y-1.5 text-xs text-slate-500 font-mono font-bold uppercase tracking-wider">
-            <p>© 2026 Campus Connect • A KSU Initiative</p>
-            <p>Built by Students, for Students.</p>
-            <p className="text-slate-400">University College of Engineering Thodupuzha</p>
+        <div className="pt-8">
+          <div className="mb-6">
+            <h4 className="text-[15px] font-bold text-white uppercase tracking-wider inline-block border-b-[3px] border-white pb-1">
+              ABOUT CAMPUS CONNECT
+            </h4>
           </div>
-          <div className="md:text-right mt-auto">
-            <span className="text-[10px] font-mono font-bold text-slate-600 uppercase tracking-widest">
-              Inspired by GENOME BY KSU GEC
-            </span>
+          
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-2 text-[11px] text-slate-500 font-mono font-bold uppercase tracking-[0.15em]">
+              <p>© 2026 CAMPUS CONNECT • A KSU INITIATIVE</p>
+              <p>BUILT BY STUDENTS, FOR STUDENTS.</p>
+              <p className="text-slate-400">UNIVERSITY COLLEGE OF ENGINEERING THODUPUZHA</p>
+            </div>
+            <div className="md:text-right mt-4 md:mt-0 opacity-40 hover:opacity-100 transition-opacity">
+              <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+                Inspired by GENOME BY KSU GECT
+              </span>
+            </div>
           </div>
         </div>
+
       </div>
     </footer>
   );
