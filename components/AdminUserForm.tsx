@@ -18,6 +18,7 @@ const AVAILABLE_PERMISSIONS = [
   { id: "clubs", label: "Clubs" },
   { id: "committee", label: "Committee" },
   { id: "developers", label: "Developers" },
+  { id: "sub-admins", label: "Sub-Admins" },
 ];
 
 type Props = {

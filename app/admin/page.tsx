@@ -79,7 +79,6 @@ const cards = [
     bg: "bg-amber-500/10",
     border: "border-amber-500/20",
     text: "text-amber-400",
-    superAdminOnly: true,
   },
   {
     label: "Hostels",
@@ -222,9 +221,6 @@ export default async function AdminDashboardPage() {
 
   // Filter cards based on RBAC
   const visibleCards = cards.filter((card) => {
-    if (card.superAdminOnly) {
-      return userRole === "SUPER_ADMIN";
-    }
     if (userRole === "SUPER_ADMIN") return true;
     const section = card.href.split("/")[2];
     return userPermissions.includes(section);

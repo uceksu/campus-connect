@@ -37,8 +37,8 @@ export async function middleware(request: NextRequest) {
   if (token.role === "ADMIN" && pathname.startsWith("/admin/")) {
     const permissions = (token.permissions as string[]) || [];
     
-    // Sub-admins can NEVER access the sub-admins management page
-    if (pathname.startsWith("/admin/sub-admins")) {
+    // Sub-admins can only access the sub-admins management page if they have "sub-admins" permission
+    if (pathname.startsWith("/admin/sub-admins") && !permissions.includes("sub-admins")) {
       return NextResponse.redirect(new URL("/admin", request.url));
     }
 
