@@ -1805,6 +1805,7 @@ export const NoticeScalarFieldEnum = {
   title: 'title',
   content: 'content',
   category: 'category',
+  image: 'image',
   isImportant: 'isImportant',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

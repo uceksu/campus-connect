@@ -18,6 +18,7 @@ export async function createNotice(data: {
   title: string;
   content: string;
   category: string;
+  image?: string | null;
   isImportant: boolean;
 }) {
   await prisma.notice.create({ data });
@@ -31,6 +32,7 @@ export async function updateNotice(
     title: string;
     content: string;
     category: string;
+    image?: string | null;
     isImportant: boolean;
   }
 ) {

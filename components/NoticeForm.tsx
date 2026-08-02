@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { createNotice, updateNotice } from "@/lib/actions/notice";
 import type { Notice } from "@/src/generated/prisma/client";
 import { Loader2, Save } from "lucide-react";
+import ImageUpload from "@/components/ImageUpload";
 
 type Props = {
   submitLabel: string;
@@ -20,7 +21,8 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
     category: initialData?.category ?? "General",
     isImportant: initialData?.isImportant ?? false,
   });
-  const [status, setStatus] = useState<"idle" | "saving">("idle");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [status, setStatus] = useState<"idle" | "uploading" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
@@ -30,15 +32,27 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
     setValues((prev) => ({ ...prev, [e.target.name]: val }));
   };
 
+  const uploadImage = async (file: File) => {
+    const fd = new FormData();
+    fd.append("image", file);
+    const res = await fetch("/api/cloudinary/upload", { method: "POST", body: fd });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error ?? "Upload failed");
+    return data.url as string;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
+      setStatus("uploading");
+      const image = selectedFile ? await uploadImage(selectedFile) : initialData?.image ?? null;
+      
       setStatus("saving");
       if (noticeId) {
-        await updateNotice(noticeId, values);
+        await updateNotice(noticeId, { ...values, image });
       } else {
-        await createNotice(values);
+        await createNotice({ ...values, image });
       }
       router.push("/admin/notices");
     } catch (err) {
@@ -108,6 +122,15 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
               rows={6}
               required
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all resize-none"
+            />
+          </div>
+
+          {/* Image */}
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Notice Image (Optional)</label>
+            <ImageUpload 
+              initialImageUrl={initialData?.image ?? undefined}
+              onFileSelect={setSelectedFile}
             />
           </div>
         </div>

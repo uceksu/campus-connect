@@ -1,6 +1,7 @@
 import PublicPageHero from "@/components/PublicPageHero";
 import { getNotices } from "@/lib/actions/notice";
 import { Bell, Calendar, AlertCircle } from "lucide-react";
+import Image from "next/image";
 
 function timeAgo(date: Date) {
   const diff = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
@@ -56,6 +57,18 @@ export default async function NoticesPage() {
                   </span>
                 </div>
                 <p className="mt-4 text-slate-600 leading-relaxed pl-13">{notice.content}</p>
+                {notice.image && (
+                  <div className="mt-4 pl-13">
+                    <div className="relative w-full max-w-lg h-64 overflow-hidden rounded-xl border border-slate-200">
+                      <Image 
+                        src={notice.image} 
+                        alt="Notice Attachment" 
+                        fill
+                        className="object-contain bg-slate-50"
+                      />
+                    </div>
+                  </div>
+                )}
               </article>
             ))}
           </div>
