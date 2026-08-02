@@ -23,8 +23,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ksuconnectuce.vercel.app"),
   title: "KSU UCE Portal",
-  description: "Campus Connect Portal",
+  description: "Campus Connect Portal for UCE KSU",
+  openGraph: {
+    title: "KSU UCE Portal",
+    description: "Campus Connect Portal for UCE KSU",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KSU UCE Portal",
+    description: "Campus Connect Portal for UCE KSU",
+  },
 };
 
 export default async function RootLayout({
