@@ -150,6 +150,10 @@ export default function AdminUserForm({ initialData }: Props) {
             return (
               <label
                 key={perm.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  togglePermission(perm.id);
+                }}
                 className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${
                   isSelected
                     ? "bg-[#456be5]/10 border-[#456be5]/50 text-white"

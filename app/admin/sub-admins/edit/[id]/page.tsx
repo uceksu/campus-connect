@@ -5,11 +5,13 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
-export default async function EditAdminPage({ params }: { params: { id: string } }) {
+export default async function EditAdminPage({ params }: { params: Promise<{ id: string }> }) {
   await checkSuperAdmin();
 
-  const admin = await prisma.user.findUnique({
-    where: { id: params.id, role: "ADMIN" },
+  const { id } = await params;
+
+  const admin = await prisma.user.findFirst({
+    where: { id, role: "ADMIN" },
   });
 
   if (!admin) {
