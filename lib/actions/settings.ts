@@ -46,3 +46,46 @@ export async function toggleMaintenanceMode(isEnabled: boolean) {
     return { success: false, error: "Internal server error" };
   }
 }
+
+/**
+ * Get the current admin portal visibility status
+ */
+export async function getAdminPortalVisibility() {
+  try {
+    const setting = await prisma.setting.findUnique({
+      where: { key: "admin_portal_visible" },
+    });
+    
+    // Default to true if not set
+    return setting ? setting.value === "true" : true;
+  } catch (error) {
+    console.error("Error fetching admin portal visibility:", error);
+    return true;
+  }
+}
+
+/**
+ * Toggle admin portal visibility (SUPER_ADMIN only)
+ */
+export async function toggleAdminPortalVisibility(isVisible: boolean) {
+  try {
+    const session = await auth();
+    
+    if (session?.user?.role !== "SUPER_ADMIN") {
+      return { success: false, error: "Unauthorized" };
+    }
+
+    await prisma.setting.upsert({
+      where: { key: "admin_portal_visible" },
+      update: { value: isVisible ? "true" : "false" },
+      create: { key: "admin_portal_visible", value: isVisible ? "true" : "false" },
+    });
+
+    revalidatePath("/", "layout");
+    
+    return { success: true };
+  } catch (error) {
+    console.error("Error toggling admin portal visibility:", error);
+    return { success: false, error: "Internal server error" };
+  }
+}

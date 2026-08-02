@@ -2,7 +2,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import MaintenanceToggle from "@/components/MaintenanceToggle";
-import { getMaintenanceMode } from "@/lib/actions/settings";
+import AdminVisibilityToggle from "@/components/AdminVisibilityToggle";
+import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import {
   Building2,
   Hospital,
@@ -165,6 +166,7 @@ export default async function AdminDashboardPage() {
   const totalItems = visibleCards.reduce((total, card) => total + stats[card.key], 0);
 
   const isMaintenanceOn = await getMaintenanceMode();
+  const isAdminPortalVisible = await getAdminPortalVisibility();
 
   return (
     <div className="space-y-8">
@@ -178,7 +180,10 @@ export default async function AdminDashboardPage() {
       </div>
 
       {userRole === "SUPER_ADMIN" && (
-        <MaintenanceToggle initialStatus={isMaintenanceOn} />
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <MaintenanceToggle initialStatus={isMaintenanceOn} />
+          <AdminVisibilityToggle initialStatus={isAdminPortalVisible} />
+        </div>
       )}
 
       {/* Total banner */}

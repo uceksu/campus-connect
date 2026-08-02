@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Shield, Sparkles, Download } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boolean }) {
   const pathname = usePathname();
   const [isInstalled, setIsInstalled] = useState(true); // Default true to prevent flash
 
@@ -101,13 +101,15 @@ export default function Navbar() {
             </button>
           )}
 
-          <Link
-            href="/portal-admin/login"
-            className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors border border-slate-700"
-          >
-            <Shield size={14} />
-            <span>Admin</span>
-          </Link>
+          {isAdminVisible && (
+            <Link
+              href="/portal-admin/login"
+              className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors border border-slate-700"
+            >
+              <Shield size={14} />
+              <span>Admin</span>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

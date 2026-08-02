@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from '@vercel/analytics/next';
 import { PwaRegistry } from "@/components/PwaRegistry";
 import { AddToHomeScreen } from "@/components/AddToHomeScreen";
-import { getMaintenanceMode } from "@/lib/actions/settings";
+import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
 
@@ -32,6 +32,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const isMaintenanceOn = await getMaintenanceMode();
+  const isAdminPortalVisible = await getAdminPortalVisibility();
   const session = await auth();
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
 
@@ -44,7 +45,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <PwaRegistry />
-          <Navbar />
+          <Navbar isAdminVisible={isAdminPortalVisible} />
           <main className="flex-1">
             {isMaintenanceOn && !isAdmin ? (
               <MaintenanceView />
