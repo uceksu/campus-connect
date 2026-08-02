@@ -97,3 +97,13 @@ export type Setting = Prisma.SettingModel
  * 
  */
 export type Developer = Prisma.DeveloperModel
+/**
+ * Model Department
+ * 
+ */
+export type Department = Prisma.DepartmentModel
+/**
+ * Model Faculty
+ * 
+ */
+export type Faculty = Prisma.FacultyModel

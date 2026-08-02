@@ -167,7 +167,7 @@ model CommitteeMember {
   id           String   @id @default(cuid())
   name         String
   role         String
-  organization String   // "KSU" or "Priyadarshini"
+  organization String // "KSU" or "Priyadarshini"
   image        String
   whatsapp     String
   instagram    String
@@ -208,4 +208,26 @@ model Developer {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Department {
+  id          String    @id @default(cuid())
+  name        String
+  shortName   String
+  description String
+  faculty     Faculty[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Faculty {
+  id           String     @id @default(cuid())
+  name         String
+  designation  String
+  isHOD        Boolean    @default(false)
+  image        String?
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 }
