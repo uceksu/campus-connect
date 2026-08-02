@@ -22,6 +22,9 @@ export async function getFacultyById(id: string) {
 export async function createFaculty(data: {
   name: string;
   designation: string;
+  specialization?: string | null;
+  email?: string | null;
+  phone?: string | null;
   isHOD: boolean;
   image?: string | null;
   departmentId: string;
@@ -44,6 +47,9 @@ export async function updateFaculty(
   data: {
     name: string;
     designation: string;
+    specialization?: string | null;
+    email?: string | null;
+    phone?: string | null;
     isHOD: boolean;
     image?: string | null;
     departmentId: string;

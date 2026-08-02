@@ -28,6 +28,9 @@ export type FacultyMinAggregateOutputType = {
   id: string | null
   name: string | null
   designation: string | null
+  specialization: string | null
+  email: string | null
+  phone: string | null
   isHOD: boolean | null
   image: string | null
   departmentId: string | null
@@ -39,6 +42,9 @@ export type FacultyMaxAggregateOutputType = {
   id: string | null
   name: string | null
   designation: string | null
+  specialization: string | null
+  email: string | null
+  phone: string | null
   isHOD: boolean | null
   image: string | null
   departmentId: string | null
@@ -50,6 +56,9 @@ export type FacultyCountAggregateOutputType = {
   id: number
   name: number
   designation: number
+  specialization: number
+  email: number
+  phone: number
   isHOD: number
   image: number
   departmentId: number
@@ -63,6 +72,9 @@ export type FacultyMinAggregateInputType = {
   id?: true
   name?: true
   designation?: true
+  specialization?: true
+  email?: true
+  phone?: true
   isHOD?: true
   image?: true
   departmentId?: true
@@ -74,6 +86,9 @@ export type FacultyMaxAggregateInputType = {
   id?: true
   name?: true
   designation?: true
+  specialization?: true
+  email?: true
+  phone?: true
   isHOD?: true
   image?: true
   departmentId?: true
@@ -85,6 +100,9 @@ export type FacultyCountAggregateInputType = {
   id?: true
   name?: true
   designation?: true
+  specialization?: true
+  email?: true
+  phone?: true
   isHOD?: true
   image?: true
   departmentId?: true
@@ -169,6 +187,9 @@ export type FacultyGroupByOutputType = {
   id: string
   name: string
   designation: string
+  specialization: string | null
+  email: string | null
+  phone: string | null
   isHOD: boolean
   image: string | null
   departmentId: string
@@ -201,6 +222,9 @@ export type FacultyWhereInput = {
   id?: Prisma.StringFilter<"Faculty"> | string
   name?: Prisma.StringFilter<"Faculty"> | string
   designation?: Prisma.StringFilter<"Faculty"> | string
+  specialization?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  email?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  phone?: Prisma.StringNullableFilter<"Faculty"> | string | null
   isHOD?: Prisma.BoolFilter<"Faculty"> | boolean
   image?: Prisma.StringNullableFilter<"Faculty"> | string | null
   departmentId?: Prisma.StringFilter<"Faculty"> | string
@@ -213,6 +237,9 @@ export type FacultyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   designation?: Prisma.SortOrder
+  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isHOD?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   departmentId?: Prisma.SortOrder
@@ -228,6 +255,9 @@ export type FacultyWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.FacultyWhereInput | Prisma.FacultyWhereInput[]
   name?: Prisma.StringFilter<"Faculty"> | string
   designation?: Prisma.StringFilter<"Faculty"> | string
+  specialization?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  email?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  phone?: Prisma.StringNullableFilter<"Faculty"> | string | null
   isHOD?: Prisma.BoolFilter<"Faculty"> | boolean
   image?: Prisma.StringNullableFilter<"Faculty"> | string | null
   departmentId?: Prisma.StringFilter<"Faculty"> | string
@@ -240,6 +270,9 @@ export type FacultyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   designation?: Prisma.SortOrder
+  specialization?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   isHOD?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   departmentId?: Prisma.SortOrder
@@ -257,6 +290,9 @@ export type FacultyScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Faculty"> | string
   name?: Prisma.StringWithAggregatesFilter<"Faculty"> | string
   designation?: Prisma.StringWithAggregatesFilter<"Faculty"> | string
+  specialization?: Prisma.StringNullableWithAggregatesFilter<"Faculty"> | string | null
+  email?: Prisma.StringNullableWithAggregatesFilter<"Faculty"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"Faculty"> | string | null
   isHOD?: Prisma.BoolWithAggregatesFilter<"Faculty"> | boolean
   image?: Prisma.StringNullableWithAggregatesFilter<"Faculty"> | string | null
   departmentId?: Prisma.StringWithAggregatesFilter<"Faculty"> | string
@@ -268,6 +304,9 @@ export type FacultyCreateInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   createdAt?: Date | string
@@ -279,6 +318,9 @@ export type FacultyUncheckedCreateInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   departmentId: string
@@ -290,6 +332,9 @@ export type FacultyUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -301,6 +346,9 @@ export type FacultyUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   departmentId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -312,6 +360,9 @@ export type FacultyCreateManyInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   departmentId: string
@@ -323,6 +374,9 @@ export type FacultyUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -333,6 +387,9 @@ export type FacultyUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   departmentId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -354,6 +411,9 @@ export type FacultyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   designation?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isHOD?: Prisma.SortOrder
   image?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
@@ -365,6 +425,9 @@ export type FacultyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   designation?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isHOD?: Prisma.SortOrder
   image?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
@@ -376,6 +439,9 @@ export type FacultyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   designation?: Prisma.SortOrder
+  specialization?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   isHOD?: Prisma.SortOrder
   image?: Prisma.SortOrder
   departmentId?: Prisma.SortOrder
@@ -429,6 +495,9 @@ export type FacultyCreateWithoutDepartmentInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   createdAt?: Date | string
@@ -439,6 +508,9 @@ export type FacultyUncheckedCreateWithoutDepartmentInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   createdAt?: Date | string
@@ -478,6 +550,9 @@ export type FacultyScalarWhereInput = {
   id?: Prisma.StringFilter<"Faculty"> | string
   name?: Prisma.StringFilter<"Faculty"> | string
   designation?: Prisma.StringFilter<"Faculty"> | string
+  specialization?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  email?: Prisma.StringNullableFilter<"Faculty"> | string | null
+  phone?: Prisma.StringNullableFilter<"Faculty"> | string | null
   isHOD?: Prisma.BoolFilter<"Faculty"> | boolean
   image?: Prisma.StringNullableFilter<"Faculty"> | string | null
   departmentId?: Prisma.StringFilter<"Faculty"> | string
@@ -489,6 +564,9 @@ export type FacultyCreateManyDepartmentInput = {
   id?: string
   name: string
   designation: string
+  specialization?: string | null
+  email?: string | null
+  phone?: string | null
   isHOD?: boolean
   image?: string | null
   createdAt?: Date | string
@@ -499,6 +577,9 @@ export type FacultyUpdateWithoutDepartmentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -509,6 +590,9 @@ export type FacultyUncheckedUpdateWithoutDepartmentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -519,6 +603,9 @@ export type FacultyUncheckedUpdateManyWithoutDepartmentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   designation?: Prisma.StringFieldUpdateOperationsInput | string
+  specialization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isHOD?: Prisma.BoolFieldUpdateOperationsInput | boolean
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -531,6 +618,9 @@ export type FacultySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   name?: boolean
   designation?: boolean
+  specialization?: boolean
+  email?: boolean
+  phone?: boolean
   isHOD?: boolean
   image?: boolean
   departmentId?: boolean
@@ -543,6 +633,9 @@ export type FacultySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   name?: boolean
   designation?: boolean
+  specialization?: boolean
+  email?: boolean
+  phone?: boolean
   isHOD?: boolean
   image?: boolean
   departmentId?: boolean
@@ -555,6 +648,9 @@ export type FacultySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   name?: boolean
   designation?: boolean
+  specialization?: boolean
+  email?: boolean
+  phone?: boolean
   isHOD?: boolean
   image?: boolean
   departmentId?: boolean
@@ -567,6 +663,9 @@ export type FacultySelectScalar = {
   id?: boolean
   name?: boolean
   designation?: boolean
+  specialization?: boolean
+  email?: boolean
+  phone?: boolean
   isHOD?: boolean
   image?: boolean
   departmentId?: boolean
@@ -574,7 +673,7 @@ export type FacultySelectScalar = {
   updatedAt?: boolean
 }
 
-export type FacultyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "designation" | "isHOD" | "image" | "departmentId" | "createdAt" | "updatedAt", ExtArgs["result"]["faculty"]>
+export type FacultyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "designation" | "specialization" | "email" | "phone" | "isHOD" | "image" | "departmentId" | "createdAt" | "updatedAt", ExtArgs["result"]["faculty"]>
 export type FacultyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
 }
@@ -594,6 +693,9 @@ export type $FacultyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: string
     name: string
     designation: string
+    specialization: string | null
+    email: string | null
+    phone: string | null
     isHOD: boolean
     image: string | null
     departmentId: string
@@ -1026,6 +1128,9 @@ export interface FacultyFieldRefs {
   readonly id: Prisma.FieldRef<"Faculty", 'String'>
   readonly name: Prisma.FieldRef<"Faculty", 'String'>
   readonly designation: Prisma.FieldRef<"Faculty", 'String'>
+  readonly specialization: Prisma.FieldRef<"Faculty", 'String'>
+  readonly email: Prisma.FieldRef<"Faculty", 'String'>
+  readonly phone: Prisma.FieldRef<"Faculty", 'String'>
   readonly isHOD: Prisma.FieldRef<"Faculty", 'Boolean'>
   readonly image: Prisma.FieldRef<"Faculty", 'String'>
   readonly departmentId: Prisma.FieldRef<"Faculty", 'String'>

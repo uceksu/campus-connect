@@ -1,7 +1,7 @@
 import { getDepartmentByShortName } from "@/lib/actions/department";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, User, Crown } from "lucide-react";
+import { ArrowLeft, User, Crown, Mail, Phone } from "lucide-react";
 
 export async function generateMetadata({ params }: { params: Promise<{ shortName: string }> }) {
   const { shortName } = await params;
@@ -68,7 +68,26 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
                     </div>
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-1">{hod.name}</h3>
-                  <p className="text-[#456be5] font-semibold">{hod.designation}</p>
+                  <p className="text-[#456be5] font-semibold mb-2">{hod.designation}</p>
+                  
+                  {hod.specialization && (
+                    <p className="text-sm text-slate-400 mb-4">{hod.specialization}</p>
+                  )}
+
+                  <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-white/10 w-full text-sm">
+                    {hod.email && (
+                      <a href={`mailto:${hod.email}`} className="flex items-center justify-center gap-2 text-slate-300 hover:text-white transition-colors">
+                        <Mail size={14} className="text-slate-500" />
+                        {hod.email}
+                      </a>
+                    )}
+                    {hod.phone && (
+                      <a href={`tel:${hod.phone}`} className="flex items-center justify-center gap-2 text-slate-300 hover:text-white transition-colors">
+                        <Phone size={14} className="text-slate-500" />
+                        {hod.phone}
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,7 +107,28 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
                       </div>
                     )}
                     <h3 className="text-lg font-bold text-white mb-1">{f.name}</h3>
-                    <p className="text-slate-400 text-sm font-medium">{f.designation}</p>
+                    <p className="text-[#456be5] text-sm font-medium mb-1">{f.designation}</p>
+                    
+                    {f.specialization && (
+                      <p className="text-xs text-slate-400 mb-3 line-clamp-2">{f.specialization}</p>
+                    )}
+
+                    {(f.email || f.phone) && (
+                      <div className="flex flex-col items-center gap-1.5 mt-auto pt-3 border-t border-white/10 w-full text-xs">
+                        {f.email && (
+                          <a href={`mailto:${f.email}`} className="flex items-center justify-center gap-1.5 text-slate-400 hover:text-white transition-colors w-full truncate">
+                            <Mail size={12} className="shrink-0" />
+                            <span className="truncate">{f.email}</span>
+                          </a>
+                        )}
+                        {f.phone && (
+                          <a href={`tel:${f.phone}`} className="flex items-center justify-center gap-1.5 text-slate-400 hover:text-white transition-colors">
+                            <Phone size={12} className="shrink-0" />
+                            {f.phone}
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

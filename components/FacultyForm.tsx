@@ -19,6 +19,9 @@ export default function FacultyForm({ submitLabel, departmentId, facultyId, init
   const [values, setValues] = useState({
     name: initialData?.name ?? "",
     designation: initialData?.designation ?? "",
+    specialization: initialData?.specialization ?? "",
+    email: initialData?.email ?? "",
+    phone: initialData?.phone ?? "",
     isHOD: initialData?.isHOD ?? false,
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -89,6 +92,41 @@ export default function FacultyForm({ submitLabel, departmentId, facultyId, init
               value={values.designation}
               onChange={handleChange}
               placeholder="e.g. Assistant Professor"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-slate-500 focus:border-[#456be5] focus:outline-none focus:ring-1 focus:ring-[#456be5]"
+            />
+          </div>
+        </div>
+
+        {/* Additional Info */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Specialization (Optional)</label>
+            <input
+              name="specialization"
+              value={values.specialization}
+              onChange={handleChange}
+              placeholder="e.g. Computer Science & Engineering"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-slate-500 focus:border-[#456be5] focus:outline-none focus:ring-1 focus:ring-[#456be5]"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Email (Optional)</label>
+            <input
+              name="email"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="e.g. jdoe@college.edu"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-slate-500 focus:border-[#456be5] focus:outline-none focus:ring-1 focus:ring-[#456be5]"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Mobile Number (Optional)</label>
+            <input
+              name="phone"
+              value={values.phone}
+              onChange={handleChange}
+              placeholder="e.g. 9876543210"
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-slate-500 focus:border-[#456be5] focus:outline-none focus:ring-1 focus:ring-[#456be5]"
             />
           </div>
