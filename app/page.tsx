@@ -55,13 +55,6 @@ const features = [
     icon: Calendar,
     href: "/calendar",
   },
-  {
-    title: "Admin Portal",
-    label: "Manage",
-    description: "Securely manage the information available across Campus Connect.",
-    icon: Shield,
-    href: "/admin",
-  },
 ];
 
 export default function HomePage() {
