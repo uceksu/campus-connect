@@ -29,7 +29,7 @@ const BRANCH_THEMES: Record<string, { bg: string; border: string; text: string; 
 type Props = { notes: AcademicNote[]; subjects: AcademicSubject[] };
 
 export function NotesList({ notes, subjects }: Props) {
-  const [activeScheme, setActiveScheme] = useState("2024");
+  const [activeScheme, setActiveScheme] = useState("2019");
   const [activeBranch, setActiveBranch] = useState("ECE");
   const [activeSemester, setActiveSemester] = useState("1st");
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
