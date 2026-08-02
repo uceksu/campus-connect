@@ -94,6 +94,7 @@ model AcademicNote {
   subject     String
   semester    String
   branch      String   @default("General")
+  scheme      String   @default("2019")
   type        String   @default("Note") // "Note" or "Question Paper"
   module      String   @default("Module 1") // "Module 1", "Module 2", "Module 3", "Module 4"
   description String
@@ -178,6 +179,7 @@ model AcademicSubject {
   name      String
   branch    String
   semester  String
+  scheme    String   @default("2019")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -26,6 +26,7 @@ export async function createAcademicNote(data: {
   subject: string;
   semester: string;
   branch: string;
+  scheme: string;
   type: string;
   module: string;
   description: string;
@@ -44,6 +45,7 @@ export async function updateAcademicNote(
     subject: string;
     semester: string;
     branch: string;
+    scheme: string;
     type: string;
     module: string;
     description: string;

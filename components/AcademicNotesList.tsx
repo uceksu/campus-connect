@@ -29,13 +29,14 @@ const BRANCH_THEMES: Record<string, { bg: string; border: string; text: string; 
 type Props = { notes: AcademicNote[]; subjects: AcademicSubject[] };
 
 export function NotesList({ notes, subjects }: Props) {
+  const [activeScheme, setActiveScheme] = useState("2024");
   const [activeBranch, setActiveBranch] = useState("ECE");
   const [activeSemester, setActiveSemester] = useState("1st");
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
 
   // Available subjects for the active branch and semester
   const availableSubjects = subjects.filter(
-    (s) => s.branch === activeBranch && s.semester === activeSemester
+    (s) => s.branch === activeBranch && s.semester === activeSemester && s.scheme === activeScheme
   );
 
   // Automatically select the first subject when branch or semester changes, or clear it if none
@@ -49,8 +50,8 @@ export function NotesList({ notes, subjects }: Props) {
     }
   }, [activeBranch, activeSemester, availableSubjects, activeSubject]);
 
-  // Filter notes by active branch, semester, and subject
-  const semesterNotes = notes.filter((n) => n.branch === activeBranch && n.semester === activeSemester);
+  // Filter notes by active scheme, branch, semester, and subject
+  const semesterNotes = notes.filter((n) => n.scheme === activeScheme && n.branch === activeBranch && n.semester === activeSemester);
   const filteredNotes = activeSubject ? semesterNotes.filter((n) => n.subject === activeSubject) : [];
 
   // Split into Notes and Question Papers
@@ -61,6 +62,26 @@ export function NotesList({ notes, subjects }: Props) {
 
   return (
     <div className="space-y-8">
+      {/* 2 Schemes Tabs */}
+      <div className="flex gap-4 justify-center py-2">
+        {["2024", "2019"].map((scheme) => {
+          const isActive = activeScheme === scheme;
+          return (
+            <button
+              key={scheme}
+              onClick={() => setActiveScheme(scheme)}
+              className={`px-8 py-3 rounded-full text-base font-black uppercase tracking-wider transition-all duration-300 touch-manipulation cursor-pointer ${
+                isActive
+                  ? "bg-white text-[#456be5] shadow-[0_8px_30px_rgb(0,0,0,0.12)] scale-105"
+                  : "bg-white/10 text-white hover:bg-white/20 border border-white/20"
+              }`}
+            >
+              {scheme} Scheme
+            </button>
+          );
+        })}
+      </div>
+
       {/* 6 Branches Tabs */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {BRANCHES.map((branch) => {

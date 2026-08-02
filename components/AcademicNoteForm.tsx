@@ -31,6 +31,7 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
     subject: initialData?.subject ?? "",
     semester: initialData?.semester ?? "",
     branch: initialData?.branch ?? "",
+    scheme: initialData?.scheme ?? "2019",
     type: initialData?.type ?? "Note",
     module: initialData?.module ?? "Module 1",
     description: initialData?.description ?? "",
@@ -80,6 +81,20 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
           </div>
 
           <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Scheme *</label>
+            <select
+              name="scheme"
+              value={values.scheme}
+              onChange={handleChange}
+              required
+              className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            >
+              <option value="2019">2019 Scheme</option>
+              <option value="2024">2024 Scheme</option>
+            </select>
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-slate-300 mb-1.5">Subject *</label>
             <select
               name="subject"
@@ -88,9 +103,9 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
               required
               className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             >
-              <option value="">Select a Subject (Choose Branch & Sem first)</option>
+              <option value="">Select a Subject</option>
               {subjects
-                .filter((s) => s.branch === values.branch && s.semester === values.semester)
+                .filter((s) => s.branch === values.branch && s.semester === values.semester && s.scheme === values.scheme)
                 .map((s) => (
                   <option key={s.id} value={s.name}>
                     {s.name}

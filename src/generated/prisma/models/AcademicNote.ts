@@ -30,6 +30,7 @@ export type AcademicNoteMinAggregateOutputType = {
   subject: string | null
   semester: string | null
   branch: string | null
+  scheme: string | null
   type: string | null
   module: string | null
   description: string | null
@@ -45,6 +46,7 @@ export type AcademicNoteMaxAggregateOutputType = {
   subject: string | null
   semester: string | null
   branch: string | null
+  scheme: string | null
   type: string | null
   module: string | null
   description: string | null
@@ -60,6 +62,7 @@ export type AcademicNoteCountAggregateOutputType = {
   subject: number
   semester: number
   branch: number
+  scheme: number
   type: number
   module: number
   description: number
@@ -77,6 +80,7 @@ export type AcademicNoteMinAggregateInputType = {
   subject?: true
   semester?: true
   branch?: true
+  scheme?: true
   type?: true
   module?: true
   description?: true
@@ -92,6 +96,7 @@ export type AcademicNoteMaxAggregateInputType = {
   subject?: true
   semester?: true
   branch?: true
+  scheme?: true
   type?: true
   module?: true
   description?: true
@@ -107,6 +112,7 @@ export type AcademicNoteCountAggregateInputType = {
   subject?: true
   semester?: true
   branch?: true
+  scheme?: true
   type?: true
   module?: true
   description?: true
@@ -195,6 +201,7 @@ export type AcademicNoteGroupByOutputType = {
   subject: string
   semester: string
   branch: string
+  scheme: string
   type: string
   module: string
   description: string
@@ -231,6 +238,7 @@ export type AcademicNoteWhereInput = {
   subject?: Prisma.StringFilter<"AcademicNote"> | string
   semester?: Prisma.StringFilter<"AcademicNote"> | string
   branch?: Prisma.StringFilter<"AcademicNote"> | string
+  scheme?: Prisma.StringFilter<"AcademicNote"> | string
   type?: Prisma.StringFilter<"AcademicNote"> | string
   module?: Prisma.StringFilter<"AcademicNote"> | string
   description?: Prisma.StringFilter<"AcademicNote"> | string
@@ -246,6 +254,7 @@ export type AcademicNoteOrderByWithRelationInput = {
   subject?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   branch?: Prisma.SortOrder
+  scheme?: Prisma.SortOrder
   type?: Prisma.SortOrder
   module?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -264,6 +273,7 @@ export type AcademicNoteWhereUniqueInput = Prisma.AtLeast<{
   subject?: Prisma.StringFilter<"AcademicNote"> | string
   semester?: Prisma.StringFilter<"AcademicNote"> | string
   branch?: Prisma.StringFilter<"AcademicNote"> | string
+  scheme?: Prisma.StringFilter<"AcademicNote"> | string
   type?: Prisma.StringFilter<"AcademicNote"> | string
   module?: Prisma.StringFilter<"AcademicNote"> | string
   description?: Prisma.StringFilter<"AcademicNote"> | string
@@ -279,6 +289,7 @@ export type AcademicNoteOrderByWithAggregationInput = {
   subject?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   branch?: Prisma.SortOrder
+  scheme?: Prisma.SortOrder
   type?: Prisma.SortOrder
   module?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -300,6 +311,7 @@ export type AcademicNoteScalarWhereWithAggregatesInput = {
   subject?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
   semester?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
   branch?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
+  scheme?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
   type?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
   module?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
   description?: Prisma.StringWithAggregatesFilter<"AcademicNote"> | string
@@ -315,6 +327,7 @@ export type AcademicNoteCreateInput = {
   subject: string
   semester: string
   branch?: string
+  scheme?: string
   type?: string
   module?: string
   description: string
@@ -330,6 +343,7 @@ export type AcademicNoteUncheckedCreateInput = {
   subject: string
   semester: string
   branch?: string
+  scheme?: string
   type?: string
   module?: string
   description: string
@@ -345,6 +359,7 @@ export type AcademicNoteUpdateInput = {
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   branch?: Prisma.StringFieldUpdateOperationsInput | string
+  scheme?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   module?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -360,6 +375,7 @@ export type AcademicNoteUncheckedUpdateInput = {
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   branch?: Prisma.StringFieldUpdateOperationsInput | string
+  scheme?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   module?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -375,6 +391,7 @@ export type AcademicNoteCreateManyInput = {
   subject: string
   semester: string
   branch?: string
+  scheme?: string
   type?: string
   module?: string
   description: string
@@ -390,6 +407,7 @@ export type AcademicNoteUpdateManyMutationInput = {
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   branch?: Prisma.StringFieldUpdateOperationsInput | string
+  scheme?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   module?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -405,6 +423,7 @@ export type AcademicNoteUncheckedUpdateManyInput = {
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   branch?: Prisma.StringFieldUpdateOperationsInput | string
+  scheme?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   module?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -420,6 +439,7 @@ export type AcademicNoteCountOrderByAggregateInput = {
   subject?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   branch?: Prisma.SortOrder
+  scheme?: Prisma.SortOrder
   type?: Prisma.SortOrder
   module?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -435,6 +455,7 @@ export type AcademicNoteMaxOrderByAggregateInput = {
   subject?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   branch?: Prisma.SortOrder
+  scheme?: Prisma.SortOrder
   type?: Prisma.SortOrder
   module?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -450,6 +471,7 @@ export type AcademicNoteMinOrderByAggregateInput = {
   subject?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   branch?: Prisma.SortOrder
+  scheme?: Prisma.SortOrder
   type?: Prisma.SortOrder
   module?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -467,6 +489,7 @@ export type AcademicNoteSelect<ExtArgs extends runtime.Types.Extensions.Internal
   subject?: boolean
   semester?: boolean
   branch?: boolean
+  scheme?: boolean
   type?: boolean
   module?: boolean
   description?: boolean
@@ -482,6 +505,7 @@ export type AcademicNoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   subject?: boolean
   semester?: boolean
   branch?: boolean
+  scheme?: boolean
   type?: boolean
   module?: boolean
   description?: boolean
@@ -497,6 +521,7 @@ export type AcademicNoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   subject?: boolean
   semester?: boolean
   branch?: boolean
+  scheme?: boolean
   type?: boolean
   module?: boolean
   description?: boolean
@@ -512,6 +537,7 @@ export type AcademicNoteSelectScalar = {
   subject?: boolean
   semester?: boolean
   branch?: boolean
+  scheme?: boolean
   type?: boolean
   module?: boolean
   description?: boolean
@@ -521,7 +547,7 @@ export type AcademicNoteSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AcademicNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "subject" | "semester" | "branch" | "type" | "module" | "description" | "fileUrl" | "uploadedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["academicNote"]>
+export type AcademicNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "subject" | "semester" | "branch" | "scheme" | "type" | "module" | "description" | "fileUrl" | "uploadedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["academicNote"]>
 
 export type $AcademicNotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AcademicNote"
@@ -532,6 +558,7 @@ export type $AcademicNotePayload<ExtArgs extends runtime.Types.Extensions.Intern
     subject: string
     semester: string
     branch: string
+    scheme: string
     type: string
     module: string
     description: string
@@ -967,6 +994,7 @@ export interface AcademicNoteFieldRefs {
   readonly subject: Prisma.FieldRef<"AcademicNote", 'String'>
   readonly semester: Prisma.FieldRef<"AcademicNote", 'String'>
   readonly branch: Prisma.FieldRef<"AcademicNote", 'String'>
+  readonly scheme: Prisma.FieldRef<"AcademicNote", 'String'>
   readonly type: Prisma.FieldRef<"AcademicNote", 'String'>
   readonly module: Prisma.FieldRef<"AcademicNote", 'String'>
   readonly description: Prisma.FieldRef<"AcademicNote", 'String'>

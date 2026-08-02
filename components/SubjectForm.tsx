@@ -18,6 +18,7 @@ export default function SubjectForm({ submitLabel, subjectId, initialData }: Pro
     name: initialData?.name ?? "",
     branch: initialData?.branch ?? "ECE",
     semester: initialData?.semester ?? "1st",
+    scheme: initialData?.scheme ?? "2019",
   });
   const [status, setStatus] = useState<"idle" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -60,6 +61,21 @@ export default function SubjectForm({ submitLabel, subjectId, initialData }: Pro
               required
               className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             />
+          </div>
+
+          {/* Scheme Dropdown */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Scheme *</label>
+            <select
+              name="scheme"
+              value={values.scheme}
+              onChange={handleChange}
+              required
+              className="w-full rounded-xl border border-white/10 bg-[#0f172a] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            >
+              <option value="2019">2019 Scheme</option>
+              <option value="2024">2024 Scheme</option>
+            </select>
           </div>
 
           {/* Branch Dropdown */}

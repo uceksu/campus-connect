@@ -183,6 +183,7 @@ export const AcademicNoteScalarFieldEnum = {
   subject: 'subject',
   semester: 'semester',
   branch: 'branch',
+  scheme: 'scheme',
   type: 'type',
   module: 'module',
   description: 'description',
@@ -286,6 +287,7 @@ export const AcademicSubjectScalarFieldEnum = {
   name: 'name',
   branch: 'branch',
   semester: 'semester',
+  scheme: 'scheme',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
