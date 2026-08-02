@@ -112,9 +112,9 @@ export default function Footer() {
         {/* Footer Bottom Area */}
         <div className="pt-2">
           <div className="mb-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider inline-block border-b-[2px] border-white pb-1">
+            <Link href="/about-campus-connect" className="text-xs font-bold text-white uppercase tracking-wider inline-block border-b-[2px] border-white pb-1 hover:text-[#456be5] hover:border-[#456be5] transition-colors">
               ABOUT CAMPUS CONNECT
-            </h4>
+            </Link>
           </div>
           
           <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row md:items-end justify-between gap-3">

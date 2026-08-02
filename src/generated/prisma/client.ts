@@ -116,3 +116,8 @@ export type AcademicSubject = Prisma.AcademicSubjectModel
  * 
  */
 export type Setting = Prisma.SettingModel
+/**
+ * Model Developer
+ * 
+ */
+export type Developer = Prisma.DeveloperModel

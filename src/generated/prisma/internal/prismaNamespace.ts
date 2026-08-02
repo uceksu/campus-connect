@@ -411,7 +411,8 @@ export const ModelName = {
   VerificationToken: 'VerificationToken',
   CommitteeMember: 'CommitteeMember',
   AcademicSubject: 'AcademicSubject',
-  Setting: 'Setting'
+  Setting: 'Setting',
+  Developer: 'Developer'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -427,7 +428,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting"
+    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting" | "developer"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1541,6 +1542,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Developer: {
+      payload: Prisma.$DeveloperPayload<ExtArgs>
+      fields: Prisma.DeveloperFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DeveloperFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DeveloperFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        findFirst: {
+          args: Prisma.DeveloperFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DeveloperFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        findMany: {
+          args: Prisma.DeveloperFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>[]
+        }
+        create: {
+          args: Prisma.DeveloperCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        createMany: {
+          args: Prisma.DeveloperCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DeveloperCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>[]
+        }
+        delete: {
+          args: Prisma.DeveloperDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        update: {
+          args: Prisma.DeveloperUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        deleteMany: {
+          args: Prisma.DeveloperDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DeveloperUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DeveloperUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>[]
+        }
+        upsert: {
+          args: Prisma.DeveloperUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeveloperPayload>
+        }
+        aggregate: {
+          args: Prisma.DeveloperAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDeveloper>
+        }
+        groupBy: {
+          args: Prisma.DeveloperGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeveloperGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DeveloperCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeveloperCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1800,6 +1875,21 @@ export const SettingScalarFieldEnum = {
 } as const
 
 export type SettingScalarFieldEnum = (typeof SettingScalarFieldEnum)[keyof typeof SettingScalarFieldEnum]
+
+
+export const DeveloperScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  role: 'role',
+  image: 'image',
+  whatsapp: 'whatsapp',
+  instagram: 'instagram',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DeveloperScalarFieldEnum = (typeof DeveloperScalarFieldEnum)[keyof typeof DeveloperScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2074,6 +2164,7 @@ export type GlobalOmitConfig = {
   committeeMember?: Prisma.CommitteeMemberOmit
   academicSubject?: Prisma.AcademicSubjectOmit
   setting?: Prisma.SettingOmit
+  developer?: Prisma.DeveloperOmit
 }
 
 /* Types for Logging */

@@ -18,6 +18,7 @@ import {
   X,
   Users,
   Globe,
+  Code2,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ const navItems = [
   { href: "/admin/notices", label: "Notices", icon: Bell },
   { href: "/admin/scholarships", label: "Scholarships", icon: GraduationCap },
   { href: "/admin/committee", label: "Committee", icon: Users },
+  { href: "/admin/developers", label: "Developers", icon: Code2 },
 ];
 
 type SidebarProps = {
