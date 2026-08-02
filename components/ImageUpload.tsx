@@ -177,42 +177,49 @@ export default function ImageUpload({
           </div>
         </div>
       ) : (
-        <div
-          className={`border-dashed border-2 rounded-3xl p-6 text-center transition-all ${
-            dragActive ? "border-[#456be5] bg-[#456be5]/10" : "border-white/20 bg-white/5"
-          }`}
-          onDragEnter={(event) => {
-            event.preventDefault();
-            setDragActive(true);
-          }}
-          onDragOver={(event) => {
-            event.preventDefault();
-            setDragActive(true);
-          }}
-          onDragLeave={() => setDragActive(false)}
-          onDrop={handleDrop}
-        >
-          <p className="text-sm text-slate-400 mb-4">
-            Drag & drop an image here, or click to choose a file.
-          </p>
-
-          <input
-            type="file"
-            accept="image/png,image/jpeg,image/webp,image/avif"
-            onChange={handleChange}
-            className="hidden"
-            id="hostel-image-upload"
-          />
-
-          <label
-            htmlFor="hostel-image-upload"
-            className="inline-flex cursor-pointer rounded-full bg-[#456be5] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#5b7df0] transition-colors"
-          >
-            Select Image
-          </label>
+        <div className="space-y-4">
+          {!previewUrl && (
+            <div
+              className={`relative flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-8 transition-colors ${
+                dragActive ? "border-[#456be5] bg-[#456be5]/10" : "border-slate-700 bg-slate-800/50 hover:bg-slate-800"
+              }`}
+              onDragEnter={(e) => {
+                e.preventDefault();
+                setDragActive(true);
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault();
+                setDragActive(false);
+              }}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleDrop}
+            >
+              <div className="flex flex-col items-center text-center">
+                <CropIcon className="mb-3 size-8 text-slate-400" />
+                <p className="text-sm font-medium text-slate-300">
+                  Drag & drop an image here, or click to choose a file.
+                </p>
+                <p className="mt-2 text-xs text-slate-500">Max size 5MB (JPG, PNG, WEBP, AVIF)</p>
+                <button
+                  type="button"
+                  className="mt-4 rounded-full bg-[#456be5] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#456be5]/30 transition-all hover:bg-[#3b5bd9]"
+                  onClick={() => document.getElementById("image-upload-input")?.click()}
+                >
+                  Select Image
+                </button>
+              </div>
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/avif"
+                onChange={handleChange}
+                className="hidden"
+                id="image-upload-input"
+              />
+            </div>
+          )}
 
           {previewUrl && (
-            <div className="mt-6 relative inline-block">
+            <div className="relative inline-block">
               <img
                 src={previewUrl}
                 alt="Selected preview"
