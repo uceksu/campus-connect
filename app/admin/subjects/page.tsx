@@ -28,6 +28,7 @@ export default async function SubjectsPage() {
             <thead className="bg-white/5 border-b border-white/10 text-slate-300">
               <tr>
                 <th className="px-6 py-4 font-medium">Subject Name</th>
+                <th className="px-6 py-4 font-medium">Scheme</th>
                 <th className="px-6 py-4 font-medium">Branch</th>
                 <th className="px-6 py-4 font-medium">Semester</th>
                 <th className="px-6 py-4 font-medium text-right">Actions</th>
@@ -45,6 +46,9 @@ export default async function SubjectsPage() {
                   <tr key={subject.id} className="hover:bg-white/[0.02] transition-colors">
                     <td className="px-6 py-4 font-semibold text-white">
                       {subject.name}
+                    </td>
+                    <td className="px-6 py-4">
+                      {subject.scheme}
                     </td>
                     <td className="px-6 py-4">
                       {subject.branch}

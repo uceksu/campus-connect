@@ -32,6 +32,7 @@ export default async function AdminAcademicNotesPage() {
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Subject</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Type</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Module</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Scheme</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Branch</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Semester</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Uploaded By</th>
@@ -64,6 +65,11 @@ export default async function AdminAcademicNotesPage() {
                     {note.type === "Note" ? note.module : "N/A"}
                   </td>
                   <td className="px-6 py-4">
+                    <span className="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium">
+                      {note.scheme}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
                     <span className="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium">
                       {note.branch}
                     </span>
@@ -93,7 +99,7 @@ export default async function AdminAcademicNotesPage() {
               ))}
               {notes.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-6 py-16 text-center text-slate-500">
+                  <td colSpan={10} className="px-6 py-16 text-center text-slate-500">
                     No academic notes found. Add your first note.
                   </td>
                 </tr>
