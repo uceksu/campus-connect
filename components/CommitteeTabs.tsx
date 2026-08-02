@@ -7,8 +7,8 @@ import type { CommitteeMember } from "@/src/generated/prisma/client";
 
 // A helper component to render the member cards
 const MemberCard = ({ member }: { member: CommitteeMember }) => (
-  <div className="flex flex-col overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl max-w-[280px] w-full mx-auto">
-    <div className="relative h-56 w-full bg-slate-100 shrink-0">
+  <div className="flex flex-col overflow-hidden rounded-3xl border border-blue-100 dark:border-slate-800 bg-white dark:bg-slate-900/40 shadow-xl dark:shadow-none transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:hover:shadow-white/5 max-w-[280px] w-full mx-auto">
+    <div className="relative h-56 w-full bg-slate-100 dark:bg-slate-800 shrink-0">
       <Image
         src={member.image}
         alt={member.name}
@@ -18,10 +18,10 @@ const MemberCard = ({ member }: { member: CommitteeMember }) => (
     </div>
     <div className="flex flex-1 flex-col justify-between p-6">
       <div>
-        <span className="inline-block rounded-full bg-blue-50 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5]">
+        <span className="inline-block rounded-full bg-blue-50 dark:bg-blue-950/40 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">
           {member.role}
         </span>
-        <h3 className="mt-3 text-xl font-black uppercase tracking-[-0.02em] text-[#071333]">
+        <h3 className="mt-3 text-xl font-black uppercase tracking-[-0.02em] text-[#071333] dark:text-white">
           {member.name}
         </h3>
       </div>
@@ -30,7 +30,7 @@ const MemberCard = ({ member }: { member: CommitteeMember }) => (
           href={`https://wa.me/${member.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-2 rounded-full text-[#456be5] hover:bg-blue-50 transition-colors"
+          className="flex items-center justify-center p-2 rounded-full text-[#456be5] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
           title="Chat on WhatsApp"
         >
           <MessageCircle size={22} />
@@ -39,7 +39,7 @@ const MemberCard = ({ member }: { member: CommitteeMember }) => (
           href={member.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-2 rounded-full text-[#456be5] hover:bg-blue-50 transition-colors"
+          className="flex items-center justify-center p-2 rounded-full text-[#456be5] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
           title="Follow on Instagram"
         >
           <svg
@@ -75,13 +75,13 @@ export default function CommitteeTabs({ members }: { members: CommitteeMember[] 
     <div className="w-full">
       {/* Tabs */}
       <div className="flex justify-center mb-12">
-        <div className="inline-flex items-center rounded-full bg-white border border-[#dce5ff] p-1.5 shadow-sm">
+        <div className="inline-flex items-center rounded-full bg-white dark:bg-slate-900 border border-[#dce5ff] dark:border-slate-800 p-1.5 shadow-sm">
           <button
             onClick={() => setActiveTab("KSU")}
             className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 touch-manipulation cursor-pointer ${
               activeTab === "KSU"
                 ? "bg-[#456be5] text-white shadow-md md:scale-[1.02]"
-                : "text-slate-500 hover:text-[#456be5]"
+                : "text-slate-500 dark:text-slate-400 hover:text-[#456be5] dark:hover:text-blue-400"
             }`}
           >
             KSU Leaders
@@ -91,7 +91,7 @@ export default function CommitteeTabs({ members }: { members: CommitteeMember[] 
             className={`px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 touch-manipulation cursor-pointer ${
               activeTab === "Priyadarshini"
                 ? "bg-[#f97316] text-white shadow-md md:scale-[1.02]"
-                : "text-slate-500 hover:text-[#f97316]"
+                : "text-slate-555 dark:text-slate-400 hover:text-[#f97316] dark:hover:text-orange-400"
             }`}
           >
             Priyadarshini
@@ -100,22 +100,22 @@ export default function CommitteeTabs({ members }: { members: CommitteeMember[] 
       </div>
 
       {/* Content Area */}
-      <div className={`space-y-8 bg-white p-6 sm:p-10 rounded-[2.5rem] border shadow-sm transition-colors duration-300 ${
-        activeTab === "KSU" ? "border-blue-100" : "border-orange-100"
+      <div className={`space-y-8 bg-white dark:bg-[#0f172a]/65 p-6 sm:p-10 rounded-[2.5rem] border shadow-sm transition-colors duration-300 backdrop-blur-md ${
+        activeTab === "KSU" ? "border-blue-100 dark:border-blue-900/30" : "border-orange-100 dark:border-orange-900/30"
       }`}>
         <div className="text-center mb-10">
           <h2 className={`text-3xl font-black uppercase tracking-tight ${
-            activeTab === "KSU" ? "text-[#456be5]" : "text-[#f97316]"
+            activeTab === "KSU" ? "text-[#456be5] dark:text-blue-400" : "text-[#f97316] dark:text-orange-400"
           }`}>
             {activeTab === "KSU" ? "KSU Leaders" : "Priyadarshini"}
           </h2>
           <div className={`h-1 w-20 mx-auto mt-4 rounded-full ${
-            activeTab === "KSU" ? "bg-[#456be5]" : "bg-[#f97316]"
+            activeTab === "KSU" ? "bg-[#456be5] dark:bg-blue-400" : "bg-[#f97316] dark:bg-orange-400"
           }`} />
         </div>
         
         {currentMembers.length === 0 ? (
-          <div className="text-center py-10 text-slate-500">
+          <div className="text-center py-10 text-slate-500 dark:text-slate-400">
             No {activeTab} leaders found.
           </div>
         ) : (

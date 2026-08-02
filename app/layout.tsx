@@ -13,6 +13,7 @@ import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/sett
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
 import NextTopLoader from "nextjs-toploader";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default async function RootLayout({
   const isAdminPortalVisible = await getAdminPortalVisibility();
   const session = await auth();
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html
@@ -58,6 +60,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {gaId && gaId !== "G-XXXXXXXXXX" && <GoogleAnalytics gaId={gaId} />}
         <ThemeProvider>
           <NextTopLoader color="#456be5" height={3} showSpinner={false} />
           <PwaRegistry />

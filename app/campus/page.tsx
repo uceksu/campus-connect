@@ -12,20 +12,20 @@ const places = [
 
 export default function CampusPage() {
   return (
-    <main className="min-h-screen bg-[#456be5] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] bg-size-[18px_18px]">
+    <main className="min-h-screen bg-[#456be5] dark:bg-[#060b18] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[18px_18px] transition-colors duration-300">
       <PublicPageHero eyebrow="Around campus" title="Find your" accent="way around." description="The essential places, services, and student-friendly spots around KSU UCE." />
       <div className="mx-auto grid max-w-7xl gap-5 px-6 py-14 sm:px-10 lg:grid-cols-2 lg:px-16 lg:py-20">
         {places.map((item) => (
           <Link href={item.href} key={item.title} className="group">
-            <Card className="h-full rounded-3xl border border-white/30 bg-white py-0 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <Card className="h-full rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/65 py-0 shadow-lg dark:shadow-none transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:hover:shadow-white/5 backdrop-blur-md">
               <CardContent className="flex min-h-56 flex-col p-7 sm:p-8">
                 <div className="flex items-start justify-between">
-                  <span className="rounded-full bg-[#e8eeff] px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#456be5]">{item.label}</span>
-                  <item.icon className="size-6 text-[#456be5]" aria-hidden="true" />
+                  <span className="rounded-full bg-[#e8eeff] dark:bg-blue-950/40 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[#456be5] dark:text-blue-400">{item.label}</span>
+                  <item.icon className="size-6 text-[#456be5] dark:text-blue-400" aria-hidden="true" />
                 </div>
-                <h2 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em]">{item.title}</h2>
-                <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">{item.description}</p>
-                <span className="mt-auto flex size-10 items-center justify-center self-end rounded-full bg-[#456be5] text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><ArrowUpRight className="size-5" aria-hidden="true" /></span>
+                <h2 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em] text-[#071333] dark:text-white">{item.title}</h2>
+                <p className="mt-3 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">{item.description}</p>
+                <span className="mt-auto flex size-10 items-center justify-center self-end rounded-full bg-[#456be5] dark:bg-blue-600 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><ArrowUpRight className="size-5" aria-hidden="true" /></span>
               </CardContent>
             </Card>
           </Link>
