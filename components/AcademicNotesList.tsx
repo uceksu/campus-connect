@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import type { AcademicNote } from "@/src/generated/prisma/client";
+import { useState, useEffect } from "react";
+import type { AcademicNote, AcademicSubject } from "@/src/generated/prisma/client";
 import { BookOpen, ExternalLink, FileText, Download, Folder } from "lucide-react";
 
 const BRANCHES = ["ECE", "AD", "CS", "CY", "Polymer", "EEE"];
@@ -26,18 +26,36 @@ const BRANCH_THEMES: Record<string, { bg: string; border: string; text: string; 
   EEE: { bg: "bg-yellow-50/50", border: "border-yellow-200", text: "text-yellow-700", gradient: "from-yellow-500 to-amber-600" },
 };
 
-type Props = { notes: AcademicNote[] };
+type Props = { notes: AcademicNote[]; subjects: AcademicSubject[] };
 
-export function NotesList({ notes }: Props) {
+export function NotesList({ notes, subjects }: Props) {
   const [activeBranch, setActiveBranch] = useState("ECE");
   const [activeSemester, setActiveSemester] = useState("1st");
+  const [activeSubject, setActiveSubject] = useState<string | null>(null);
 
-  // Filter notes by active branch and active semester
+  // Available subjects for the active branch and semester
+  const availableSubjects = subjects.filter(
+    (s) => s.branch === activeBranch && s.semester === activeSemester
+  );
+
+  // Automatically select the first subject when branch or semester changes, or clear it if none
+  useEffect(() => {
+    if (availableSubjects.length > 0) {
+      if (!activeSubject || !availableSubjects.some((s) => s.name === activeSubject)) {
+        setActiveSubject(availableSubjects[0].name);
+      }
+    } else {
+      setActiveSubject(null);
+    }
+  }, [activeBranch, activeSemester, availableSubjects, activeSubject]);
+
+  // Filter notes by active branch, semester, and subject
   const semesterNotes = notes.filter((n) => n.branch === activeBranch && n.semester === activeSemester);
+  const filteredNotes = activeSubject ? semesterNotes.filter((n) => n.subject === activeSubject) : [];
 
   // Split into Notes and Question Papers
-  const studyNotes = semesterNotes.filter((n) => n.type === "Note");
-  const questionPapers = semesterNotes.filter((n) => n.type === "Question Paper");
+  const studyNotes = filteredNotes.filter((n) => n.type === "Note");
+  const questionPapers = filteredNotes.filter((n) => n.type === "Question Paper");
 
   const theme = BRANCH_THEMES[activeBranch] || BRANCH_THEMES.ECE;
 
@@ -101,6 +119,32 @@ export function NotesList({ notes }: Props) {
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
           Browse study materials grouped by module and download previous years' question papers for Semester {activeSemester[0]} {activeBranch}.
         </p>
+
+        {/* Subjects Tabs */}
+        {availableSubjects.length > 0 ? (
+          <div className="mt-8 flex flex-wrap gap-2">
+            {availableSubjects.map((sub) => {
+              const isActive = activeSubject === sub.name;
+              return (
+                <button
+                  key={sub.id}
+                  onClick={() => setActiveSubject(sub.name)}
+                  className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all duration-200 ${
+                    isActive
+                      ? `${theme.bg} ${theme.border} ${theme.text}`
+                      : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  {sub.name}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mt-8 text-sm font-medium text-slate-500 italic">
+            No subjects added for this semester yet.
+          </div>
+        )}
       </div>
 
       {/* Two-Column Grid: Notes vs Question Papers */}

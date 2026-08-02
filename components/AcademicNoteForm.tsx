@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createAcademicNote, updateAcademicNote } from "@/lib/actions/academicNote";
-import type { AcademicNote } from "@/src/generated/prisma/client";
+import type { AcademicNote, AcademicSubject } from "@/src/generated/prisma/client";
 import { Loader2, Save } from "lucide-react";
 
 const SEMESTERS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
@@ -21,9 +21,10 @@ type Props = {
   submitLabel: string;
   noteId?: string;
   initialData?: Partial<AcademicNote>;
+  subjects?: AcademicSubject[];
 };
 
-export default function AcademicNoteForm({ submitLabel, noteId, initialData }: Props) {
+export default function AcademicNoteForm({ submitLabel, noteId, initialData, subjects = [] }: Props) {
   const router = useRouter();
   const [values, setValues] = useState({
     title: initialData?.title ?? "",
@@ -80,14 +81,22 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData }: P
 
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-1.5">Subject *</label>
-            <input
+            <select
               name="subject"
               value={values.subject}
               onChange={handleChange}
-              placeholder="e.g. Data Structures"
               required
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
-            />
+              className="w-full rounded-xl border border-white/10 bg-[#0f1628] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            >
+              <option value="">Select a Subject (Choose Branch & Sem first)</option>
+              {subjects
+                .filter((s) => s.branch === values.branch && s.semester === values.semester)
+                .map((s) => (
+                  <option key={s.id} value={s.name}>
+                    {s.name}
+                  </option>
+                ))}
+            </select>
           </div>
 
           <div>

@@ -172,6 +172,15 @@ model CommitteeMember {
   updatedAt    DateTime @updatedAt
 }
 
+model AcademicSubject {
+  id        String   @id @default(cuid())
+  name      String
+  branch    String
+  semester  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum Role {
   SUPER_ADMIN
   ADMIN

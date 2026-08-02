@@ -25,6 +25,7 @@ const navItems = [
   { href: "/admin/hostels", label: "Hostels", icon: Building2 },
   { href: "/admin/hospitals", label: "Hospitals", icon: Hospital },
   { href: "/admin/academic-notes", label: "Academic Notes", icon: BookOpen },
+  { href: "/admin/subjects", label: "Subjects", icon: BookOpen },
   { href: "/admin/teashops", label: "Tea Shops", icon: Coffee },
   { href: "/admin/nearby-places", label: "Nearby Places", icon: MapPin },
   { href: "/admin/clubs", label: "Clubs", icon: Users },

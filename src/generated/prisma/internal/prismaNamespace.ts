@@ -409,7 +409,8 @@ export const ModelName = {
   Notice: 'Notice',
   Scholarship: 'Scholarship',
   VerificationToken: 'VerificationToken',
-  CommitteeMember: 'CommitteeMember'
+  CommitteeMember: 'CommitteeMember',
+  AcademicSubject: 'AcademicSubject'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -425,7 +426,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember"
+    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1391,6 +1392,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AcademicSubject: {
+      payload: Prisma.$AcademicSubjectPayload<ExtArgs>
+      fields: Prisma.AcademicSubjectFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AcademicSubjectFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AcademicSubjectFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        findFirst: {
+          args: Prisma.AcademicSubjectFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AcademicSubjectFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        findMany: {
+          args: Prisma.AcademicSubjectFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>[]
+        }
+        create: {
+          args: Prisma.AcademicSubjectCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        createMany: {
+          args: Prisma.AcademicSubjectCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AcademicSubjectCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>[]
+        }
+        delete: {
+          args: Prisma.AcademicSubjectDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        update: {
+          args: Prisma.AcademicSubjectUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        deleteMany: {
+          args: Prisma.AcademicSubjectDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AcademicSubjectUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AcademicSubjectUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>[]
+        }
+        upsert: {
+          args: Prisma.AcademicSubjectUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AcademicSubjectPayload>
+        }
+        aggregate: {
+          args: Prisma.AcademicSubjectAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAcademicSubject>
+        }
+        groupBy: {
+          args: Prisma.AcademicSubjectGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AcademicSubjectGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AcademicSubjectCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AcademicSubjectCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1624,6 +1699,18 @@ export const CommitteeMemberScalarFieldEnum = {
 } as const
 
 export type CommitteeMemberScalarFieldEnum = (typeof CommitteeMemberScalarFieldEnum)[keyof typeof CommitteeMemberScalarFieldEnum]
+
+
+export const AcademicSubjectScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  branch: 'branch',
+  semester: 'semester',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AcademicSubjectScalarFieldEnum = (typeof AcademicSubjectScalarFieldEnum)[keyof typeof AcademicSubjectScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1896,6 +1983,7 @@ export type GlobalOmitConfig = {
   scholarship?: Prisma.ScholarshipOmit
   verificationToken?: Prisma.VerificationTokenOmit
   committeeMember?: Prisma.CommitteeMemberOmit
+  academicSubject?: Prisma.AcademicSubjectOmit
 }
 
 /* Types for Logging */

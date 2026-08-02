@@ -1,10 +1,12 @@
 import PublicPageHero from "@/components/PublicPageHero";
 import { getAcademicNotes } from "@/lib/actions/academicNote";
+import { getAcademicSubjects } from "@/lib/actions/academicSubject";
 import { NotesList } from "@/components/AcademicNotesList";
 import { GraduationCap } from "lucide-react";
 
 export default async function AcademicsPage() {
   const notes = await getAcademicNotes();
+  const subjects = await getAcademicSubjects();
 
   return (
     <main className="min-h-screen bg-[#456be5] bg-[radial-gradient(rgba(255,255,255,0.18)_1px,transparent_1px)] bg-size-[18px_18px]">
@@ -22,7 +24,7 @@ export default async function AcademicsPage() {
             <p className="text-slate-500">Academic notes will appear here once added by faculty or admin.</p>
           </div>
         ) : (
-          <NotesList notes={notes} />
+          <NotesList notes={notes} subjects={subjects} />
         )}
       </section>
     </main>
