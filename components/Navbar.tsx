@@ -100,6 +100,14 @@ export default function Navbar() {
               <span>Install App</span>
             </button>
           )}
+
+          <Link
+            href="/portal-admin/login"
+            className="ml-2 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors border border-slate-700"
+          >
+            <Shield size={14} />
+            <span>Admin</span>
+          </Link>
         </div>
       </div>
     </nav>
