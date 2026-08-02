@@ -17,11 +17,13 @@ import {
   Menu,
   X,
   Users,
+  Globe,
 } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/", label: "View Public Site", icon: Globe, exact: true },
   { href: "/admin/hostels", label: "Hostels", icon: Building2 },
   { href: "/admin/hospitals", label: "Hospitals", icon: Hospital },
   { href: "/admin/academic-notes", label: "Academic Notes", icon: BookOpen },
