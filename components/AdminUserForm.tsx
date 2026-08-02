@@ -124,10 +124,12 @@ export default function AdminUserForm({ initialData }: Props) {
           </label>
           <input
             type="text"
+            name="new-admin-password"
+            autoComplete="new-password"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             className="w-full bg-[#0b1120] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5]"
-            placeholder={initialData ? "Leave blank to keep unchanged" : "Leave blank to auto-generate"}
+            placeholder={initialData ? "Leave blank to keep current password" : "Leave blank to auto-generate"}
           />
         </div>
       </div>
