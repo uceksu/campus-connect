@@ -9,6 +9,7 @@ import {
   Bell,
   Users,
   Calendar,
+  Building2,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -19,6 +20,13 @@ const features = [
     description: "Find academic resources and keep your campus learning organised.",
     icon: GraduationCap,
     href: "/academics",
+  },
+  {
+    title: "Departments",
+    label: "Academics",
+    description: "Explore various departments, faculty profiles, and their details.",
+    icon: Building2,
+    href: "/departments",
   },
   {
     title: "Around Campus",
