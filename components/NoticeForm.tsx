@@ -131,6 +131,7 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
             <ImageUpload 
               initialImageUrl={initialData?.image ?? undefined}
               onFileSelect={setSelectedFile}
+              preserveAspectRatio={true}
             />
           </div>
         </div>

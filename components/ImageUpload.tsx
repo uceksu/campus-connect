@@ -19,6 +19,7 @@ type ImageUploadProps = {
   initialImageUrl?: string;
   required?: boolean;
   aspect?: number;
+  preserveAspectRatio?: boolean;
   cropShape?: "rect" | "round";
   onFileSelect: (file: File | null) => void;
 };
@@ -28,6 +29,7 @@ export default function ImageUpload({
   initialImageUrl,
   required = false,
   aspect = 1, // Default 1:1 square aspect ratio
+  preserveAspectRatio = false,
   cropShape = "rect",
   onFileSelect,
 }: ImageUploadProps) {
@@ -39,12 +41,17 @@ export default function ImageUpload({
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
+  const [dynamicAspect, setDynamicAspect] = useState(aspect);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
   const [isCropping, setIsCropping] = useState(false);
 
   useEffect(() => {
     setPreviewUrl(initialImageUrl ?? null);
   }, [initialImageUrl]);
+
+  useEffect(() => {
+    setDynamicAspect(aspect);
+  }, [aspect]);
 
   const handleFile = (file: File | null) => {
     setError(null);
@@ -129,11 +136,16 @@ export default function ImageUpload({
             image={imageSrc}
             crop={crop}
             zoom={zoom}
-            aspect={aspect}
+            aspect={dynamicAspect}
             cropShape={cropShape}
             onCropChange={setCrop}
             onCropComplete={onCropComplete}
             onZoomChange={setZoom}
+            onMediaLoaded={(mediaSize) => {
+              if (preserveAspectRatio) {
+                setDynamicAspect(mediaSize.width / mediaSize.height);
+              }
+            }}
           />
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10 bg-black/60 px-4 py-2 rounded-full backdrop-blur-md border border-white/10">
             <button
