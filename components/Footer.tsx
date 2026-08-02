@@ -11,36 +11,36 @@ export default function Footer() {
   if (isAdminPage) return null;
 
   return (
-    <footer className="bg-[#050b1a] text-slate-400 py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 space-y-16">
+    <footer className="bg-[#050b1a] text-slate-400 py-12 sm:py-16">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 space-y-10">
         
         {/* Header */}
         <div>
-          <Link href="/" className="inline-flex items-center gap-2.5 leading-none">
+          <Link href="/" className="inline-flex items-center gap-2 leading-none">
             <div className="flex items-center">
-              <span className="text-[22px] font-black uppercase tracking-[-0.04em] text-[#456be5]">
+              <span className="text-lg font-black uppercase tracking-[-0.04em] text-[#456be5]">
                 CAMPUS
               </span>
-              <span className="text-[22px] font-black uppercase tracking-[-0.04em] text-white">
+              <span className="text-lg font-black uppercase tracking-[-0.04em] text-white">
                 CONNECT
               </span>
             </div>
-            <span className="text-white font-black text-xl leading-none opacity-80 mt-0.5">•</span>
-            <span className="text-lg font-black uppercase tracking-wider text-white whitespace-nowrap mt-1">
+            <span className="text-white font-black text-sm leading-none opacity-80 mt-0.5">•</span>
+            <span className="text-sm font-black uppercase tracking-wider text-white whitespace-nowrap mt-0.5">
               KSU UCE
             </span>
           </Link>
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 gap-8 sm:gap-16 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
           
           {/* Left Column (Academics) */}
-          <div className="space-y-5">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
               ACADEMICS
             </h4>
-            <ul className="space-y-4 text-[15px] font-medium text-slate-400">
+            <ul className="space-y-3 text-[13px] font-medium text-slate-400">
               <li>
                 <Link href="/academics" className="hover:text-white transition-colors">
                   Academics Workspace
@@ -65,12 +65,12 @@ export default function Footer() {
           </div>
 
           {/* Right Column (Support & Explore on Mobile) */}
-          <div className="space-y-12 sm:space-y-0 sm:contents">
-            <div className="space-y-5">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+          <div className="space-y-10 sm:space-y-0 sm:contents">
+            <div className="space-y-4">
+              <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
                 SUPPORT
               </h4>
-              <ul className="space-y-4 text-[15px] font-medium text-slate-400">
+              <ul className="space-y-3 text-[13px] font-medium text-slate-400">
                 <li>
                   <Link href="/support/enquiry" className="hover:text-white transition-colors">
                     Got Questions
@@ -89,11 +89,11 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div className="space-y-5">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
+            <div className="space-y-4">
+              <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
                 EXPLORE
               </h4>
-              <ul className="space-y-4 text-[15px] font-medium text-slate-400">
+              <ul className="space-y-3 text-[13px] font-medium text-slate-400">
                 <li>
                   <Link href="/campus" className="hover:text-white transition-colors">
                     Explore UCE
@@ -110,21 +110,21 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom Area */}
-        <div className="pt-8">
-          <div className="mb-6">
-            <h4 className="text-[15px] font-bold text-white uppercase tracking-wider inline-block border-b-[3px] border-white pb-1">
+        <div className="pt-6">
+          <div className="mb-4">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider inline-block border-b-[2px] border-white pb-1">
               ABOUT CAMPUS CONNECT
             </h4>
           </div>
           
-          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-2 text-[11px] text-slate-500 font-mono font-bold uppercase tracking-[0.15em]">
+          <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1.5 text-[10px] text-slate-500 font-mono font-bold uppercase tracking-[0.15em]">
               <p>© 2026 CAMPUS CONNECT • A KSU INITIATIVE</p>
               <p>BUILT BY STUDENTS, FOR STUDENTS.</p>
               <p className="text-slate-400">UNIVERSITY COLLEGE OF ENGINEERING THODUPUZHA</p>
             </div>
-            <div className="md:text-right mt-4 md:mt-0 opacity-40 hover:opacity-100 transition-opacity">
-              <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+            <div className="md:text-right mt-2 md:mt-0 opacity-40 hover:opacity-100 transition-opacity">
+              <span className="text-[8px] font-mono font-bold text-slate-400 uppercase tracking-widest">
                 Inspired by GENOME BY KSU GECT
               </span>
             </div>
