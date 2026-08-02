@@ -34,6 +34,7 @@ export async function createHospital(data: {
       description: data.description,
     },
   });
+  revalidatePath("/campus/hospitals");
   revalidatePath("/admin/hospitals");
 }
 
@@ -61,10 +62,12 @@ export async function updateHospital(
       description: data.description,
     },
   });
+  revalidatePath("/campus/hospitals");
   revalidatePath("/admin/hospitals");
 }
 
 export async function deleteHospital(id: string) {
   await prisma.hospital.delete({ where: { id } });
+  revalidatePath("/campus/hospitals");
   revalidatePath("/admin/hospitals");
 }

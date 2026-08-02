@@ -36,6 +36,7 @@ export async function createNearbyPlace(data: {
       rating: Number(data.rating),
     },
   });
+  revalidatePath("/campus/places");
   revalidatePath("/admin/nearby-places");
 }
 
@@ -65,10 +66,12 @@ export async function updateNearbyPlace(
       rating: Number(data.rating),
     },
   });
+  revalidatePath("/campus/places");
   revalidatePath("/admin/nearby-places");
 }
 
 export async function deleteNearbyPlace(id: string) {
   await prisma.nearbyPlace.delete({ where: { id } });
+  revalidatePath("/campus/places");
   revalidatePath("/admin/nearby-places");
 }

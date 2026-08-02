@@ -36,6 +36,7 @@ export async function createTeaShop(data: {
       price: data.price,
     },
   });
+  revalidatePath("/campus/teashops");
   revalidatePath("/admin/teashops");
 }
 
@@ -65,10 +66,12 @@ export async function updateTeaShop(
       price: data.price,
     },
   });
+  revalidatePath("/campus/teashops");
   revalidatePath("/admin/teashops");
 }
 
 export async function deleteTeaShop(id: string) {
   await prisma.teaShop.delete({ where: { id } });
+  revalidatePath("/campus/teashops");
   revalidatePath("/admin/teashops");
 }

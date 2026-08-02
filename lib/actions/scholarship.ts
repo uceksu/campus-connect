@@ -24,6 +24,7 @@ export async function createScholarship(data: {
   applyLink: string;
 }) {
   await prisma.scholarship.create({ data });
+  revalidatePath("/scholarships");
   revalidatePath("/admin/scholarships");
 }
 
@@ -40,10 +41,12 @@ export async function updateScholarship(
   }
 ) {
   await prisma.scholarship.update({ where: { id }, data });
+  revalidatePath("/scholarships");
   revalidatePath("/admin/scholarships");
 }
 
 export async function deleteScholarship(id: string) {
   await prisma.scholarship.delete({ where: { id } });
+  revalidatePath("/scholarships");
   revalidatePath("/admin/scholarships");
 }

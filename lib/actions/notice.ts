@@ -21,6 +21,7 @@ export async function createNotice(data: {
   isImportant: boolean;
 }) {
   await prisma.notice.create({ data });
+  revalidatePath("/notices");
   revalidatePath("/admin/notices");
 }
 
@@ -34,10 +35,12 @@ export async function updateNotice(
   }
 ) {
   await prisma.notice.update({ where: { id }, data });
+  revalidatePath("/notices");
   revalidatePath("/admin/notices");
 }
 
 export async function deleteNotice(id: string) {
   await prisma.notice.delete({ where: { id } });
+  revalidatePath("/notices");
   revalidatePath("/admin/notices");
 }

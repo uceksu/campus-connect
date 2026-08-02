@@ -45,6 +45,8 @@ export async function createHostel(data: {
       description: data.description,
     },
   });
+  revalidatePath("/campus/hostels");
+  revalidatePath("/admin/hostels");
 }
 
 export async function updateHostel(
@@ -77,6 +79,8 @@ export async function updateHostel(
       image: data.imageUrl,
     },
   });
+  revalidatePath("/campus/hostels");
+  revalidatePath("/admin/hostels");
 }
 
 export async function deleteHostel(id: string) {
@@ -85,4 +89,6 @@ export async function deleteHostel(id: string) {
       id,
     },
   });
+  revalidatePath("/campus/hostels");
+  revalidatePath("/admin/hostels");
 }
