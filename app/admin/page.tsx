@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 async function getDashboardStats() {
-  const [hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs] =
+  const [hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs, committeeMembers, academicSubjects] =
     await Promise.all([
       prisma.hostel.count(),
       prisma.hospital.count(),
@@ -24,9 +24,11 @@ async function getDashboardStats() {
       prisma.notice.count(),
       prisma.scholarship.count(),
       prisma.club.count(),
+      prisma.committeeMember.count(),
+      prisma.academicSubject.count(),
     ]);
 
-  return { hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs };
+  return { hostels, hospitals, academicNotes, teaShops, nearbyPlaces, notices, scholarships, clubs, committeeMembers, academicSubjects };
 }
 
 const cards = [
@@ -117,6 +119,28 @@ const cards = [
     bg: "bg-indigo-500/10",
     border: "border-indigo-500/20",
     text: "text-indigo-400",
+  },
+  {
+    label: "Committee",
+    key: "committeeMembers" as const,
+    href: "/admin/committee",
+    addHref: "/admin/committee/add",
+    icon: Users,
+    color: "from-pink-500 to-pink-700",
+    bg: "bg-pink-500/10",
+    border: "border-pink-500/20",
+    text: "text-pink-400",
+  },
+  {
+    label: "Subjects",
+    key: "academicSubjects" as const,
+    href: "/admin/subjects",
+    addHref: "/admin/subjects/add",
+    icon: BookOpen,
+    color: "from-fuchsia-500 to-fuchsia-700",
+    bg: "bg-fuchsia-500/10",
+    border: "border-fuchsia-500/20",
+    text: "text-fuchsia-400",
   },
 ];
 
