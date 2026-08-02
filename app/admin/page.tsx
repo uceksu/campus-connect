@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import {
   Building2,
   Hospital,
@@ -145,8 +146,21 @@ const cards = [
 ];
 
 export default async function AdminDashboardPage() {
+  const session = await auth();
+  const userRole = session?.user?.role;
+  const userPermissions = (session?.user as any)?.permissions || [];
+
+  // Filter cards based on RBAC
+  const visibleCards = cards.filter((card) => {
+    if (userRole === "SUPER_ADMIN") return true;
+    const section = card.href.split("/")[2];
+    return userPermissions.includes(section);
+  });
+
   const stats = await getDashboardStats();
-  const totalItems = Object.values(stats).reduce((a, b) => a + b, 0);
+  
+  // Calculate total items only for visible cards
+  const totalItems = visibleCards.reduce((total, card) => total + stats[card.key], 0);
 
   return (
     <div className="space-y-8">
@@ -155,7 +169,7 @@ export default async function AdminDashboardPage() {
         <h1 className="text-3xl font-bold text-white mb-1">Dashboard</h1>
         <p className="text-slate-400">
           Overview of all campus content —{" "}
-          <span className="text-white font-medium">{totalItems} total items</span> across {cards.length} sections
+          <span className="text-white font-medium">{totalItems} total items</span> across {visibleCards.length} sections
         </p>
       </div>
 
@@ -172,7 +186,13 @@ export default async function AdminDashboardPage() {
 
       {/* Stats grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-        {cards.map((card) => {
+        {visibleCards.length === 0 && (
+          <div className="col-span-full p-8 border border-white/10 rounded-2xl bg-[#0b1120] text-center text-slate-400">
+            You do not have access to any dashboard sections yet. Please contact the Super Admin.
+          </div>
+        )}
+        
+        {visibleCards.map((card) => {
           const count = stats[card.key];
           return (
             <div
