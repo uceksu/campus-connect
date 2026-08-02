@@ -7,8 +7,8 @@ import type { CommitteeMember } from "@/src/generated/prisma/client";
 
 // A helper component to render the member cards
 const MemberCard = ({ member }: { member: CommitteeMember }) => (
-  <div className="flex flex-col overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-    <div className="relative h-64 w-full bg-slate-100 shrink-0">
+  <div className="flex flex-col overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl max-w-[280px] w-full mx-auto">
+    <div className="relative h-56 w-full bg-slate-100 shrink-0">
       <Image
         src={member.image}
         alt={member.name}
@@ -25,28 +25,27 @@ const MemberCard = ({ member }: { member: CommitteeMember }) => (
           {member.name}
         </h3>
       </div>
-      <div className="mt-6 flex items-center gap-3">
+      <div className="mt-5 flex items-center gap-2">
         <a
           href={`https://wa.me/${member.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#1ebd57]"
+          className="flex items-center justify-center p-2 rounded-full text-[#456be5] hover:bg-blue-50 transition-colors"
           title="Chat on WhatsApp"
         >
-          <MessageCircle size={18} />
-          WhatsApp
+          <MessageCircle size={22} />
         </a>
         <a
           href={member.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center rounded-xl bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] p-2.5 text-white transition-transform hover:scale-105"
+          className="flex items-center justify-center p-2 rounded-full text-[#456be5] hover:bg-blue-50 transition-colors"
           title="Follow on Instagram"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="22"
+            height="22"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
