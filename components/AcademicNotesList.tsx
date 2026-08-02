@@ -6,8 +6,6 @@ import { BookOpen, ExternalLink, FileText, Download, Folder } from "lucide-react
 
 const BRANCHES = ["ECE", "AD", "CS", "CY", "Polymer", "EEE"];
 const SEMESTERS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
-const MODULES = ["Module 1", "Module 2", "Module 3", "Module 4"];
-
 const BRANCH_FULL_NAMES: Record<string, string> = {
   ECE: "Electronics & Communication Engineering",
   AD: "Artificial Intelligence & Data Science",
@@ -57,6 +55,10 @@ export function NotesList({ notes, subjects }: Props) {
   // Split into Notes and Question Papers
   const studyNotes = filteredNotes.filter((n) => n.type === "Note");
   const questionPapers = filteredNotes.filter((n) => n.type === "Question Paper");
+
+  const currentModules = activeScheme === "2019"
+    ? ["Module 1", "Module 2", "Module 3", "Module 4", "Module 5"]
+    : ["Module 1", "Module 2", "Module 3", "Module 4"];
 
   const theme = BRANCH_THEMES[activeBranch] || BRANCH_THEMES.ECE;
 
@@ -178,12 +180,14 @@ export function NotesList({ notes, subjects }: Props) {
             </div>
             <div>
               <h3 className="text-xl font-black uppercase tracking-tight text-white">Study Notes</h3>
-              <p className="text-xs text-white/80">Grouped into Modules 1, 2, 3, and 4</p>
+              <p className="text-xs text-white/80">
+                Grouped into {activeScheme === "2019" ? "Modules 1 to 5" : "Modules 1 to 4"}
+              </p>
             </div>
           </div>
 
           <div className="space-y-6">
-            {MODULES.map((moduleName) => {
+            {currentModules.map((moduleName) => {
               const moduleNotes = studyNotes.filter((n) => n.module === moduleName);
 
               return (

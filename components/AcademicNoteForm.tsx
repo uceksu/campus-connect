@@ -158,6 +158,7 @@ export default function AcademicNoteForm({ submitLabel, noteId, initialData, sub
                 <option value="Module 2">Module 2</option>
                 <option value="Module 3">Module 3</option>
                 <option value="Module 4">Module 4</option>
+                {values.scheme === "2019" && <option value="Module 5">Module 5</option>}
               </select>
             </div>
           )}
