@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTeaShops } from "@/lib/actions/teashop";
 import DeleteTeaShopButton from "@/components/DeleteTeaShopButton";
 import { Plus } from "lucide-react";
+import ExportCSVButton from "@/components/ExportCSVButton";
 
 export default async function AdminTeaShopsPage() {
   const teaShops = await getTeaShops();
@@ -14,9 +15,12 @@ export default async function AdminTeaShopsPage() {
           <h1 className="text-2xl font-bold text-white">Tea Shops</h1>
           <p className="text-slate-400 text-sm mt-1">{teaShops.length} entries</p>
         </div>
-        <Link href="/admin/teashops/add" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors">
-          <Plus size={16} /> Add Tea Shop
-        </Link>
+        <div className="flex items-center gap-3">
+          <ExportCSVButton data={teaShops} filename="teashops-export" />
+          <Link href="/admin/teashops/add" className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors">
+            <Plus size={16} /> Add Tea Shop
+          </Link>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">

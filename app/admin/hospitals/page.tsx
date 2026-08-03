@@ -4,6 +4,7 @@ import { getHospitals } from "@/lib/actions/hospital";
 import type { Hospital } from "@/src/generated/prisma/client";
 import DeleteHospitalButton from "@/components/DeleteHospitalButton";
 import { Plus } from "lucide-react";
+import ExportCSVButton from "@/components/ExportCSVButton";
 
 export default async function AdminHospitalsPage() {
   const hospitals = await getHospitals() as Hospital[];
@@ -15,13 +16,16 @@ export default async function AdminHospitalsPage() {
           <h1 className="text-2xl font-bold text-white">Hospitals</h1>
           <p className="text-slate-400 text-sm mt-1">{hospitals.length} entries</p>
         </div>
-        <Link
-          href="/admin/hospitals/add"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
-        >
-          <Plus size={16} />
-          Add Hospital
-        </Link>
+        <div className="flex items-center gap-3">
+          <ExportCSVButton data={hospitals} filename="hospitals-export" />
+          <Link
+            href="/admin/hospitals/add"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
+          >
+            <Plus size={16} />
+            Add Hospital
+          </Link>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">

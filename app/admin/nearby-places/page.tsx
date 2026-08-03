@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getNearbyPlaces } from "@/lib/actions/nearbyPlace";
 import DeleteNearbyPlaceButton from "@/components/DeleteNearbyPlaceButton";
 import { Plus } from "lucide-react";
+import ExportCSVButton from "@/components/ExportCSVButton";
 
 export default async function AdminNearbyPlacesPage() {
   const places = await getNearbyPlaces();
@@ -14,13 +15,16 @@ export default async function AdminNearbyPlacesPage() {
           <h1 className="text-2xl font-bold text-white">Nearby Places</h1>
           <p className="text-slate-400 text-sm mt-1">{places.length} entries</p>
         </div>
-        <Link
-          href="/admin/nearby-places/add"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
-        >
-          <Plus size={16} />
-          Add Place
-        </Link>
+        <div className="flex items-center gap-3">
+          <ExportCSVButton data={places} filename="nearby-places-export" />
+          <Link
+            href="/admin/nearby-places/add"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
+          >
+            <Plus size={16} />
+            Add Place
+          </Link>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
