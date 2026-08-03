@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Shield, Sparkles, Download } from "lucide-react";
 
-export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boolean }) {
+export default function Navbar({ isAdminVisible = true, isMaintenanceOn = false, isAdmin = false }: { isAdminVisible?: boolean, isMaintenanceOn?: boolean, isAdmin?: boolean }) {
   const pathname = usePathname();
   const [isInstalled, setIsInstalled] = useState(true); // Default true to prevent flash
 
@@ -75,7 +75,7 @@ export default function Navbar({ isAdminVisible = true }: { isAdminVisible?: boo
 
         {/* Navigation Links */}
         <div className="flex flex-wrap items-center gap-x-1 sm:gap-x-2 text-xs sm:text-sm font-bold">
-          {navLinks.map((link) => {
+          {(!isMaintenanceOn || isAdmin) && navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link

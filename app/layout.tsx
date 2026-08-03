@@ -64,7 +64,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <NextTopLoader color="#456be5" height={3} showSpinner={false} />
           <PwaRegistry />
-          <Navbar isAdminVisible={isAdminPortalVisible} />
+          <Navbar isAdminVisible={isAdminPortalVisible} isMaintenanceOn={isMaintenanceOn} isAdmin={isAdmin} />
           <main className="flex-1">
             {isMaintenanceOn && !isAdmin ? (
               <MaintenanceView />
