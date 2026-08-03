@@ -23,6 +23,8 @@ export async function createTeaShop(data: {
   rating: string;
   price: string;
   imageUrl: string;
+  latitude?: number | null;
+  longitude?: number | null;
 }) {
   await prisma.teaShop.create({
     data: {
@@ -34,6 +36,8 @@ export async function createTeaShop(data: {
       description: data.description,
       rating: Number(data.rating),
       price: data.price,
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/teashops");
@@ -51,6 +55,8 @@ export async function updateTeaShop(
     rating: string;
     price: string;
     imageUrl: string;
+    latitude?: number | null;
+    longitude?: number | null;
   }
 ) {
   await prisma.teaShop.update({
@@ -64,6 +70,8 @@ export async function updateTeaShop(
       description: data.description,
       rating: Number(data.rating),
       price: data.price,
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/teashops");

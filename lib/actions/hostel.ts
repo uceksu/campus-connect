@@ -31,6 +31,8 @@ export async function createHostel(data: {
   maps: string;
   description: string;
   imageUrl: string;
+  latitude?: number | null;
+  longitude?: number | null;
 }) {
   await prisma.hostel.create({
     data: {
@@ -43,6 +45,8 @@ export async function createHostel(data: {
       maps: data.maps,
       price: data.price,
       description: data.description,
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
   
@@ -63,6 +67,8 @@ export async function updateHostel(
     maps: string;
     description: string;
     imageUrl: string;
+    latitude?: number | null;
+    longitude?: number | null;
   }
 ) {
   await prisma.hostel.update({
@@ -79,6 +85,8 @@ export async function updateHostel(
       maps: data.maps,
       description: data.description,
       image: data.imageUrl,
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
 

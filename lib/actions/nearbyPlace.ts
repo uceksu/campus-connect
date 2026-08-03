@@ -23,6 +23,8 @@ export async function createNearbyPlace(data: {
   description: string;
   rating: string;
   imageUrl: string;
+  latitude?: number | null;
+  longitude?: number | null;
 }) {
   await prisma.nearbyPlace.create({
     data: {
@@ -34,6 +36,8 @@ export async function createNearbyPlace(data: {
       maps: data.maps,
       description: data.description,
       rating: Number(data.rating),
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/places");
@@ -51,6 +55,8 @@ export async function updateNearbyPlace(
     description: string;
     rating: string;
     imageUrl: string;
+    latitude?: number | null;
+    longitude?: number | null;
   }
 ) {
   await prisma.nearbyPlace.update({
@@ -64,6 +70,8 @@ export async function updateNearbyPlace(
       maps: data.maps,
       description: data.description,
       rating: Number(data.rating),
+      latitude: data.latitude,
+      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/places");

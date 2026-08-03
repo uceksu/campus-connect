@@ -28,10 +28,14 @@ export type AggregateTeaShop = {
 
 export type TeaShopAvgAggregateOutputType = {
   rating: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type TeaShopSumAggregateOutputType = {
   rating: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type TeaShopMinAggregateOutputType = {
@@ -44,6 +48,8 @@ export type TeaShopMinAggregateOutputType = {
   description: string | null
   rating: number | null
   price: string | null
+  latitude: number | null
+  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -58,6 +64,8 @@ export type TeaShopMaxAggregateOutputType = {
   description: string | null
   rating: number | null
   price: string | null
+  latitude: number | null
+  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -72,6 +80,8 @@ export type TeaShopCountAggregateOutputType = {
   description: number
   rating: number
   price: number
+  latitude: number
+  longitude: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -80,10 +90,14 @@ export type TeaShopCountAggregateOutputType = {
 
 export type TeaShopAvgAggregateInputType = {
   rating?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type TeaShopSumAggregateInputType = {
   rating?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type TeaShopMinAggregateInputType = {
@@ -96,6 +110,8 @@ export type TeaShopMinAggregateInputType = {
   description?: true
   rating?: true
   price?: true
+  latitude?: true
+  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -110,6 +126,8 @@ export type TeaShopMaxAggregateInputType = {
   description?: true
   rating?: true
   price?: true
+  latitude?: true
+  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -124,6 +142,8 @@ export type TeaShopCountAggregateInputType = {
   description?: true
   rating?: true
   price?: true
+  latitude?: true
+  longitude?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -225,6 +245,8 @@ export type TeaShopGroupByOutputType = {
   description: string
   rating: number
   price: string
+  latitude: number | null
+  longitude: number | null
   createdAt: Date
   updatedAt: Date
   _count: TeaShopCountAggregateOutputType | null
@@ -262,6 +284,8 @@ export type TeaShopWhereInput = {
   description?: Prisma.StringFilter<"TeaShop"> | string
   rating?: Prisma.FloatFilter<"TeaShop"> | number
   price?: Prisma.StringFilter<"TeaShop"> | string
+  latitude?: Prisma.FloatNullableFilter<"TeaShop"> | number | null
+  longitude?: Prisma.FloatNullableFilter<"TeaShop"> | number | null
   createdAt?: Prisma.DateTimeFilter<"TeaShop"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeaShop"> | Date | string
 }
@@ -276,6 +300,8 @@ export type TeaShopOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -293,6 +319,8 @@ export type TeaShopWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"TeaShop"> | string
   rating?: Prisma.FloatFilter<"TeaShop"> | number
   price?: Prisma.StringFilter<"TeaShop"> | string
+  latitude?: Prisma.FloatNullableFilter<"TeaShop"> | number | null
+  longitude?: Prisma.FloatNullableFilter<"TeaShop"> | number | null
   createdAt?: Prisma.DateTimeFilter<"TeaShop"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TeaShop"> | Date | string
 }, "id">
@@ -307,6 +335,8 @@ export type TeaShopOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TeaShopCountOrderByAggregateInput
@@ -329,6 +359,8 @@ export type TeaShopScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"TeaShop"> | string
   rating?: Prisma.FloatWithAggregatesFilter<"TeaShop"> | number
   price?: Prisma.StringWithAggregatesFilter<"TeaShop"> | string
+  latitude?: Prisma.FloatNullableWithAggregatesFilter<"TeaShop"> | number | null
+  longitude?: Prisma.FloatNullableWithAggregatesFilter<"TeaShop"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TeaShop"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TeaShop"> | Date | string
 }
@@ -343,6 +375,8 @@ export type TeaShopCreateInput = {
   description: string
   rating: number
   price: string
+  latitude?: number | null
+  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -357,6 +391,8 @@ export type TeaShopUncheckedCreateInput = {
   description: string
   rating: number
   price: string
+  latitude?: number | null
+  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -371,6 +407,8 @@ export type TeaShopUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   price?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -385,6 +423,8 @@ export type TeaShopUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   price?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -399,6 +439,8 @@ export type TeaShopCreateManyInput = {
   description: string
   rating: number
   price: string
+  latitude?: number | null
+  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -413,6 +455,8 @@ export type TeaShopUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   price?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -427,6 +471,8 @@ export type TeaShopUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
   price?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -441,12 +487,16 @@ export type TeaShopCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type TeaShopAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type TeaShopMaxOrderByAggregateInput = {
@@ -459,6 +509,8 @@ export type TeaShopMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -473,12 +525,16 @@ export type TeaShopMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type TeaShopSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 
@@ -493,6 +549,8 @@ export type TeaShopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   description?: boolean
   rating?: boolean
   price?: boolean
+  latitude?: boolean
+  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["teaShop"]>
@@ -507,6 +565,8 @@ export type TeaShopSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   rating?: boolean
   price?: boolean
+  latitude?: boolean
+  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["teaShop"]>
@@ -521,6 +581,8 @@ export type TeaShopSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   rating?: boolean
   price?: boolean
+  latitude?: boolean
+  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["teaShop"]>
@@ -535,11 +597,13 @@ export type TeaShopSelectScalar = {
   description?: boolean
   rating?: boolean
   price?: boolean
+  latitude?: boolean
+  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TeaShopOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "address" | "phone" | "maps" | "description" | "rating" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["teaShop"]>
+export type TeaShopOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "address" | "phone" | "maps" | "description" | "rating" | "price" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["teaShop"]>
 
 export type $TeaShopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "TeaShop"
@@ -554,6 +618,8 @@ export type $TeaShopPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     description: string
     rating: number
     price: string
+    latitude: number | null
+    longitude: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["teaShop"]>
@@ -988,6 +1054,8 @@ export interface TeaShopFieldRefs {
   readonly description: Prisma.FieldRef<"TeaShop", 'String'>
   readonly rating: Prisma.FieldRef<"TeaShop", 'Float'>
   readonly price: Prisma.FieldRef<"TeaShop", 'String'>
+  readonly latitude: Prisma.FieldRef<"TeaShop", 'Float'>
+  readonly longitude: Prisma.FieldRef<"TeaShop", 'Float'>
   readonly createdAt: Prisma.FieldRef<"TeaShop", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TeaShop", 'DateTime'>
 }
