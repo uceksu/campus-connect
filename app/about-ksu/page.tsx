@@ -24,7 +24,7 @@ export default async function AboutKSUPage() {
             The Kerala Students Union (KSU) is a vibrant and dynamic student organization committed to safeguarding student rights, promoting welfare, and fostering leadership. At University College of Engineering, KSU stands as the primary voice of the student body, constantly striving to improve campus infrastructure, academic quality, and social harmony.
           </p>
           <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-            Alongside KSU, the Priyadarshini Arts & Sports Club nurtures the creative and athletic talents of our students, ensuring a holistic campus experience. Together, we are dedicated to making UCE a better place to learn, grow, and succeed.
+            Alongside KSU, Priyadarshini is the women's wing of KSU focusing on women's leadership, empowerment, student welfare, gender equality, and awareness programs. Together, we are dedicated to making UCE a better place to learn, grow, and succeed.
           </p>
         </div>
       </section>
