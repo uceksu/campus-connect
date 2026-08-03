@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import type { AcademicNote, AcademicSubject } from "@/src/generated/prisma/client";
 import { BookOpen, ExternalLink, FileText, Download, Folder, CheckCircle2, Circle } from "lucide-react";
+import NoteRequestModal from "./NoteRequestModal";
 
 const BRANCHES = ["ECE", "AD", "CS", "CY", "Polymer", "EEE"];
 const SEMESTERS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
@@ -298,6 +299,15 @@ export function NotesList({ notes, subjects }: Props) {
                 </div>
               );
             })}
+            
+            {/* Note Request Modal placed below all modules */}
+            <div className="pt-4 border-t border-white/10 mt-6">
+              <NoteRequestModal 
+                activeBranch={activeBranch} 
+                activeSemester={activeSemester} 
+                activeSubject={activeSubject} 
+              />
+            </div>
           </div>
         </div>
 

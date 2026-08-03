@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getHostels } from "@/lib/actions/hostel";
 import DeleteHostelButton from "@/components/DeleteHostelButton";
 import { Plus } from "lucide-react";
+import ExportCSVButton from "@/components/ExportCSVButton";
 
 export default async function AdminHostelsPage() {
   const hostels = await getHostels();
@@ -14,13 +15,16 @@ export default async function AdminHostelsPage() {
           <h1 className="text-2xl font-bold text-white">Hostels</h1>
           <p className="text-slate-400 text-sm mt-1">{hostels.length} entries</p>
         </div>
-        <Link
-          href="/admin/hostels/add"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
-        >
-          <Plus size={16} />
-          Add Hostel
-        </Link>
+        <div className="flex items-center gap-3">
+          <ExportCSVButton data={hostels} filename="hostels-export" />
+          <Link
+            href="/admin/hostels/add"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
+          >
+            <Plus size={16} />
+            Add Hostel
+          </Link>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
