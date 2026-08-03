@@ -12,6 +12,7 @@ const AVAILABLE_PERMISSIONS = [
   { id: "subjects", label: "Subjects" },
   { id: "departments", label: "Departments" },
   { id: "teashops", label: "Tea Shops" },
+  { id: "restaurants", label: "Restaurants" },
   { id: "nearby-places", label: "Nearby Places" },
   { id: "note-requests", label: "Note Requests" },
   { id: "notices", label: "Notices" },

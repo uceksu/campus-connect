@@ -57,6 +57,7 @@ export const ModelName = {
   Account: 'Account',
   Session: 'Session',
   TeaShop: 'TeaShop',
+  Restaurant: 'Restaurant',
   AcademicNote: 'AcademicNote',
   Club: 'Club',
   NearbyPlace: 'NearbyPlace',
@@ -180,6 +181,23 @@ export const TeaShopScalarFieldEnum = {
 } as const
 
 export type TeaShopScalarFieldEnum = (typeof TeaShopScalarFieldEnum)[keyof typeof TeaShopScalarFieldEnum]
+
+
+export const RestaurantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  address: 'address',
+  phone: 'phone',
+  maps: 'maps',
+  description: 'description',
+  rating: 'rating',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RestaurantScalarFieldEnum = (typeof RestaurantScalarFieldEnum)[keyof typeof RestaurantScalarFieldEnum]
 
 
 export const AcademicNoteScalarFieldEnum = {

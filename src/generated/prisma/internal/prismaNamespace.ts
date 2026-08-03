@@ -403,6 +403,7 @@ export const ModelName = {
   Account: 'Account',
   Session: 'Session',
   TeaShop: 'TeaShop',
+  Restaurant: 'Restaurant',
   AcademicNote: 'AcademicNote',
   Club: 'Club',
   NearbyPlace: 'NearbyPlace',
@@ -432,7 +433,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting" | "developer" | "department" | "faculty" | "adminLog" | "noteRequest"
+    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "restaurant" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting" | "developer" | "department" | "faculty" | "adminLog" | "noteRequest"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -877,6 +878,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.TeaShopCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TeaShopCountAggregateOutputType> | number
+        }
+      }
+    }
+    Restaurant: {
+      payload: Prisma.$RestaurantPayload<ExtArgs>
+      fields: Prisma.RestaurantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RestaurantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RestaurantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        findFirst: {
+          args: Prisma.RestaurantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RestaurantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        findMany: {
+          args: Prisma.RestaurantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>[]
+        }
+        create: {
+          args: Prisma.RestaurantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        createMany: {
+          args: Prisma.RestaurantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RestaurantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>[]
+        }
+        delete: {
+          args: Prisma.RestaurantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        update: {
+          args: Prisma.RestaurantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        deleteMany: {
+          args: Prisma.RestaurantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RestaurantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RestaurantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>[]
+        }
+        upsert: {
+          args: Prisma.RestaurantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RestaurantPayload>
+        }
+        aggregate: {
+          args: Prisma.RestaurantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRestaurant>
+        }
+        groupBy: {
+          args: Prisma.RestaurantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RestaurantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RestaurantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RestaurantCountAggregateOutputType> | number
         }
       }
     }
@@ -2048,6 +2123,23 @@ export const TeaShopScalarFieldEnum = {
 export type TeaShopScalarFieldEnum = (typeof TeaShopScalarFieldEnum)[keyof typeof TeaShopScalarFieldEnum]
 
 
+export const RestaurantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  address: 'address',
+  phone: 'phone',
+  maps: 'maps',
+  description: 'description',
+  rating: 'rating',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RestaurantScalarFieldEnum = (typeof RestaurantScalarFieldEnum)[keyof typeof RestaurantScalarFieldEnum]
+
+
 export const AcademicNoteScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -2516,6 +2608,7 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   session?: Prisma.SessionOmit
   teaShop?: Prisma.TeaShopOmit
+  restaurant?: Prisma.RestaurantOmit
   academicNote?: Prisma.AcademicNoteOmit
   club?: Prisma.ClubOmit
   nearbyPlace?: Prisma.NearbyPlaceOmit

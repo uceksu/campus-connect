@@ -20,7 +20,8 @@ import {
   Globe,
   Code2,
   Activity,
-  Inbox
+  Inbox,
+  Utensils
 } from "lucide-react";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ const navItems = [
   { href: "/admin/note-requests", label: "Note Requests", icon: Inbox },
   { href: "/admin/departments", label: "Departments", icon: Building2 },
   { href: "/admin/teashops", label: "Tea Shops", icon: Coffee },
+  { href: "/admin/restaurants", label: "Restaurants", icon: Utensils },
   { href: "/admin/nearby-places", label: "Nearby Places", icon: MapPin },
   { href: "/admin/clubs", label: "Clubs", icon: Users },
   { href: "/admin/notices", label: "Notices", icon: Bell },

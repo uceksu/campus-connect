@@ -72,6 +72,11 @@ export type Session = Prisma.SessionModel
  */
 export type TeaShop = Prisma.TeaShopModel
 /**
+ * Model Restaurant
+ * 
+ */
+export type Restaurant = Prisma.RestaurantModel
+/**
  * Model AcademicNote
  * 
  */

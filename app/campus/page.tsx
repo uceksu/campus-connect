@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowUpRight, Coffee, HeartPulse, Hotel, MapPin } from "lucide-react";
+import { ArrowUpRight, Coffee, HeartPulse, Hotel, MapPin, Utensils } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import PublicPageHero from "@/components/PublicPageHero";
 
 const places = [
   { title: "Hostels", label: "Stay", description: "Compare nearby hostels and find a place that fits your student life.", icon: Hotel, href: "/campus/hostels" },
+  { title: "Restaurants", label: "Dine", description: "Discover local restaurants and dining spots near campus.", icon: Utensils, href: "/campus/restaurants" },
   { title: "Tea Shops", label: "Eat", description: "Find tea shops and everyday food spots around the campus.", icon: Coffee, href: "/campus/teashops" },
   { title: "Places to Visit", label: "Explore", description: "Discover useful places and services around KSU UCE.", icon: MapPin, href: "/campus/places" },
   { title: "Hospitals", label: "Care", description: "Keep emergency contacts and nearby medical help within reach.", icon: HeartPulse, href: "/campus/hospitals" },
