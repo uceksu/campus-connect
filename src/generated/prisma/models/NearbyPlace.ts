@@ -28,14 +28,10 @@ export type AggregateNearbyPlace = {
 
 export type NearbyPlaceAvgAggregateOutputType = {
   rating: number | null
-  latitude: number | null
-  longitude: number | null
 }
 
 export type NearbyPlaceSumAggregateOutputType = {
   rating: number | null
-  latitude: number | null
-  longitude: number | null
 }
 
 export type NearbyPlaceMinAggregateOutputType = {
@@ -48,8 +44,6 @@ export type NearbyPlaceMinAggregateOutputType = {
   maps: string | null
   description: string | null
   rating: number | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,8 +58,6 @@ export type NearbyPlaceMaxAggregateOutputType = {
   maps: string | null
   description: string | null
   rating: number | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -80,8 +72,6 @@ export type NearbyPlaceCountAggregateOutputType = {
   maps: number
   description: number
   rating: number
-  latitude: number
-  longitude: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -90,14 +80,10 @@ export type NearbyPlaceCountAggregateOutputType = {
 
 export type NearbyPlaceAvgAggregateInputType = {
   rating?: true
-  latitude?: true
-  longitude?: true
 }
 
 export type NearbyPlaceSumAggregateInputType = {
   rating?: true
-  latitude?: true
-  longitude?: true
 }
 
 export type NearbyPlaceMinAggregateInputType = {
@@ -110,8 +96,6 @@ export type NearbyPlaceMinAggregateInputType = {
   maps?: true
   description?: true
   rating?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -126,8 +110,6 @@ export type NearbyPlaceMaxAggregateInputType = {
   maps?: true
   description?: true
   rating?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -142,8 +124,6 @@ export type NearbyPlaceCountAggregateInputType = {
   maps?: true
   description?: true
   rating?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -245,8 +225,6 @@ export type NearbyPlaceGroupByOutputType = {
   maps: string
   description: string
   rating: number
-  latitude: number | null
-  longitude: number | null
   createdAt: Date
   updatedAt: Date
   _count: NearbyPlaceCountAggregateOutputType | null
@@ -284,8 +262,6 @@ export type NearbyPlaceWhereInput = {
   maps?: Prisma.StringFilter<"NearbyPlace"> | string
   description?: Prisma.StringFilter<"NearbyPlace"> | string
   rating?: Prisma.FloatFilter<"NearbyPlace"> | number
-  latitude?: Prisma.FloatNullableFilter<"NearbyPlace"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"NearbyPlace"> | number | null
   createdAt?: Prisma.DateTimeFilter<"NearbyPlace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"NearbyPlace"> | Date | string
 }
@@ -300,8 +276,6 @@ export type NearbyPlaceOrderByWithRelationInput = {
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -319,8 +293,6 @@ export type NearbyPlaceWhereUniqueInput = Prisma.AtLeast<{
   maps?: Prisma.StringFilter<"NearbyPlace"> | string
   description?: Prisma.StringFilter<"NearbyPlace"> | string
   rating?: Prisma.FloatFilter<"NearbyPlace"> | number
-  latitude?: Prisma.FloatNullableFilter<"NearbyPlace"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"NearbyPlace"> | number | null
   createdAt?: Prisma.DateTimeFilter<"NearbyPlace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"NearbyPlace"> | Date | string
 }, "id">
@@ -335,8 +307,6 @@ export type NearbyPlaceOrderByWithAggregationInput = {
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.NearbyPlaceCountOrderByAggregateInput
@@ -359,8 +329,6 @@ export type NearbyPlaceScalarWhereWithAggregatesInput = {
   maps?: Prisma.StringWithAggregatesFilter<"NearbyPlace"> | string
   description?: Prisma.StringWithAggregatesFilter<"NearbyPlace"> | string
   rating?: Prisma.FloatWithAggregatesFilter<"NearbyPlace"> | number
-  latitude?: Prisma.FloatNullableWithAggregatesFilter<"NearbyPlace"> | number | null
-  longitude?: Prisma.FloatNullableWithAggregatesFilter<"NearbyPlace"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"NearbyPlace"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"NearbyPlace"> | Date | string
 }
@@ -375,8 +343,6 @@ export type NearbyPlaceCreateInput = {
   maps: string
   description: string
   rating: number
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -391,8 +357,6 @@ export type NearbyPlaceUncheckedCreateInput = {
   maps: string
   description: string
   rating: number
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -407,8 +371,6 @@ export type NearbyPlaceUpdateInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -423,8 +385,6 @@ export type NearbyPlaceUncheckedUpdateInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -439,8 +399,6 @@ export type NearbyPlaceCreateManyInput = {
   maps: string
   description: string
   rating: number
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -455,8 +413,6 @@ export type NearbyPlaceUpdateManyMutationInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -471,8 +427,6 @@ export type NearbyPlaceUncheckedUpdateManyInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.FloatFieldUpdateOperationsInput | number
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -487,16 +441,12 @@ export type NearbyPlaceCountOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type NearbyPlaceAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 export type NearbyPlaceMaxOrderByAggregateInput = {
@@ -509,8 +459,6 @@ export type NearbyPlaceMaxOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -525,16 +473,12 @@ export type NearbyPlaceMinOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type NearbyPlaceSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 
@@ -549,8 +493,6 @@ export type NearbyPlaceSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   maps?: boolean
   description?: boolean
   rating?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["nearbyPlace"]>
@@ -565,8 +507,6 @@ export type NearbyPlaceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   maps?: boolean
   description?: boolean
   rating?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["nearbyPlace"]>
@@ -581,8 +521,6 @@ export type NearbyPlaceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   maps?: boolean
   description?: boolean
   rating?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["nearbyPlace"]>
@@ -597,13 +535,11 @@ export type NearbyPlaceSelectScalar = {
   maps?: boolean
   description?: boolean
   rating?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type NearbyPlaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "category" | "address" | "phone" | "maps" | "description" | "rating" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["nearbyPlace"]>
+export type NearbyPlaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "category" | "address" | "phone" | "maps" | "description" | "rating" | "createdAt" | "updatedAt", ExtArgs["result"]["nearbyPlace"]>
 
 export type $NearbyPlacePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "NearbyPlace"
@@ -618,8 +554,6 @@ export type $NearbyPlacePayload<ExtArgs extends runtime.Types.Extensions.Interna
     maps: string
     description: string
     rating: number
-    latitude: number | null
-    longitude: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["nearbyPlace"]>
@@ -1054,8 +988,6 @@ export interface NearbyPlaceFieldRefs {
   readonly maps: Prisma.FieldRef<"NearbyPlace", 'String'>
   readonly description: Prisma.FieldRef<"NearbyPlace", 'String'>
   readonly rating: Prisma.FieldRef<"NearbyPlace", 'Float'>
-  readonly latitude: Prisma.FieldRef<"NearbyPlace", 'Float'>
-  readonly longitude: Prisma.FieldRef<"NearbyPlace", 'Float'>
   readonly createdAt: Prisma.FieldRef<"NearbyPlace", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"NearbyPlace", 'DateTime'>
 }

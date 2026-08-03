@@ -1966,8 +1966,6 @@ export const HostelScalarFieldEnum = {
   maps: 'maps',
   price: 'price',
   description: 'description',
-  latitude: 'latitude',
-  longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1984,8 +1982,6 @@ export const HospitalScalarFieldEnum = {
   emergencyContact: 'emergencyContact',
   maps: 'maps',
   description: 'description',
-  latitude: 'latitude',
-  longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2045,8 +2041,6 @@ export const TeaShopScalarFieldEnum = {
   description: 'description',
   rating: 'rating',
   price: 'price',
-  latitude: 'latitude',
-  longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2099,8 +2093,6 @@ export const NearbyPlaceScalarFieldEnum = {
   maps: 'maps',
   description: 'description',
   rating: 'rating',
-  latitude: 'latitude',
-  longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

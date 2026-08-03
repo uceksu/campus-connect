@@ -28,14 +28,10 @@ export type AggregateHostel = {
 
 export type HostelAvgAggregateOutputType = {
   rating: number | null
-  latitude: number | null
-  longitude: number | null
 }
 
 export type HostelSumAggregateOutputType = {
   rating: number | null
-  latitude: number | null
-  longitude: number | null
 }
 
 export type HostelMinAggregateOutputType = {
@@ -49,8 +45,6 @@ export type HostelMinAggregateOutputType = {
   maps: string | null
   price: string | null
   description: string | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -66,8 +60,6 @@ export type HostelMaxAggregateOutputType = {
   maps: string | null
   price: string | null
   description: string | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -83,8 +75,6 @@ export type HostelCountAggregateOutputType = {
   maps: number
   price: number
   description: number
-  latitude: number
-  longitude: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -93,14 +83,10 @@ export type HostelCountAggregateOutputType = {
 
 export type HostelAvgAggregateInputType = {
   rating?: true
-  latitude?: true
-  longitude?: true
 }
 
 export type HostelSumAggregateInputType = {
   rating?: true
-  latitude?: true
-  longitude?: true
 }
 
 export type HostelMinAggregateInputType = {
@@ -114,8 +100,6 @@ export type HostelMinAggregateInputType = {
   maps?: true
   price?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -131,8 +115,6 @@ export type HostelMaxAggregateInputType = {
   maps?: true
   price?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -148,8 +130,6 @@ export type HostelCountAggregateInputType = {
   maps?: true
   price?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -252,8 +232,6 @@ export type HostelGroupByOutputType = {
   maps: string
   price: string
   description: string
-  latitude: number | null
-  longitude: number | null
   createdAt: Date
   updatedAt: Date
   _count: HostelCountAggregateOutputType | null
@@ -292,8 +270,6 @@ export type HostelWhereInput = {
   maps?: Prisma.StringFilter<"Hostel"> | string
   price?: Prisma.StringFilter<"Hostel"> | string
   description?: Prisma.StringFilter<"Hostel"> | string
-  latitude?: Prisma.FloatNullableFilter<"Hostel"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"Hostel"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Hostel"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hostel"> | Date | string
 }
@@ -309,8 +285,6 @@ export type HostelOrderByWithRelationInput = {
   maps?: Prisma.SortOrder
   price?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -329,8 +303,6 @@ export type HostelWhereUniqueInput = Prisma.AtLeast<{
   maps?: Prisma.StringFilter<"Hostel"> | string
   price?: Prisma.StringFilter<"Hostel"> | string
   description?: Prisma.StringFilter<"Hostel"> | string
-  latitude?: Prisma.FloatNullableFilter<"Hostel"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"Hostel"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Hostel"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hostel"> | Date | string
 }, "id">
@@ -346,8 +318,6 @@ export type HostelOrderByWithAggregationInput = {
   maps?: Prisma.SortOrder
   price?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.HostelCountOrderByAggregateInput
@@ -371,8 +341,6 @@ export type HostelScalarWhereWithAggregatesInput = {
   maps?: Prisma.StringWithAggregatesFilter<"Hostel"> | string
   price?: Prisma.StringWithAggregatesFilter<"Hostel"> | string
   description?: Prisma.StringWithAggregatesFilter<"Hostel"> | string
-  latitude?: Prisma.FloatNullableWithAggregatesFilter<"Hostel"> | number | null
-  longitude?: Prisma.FloatNullableWithAggregatesFilter<"Hostel"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Hostel"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Hostel"> | Date | string
 }
@@ -388,8 +356,6 @@ export type HostelCreateInput = {
   maps: string
   price: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -405,8 +371,6 @@ export type HostelUncheckedCreateInput = {
   maps: string
   price: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -422,8 +386,6 @@ export type HostelUpdateInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -439,8 +401,6 @@ export type HostelUncheckedUpdateInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -456,8 +416,6 @@ export type HostelCreateManyInput = {
   maps: string
   price: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -473,8 +431,6 @@ export type HostelUpdateManyMutationInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -490,8 +446,6 @@ export type HostelUncheckedUpdateManyInput = {
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -507,16 +461,12 @@ export type HostelCountOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   price?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type HostelAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 export type HostelMaxOrderByAggregateInput = {
@@ -530,8 +480,6 @@ export type HostelMaxOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   price?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -547,16 +495,12 @@ export type HostelMinOrderByAggregateInput = {
   maps?: Prisma.SortOrder
   price?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type HostelSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -565,14 +509,6 @@ export type StringFieldUpdateOperationsInput = {
 
 export type FloatFieldUpdateOperationsInput = {
   set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type NullableFloatFieldUpdateOperationsInput = {
-  set?: number | null
   increment?: number
   decrement?: number
   multiply?: number
@@ -596,8 +532,6 @@ export type HostelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   maps?: boolean
   price?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hostel"]>
@@ -613,8 +547,6 @@ export type HostelSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   maps?: boolean
   price?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hostel"]>
@@ -630,8 +562,6 @@ export type HostelSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   maps?: boolean
   price?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hostel"]>
@@ -647,13 +577,11 @@ export type HostelSelectScalar = {
   maps?: boolean
   price?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type HostelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "image" | "distance" | "rating" | "phone" | "maps" | "price" | "description" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["hostel"]>
+export type HostelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "image" | "distance" | "rating" | "phone" | "maps" | "price" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["hostel"]>
 
 export type $HostelPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Hostel"
@@ -669,8 +597,6 @@ export type $HostelPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     maps: string
     price: string
     description: string
-    latitude: number | null
-    longitude: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["hostel"]>
@@ -1106,8 +1032,6 @@ export interface HostelFieldRefs {
   readonly maps: Prisma.FieldRef<"Hostel", 'String'>
   readonly price: Prisma.FieldRef<"Hostel", 'String'>
   readonly description: Prisma.FieldRef<"Hostel", 'String'>
-  readonly latitude: Prisma.FieldRef<"Hostel", 'Float'>
-  readonly longitude: Prisma.FieldRef<"Hostel", 'Float'>
   readonly createdAt: Prisma.FieldRef<"Hostel", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Hostel", 'DateTime'>
 }

@@ -18,8 +18,6 @@ model Hostel {
   maps        String
   price       String
   description String
-  latitude    Float?
-  longitude   Float?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -33,8 +31,6 @@ model Hospital {
   emergencyContact String
   maps             String
   description      String
-  latitude         Float?
-  longitude        Float?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }
@@ -88,8 +84,6 @@ model TeaShop {
   description String
   rating      Float
   price       String
-  latitude    Float?
-  longitude   Float?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -133,8 +127,6 @@ model NearbyPlace {
   maps        String
   description String
   rating      Float
-  latitude    Float?
-  longitude   Float?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

@@ -20,20 +20,8 @@ export type HospitalModel = runtime.Types.Result.DefaultSelection<Prisma.$Hospit
 
 export type AggregateHospital = {
   _count: HospitalCountAggregateOutputType | null
-  _avg: HospitalAvgAggregateOutputType | null
-  _sum: HospitalSumAggregateOutputType | null
   _min: HospitalMinAggregateOutputType | null
   _max: HospitalMaxAggregateOutputType | null
-}
-
-export type HospitalAvgAggregateOutputType = {
-  latitude: number | null
-  longitude: number | null
-}
-
-export type HospitalSumAggregateOutputType = {
-  latitude: number | null
-  longitude: number | null
 }
 
 export type HospitalMinAggregateOutputType = {
@@ -45,8 +33,6 @@ export type HospitalMinAggregateOutputType = {
   emergencyContact: string | null
   maps: string | null
   description: string | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -60,8 +46,6 @@ export type HospitalMaxAggregateOutputType = {
   emergencyContact: string | null
   maps: string | null
   description: string | null
-  latitude: number | null
-  longitude: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -75,23 +59,11 @@ export type HospitalCountAggregateOutputType = {
   emergencyContact: number
   maps: number
   description: number
-  latitude: number
-  longitude: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
-
-export type HospitalAvgAggregateInputType = {
-  latitude?: true
-  longitude?: true
-}
-
-export type HospitalSumAggregateInputType = {
-  latitude?: true
-  longitude?: true
-}
 
 export type HospitalMinAggregateInputType = {
   id?: true
@@ -102,8 +74,6 @@ export type HospitalMinAggregateInputType = {
   emergencyContact?: true
   maps?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -117,8 +87,6 @@ export type HospitalMaxAggregateInputType = {
   emergencyContact?: true
   maps?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -132,8 +100,6 @@ export type HospitalCountAggregateInputType = {
   emergencyContact?: true
   maps?: true
   description?: true
-  latitude?: true
-  longitude?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -177,18 +143,6 @@ export type HospitalAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: HospitalAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: HospitalSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: HospitalMinAggregateInputType
@@ -219,8 +173,6 @@ export type HospitalGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: HospitalCountAggregateInputType | true
-  _avg?: HospitalAvgAggregateInputType
-  _sum?: HospitalSumAggregateInputType
   _min?: HospitalMinAggregateInputType
   _max?: HospitalMaxAggregateInputType
 }
@@ -234,13 +186,9 @@ export type HospitalGroupByOutputType = {
   emergencyContact: string
   maps: string
   description: string
-  latitude: number | null
-  longitude: number | null
   createdAt: Date
   updatedAt: Date
   _count: HospitalCountAggregateOutputType | null
-  _avg: HospitalAvgAggregateOutputType | null
-  _sum: HospitalSumAggregateOutputType | null
   _min: HospitalMinAggregateOutputType | null
   _max: HospitalMaxAggregateOutputType | null
 }
@@ -272,8 +220,6 @@ export type HospitalWhereInput = {
   emergencyContact?: Prisma.StringFilter<"Hospital"> | string
   maps?: Prisma.StringFilter<"Hospital"> | string
   description?: Prisma.StringFilter<"Hospital"> | string
-  latitude?: Prisma.FloatNullableFilter<"Hospital"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"Hospital"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Hospital"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hospital"> | Date | string
 }
@@ -287,8 +233,6 @@ export type HospitalOrderByWithRelationInput = {
   emergencyContact?: Prisma.SortOrder
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -305,8 +249,6 @@ export type HospitalWhereUniqueInput = Prisma.AtLeast<{
   emergencyContact?: Prisma.StringFilter<"Hospital"> | string
   maps?: Prisma.StringFilter<"Hospital"> | string
   description?: Prisma.StringFilter<"Hospital"> | string
-  latitude?: Prisma.FloatNullableFilter<"Hospital"> | number | null
-  longitude?: Prisma.FloatNullableFilter<"Hospital"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Hospital"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hospital"> | Date | string
 }, "id">
@@ -320,15 +262,11 @@ export type HospitalOrderByWithAggregationInput = {
   emergencyContact?: Prisma.SortOrder
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
-  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.HospitalCountOrderByAggregateInput
-  _avg?: Prisma.HospitalAvgOrderByAggregateInput
   _max?: Prisma.HospitalMaxOrderByAggregateInput
   _min?: Prisma.HospitalMinOrderByAggregateInput
-  _sum?: Prisma.HospitalSumOrderByAggregateInput
 }
 
 export type HospitalScalarWhereWithAggregatesInput = {
@@ -343,8 +281,6 @@ export type HospitalScalarWhereWithAggregatesInput = {
   emergencyContact?: Prisma.StringWithAggregatesFilter<"Hospital"> | string
   maps?: Prisma.StringWithAggregatesFilter<"Hospital"> | string
   description?: Prisma.StringWithAggregatesFilter<"Hospital"> | string
-  latitude?: Prisma.FloatNullableWithAggregatesFilter<"Hospital"> | number | null
-  longitude?: Prisma.FloatNullableWithAggregatesFilter<"Hospital"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Hospital"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Hospital"> | Date | string
 }
@@ -358,8 +294,6 @@ export type HospitalCreateInput = {
   emergencyContact: string
   maps: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -373,8 +307,6 @@ export type HospitalUncheckedCreateInput = {
   emergencyContact: string
   maps: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -388,8 +320,6 @@ export type HospitalUpdateInput = {
   emergencyContact?: Prisma.StringFieldUpdateOperationsInput | string
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -403,8 +333,6 @@ export type HospitalUncheckedUpdateInput = {
   emergencyContact?: Prisma.StringFieldUpdateOperationsInput | string
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -418,8 +346,6 @@ export type HospitalCreateManyInput = {
   emergencyContact: string
   maps: string
   description: string
-  latitude?: number | null
-  longitude?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -433,8 +359,6 @@ export type HospitalUpdateManyMutationInput = {
   emergencyContact?: Prisma.StringFieldUpdateOperationsInput | string
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -448,8 +372,6 @@ export type HospitalUncheckedUpdateManyInput = {
   emergencyContact?: Prisma.StringFieldUpdateOperationsInput | string
   maps?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -463,15 +385,8 @@ export type HospitalCountOrderByAggregateInput = {
   emergencyContact?: Prisma.SortOrder
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type HospitalAvgOrderByAggregateInput = {
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 export type HospitalMaxOrderByAggregateInput = {
@@ -483,8 +398,6 @@ export type HospitalMaxOrderByAggregateInput = {
   emergencyContact?: Prisma.SortOrder
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -498,15 +411,8 @@ export type HospitalMinOrderByAggregateInput = {
   emergencyContact?: Prisma.SortOrder
   maps?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type HospitalSumOrderByAggregateInput = {
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 
@@ -520,8 +426,6 @@ export type HospitalSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   emergencyContact?: boolean
   maps?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hospital"]>
@@ -535,8 +439,6 @@ export type HospitalSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   emergencyContact?: boolean
   maps?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hospital"]>
@@ -550,8 +452,6 @@ export type HospitalSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   emergencyContact?: boolean
   maps?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["hospital"]>
@@ -565,13 +465,11 @@ export type HospitalSelectScalar = {
   emergencyContact?: boolean
   maps?: boolean
   description?: boolean
-  latitude?: boolean
-  longitude?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type HospitalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "address" | "phone" | "emergencyContact" | "maps" | "description" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["hospital"]>
+export type HospitalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image" | "address" | "phone" | "emergencyContact" | "maps" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["hospital"]>
 
 export type $HospitalPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Hospital"
@@ -585,8 +483,6 @@ export type $HospitalPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     emergencyContact: string
     maps: string
     description: string
-    latitude: number | null
-    longitude: number | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["hospital"]>
@@ -1020,8 +916,6 @@ export interface HospitalFieldRefs {
   readonly emergencyContact: Prisma.FieldRef<"Hospital", 'String'>
   readonly maps: Prisma.FieldRef<"Hospital", 'String'>
   readonly description: Prisma.FieldRef<"Hospital", 'String'>
-  readonly latitude: Prisma.FieldRef<"Hospital", 'Float'>
-  readonly longitude: Prisma.FieldRef<"Hospital", 'Float'>
   readonly createdAt: Prisma.FieldRef<"Hospital", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Hospital", 'DateTime'>
 }

@@ -22,8 +22,6 @@ export async function createHospital(data: {
   maps: string;
   description: string;
   imageUrl: string;
-  latitude?: number | null;
-  longitude?: number | null;
 }) {
   await prisma.hospital.create({
     data: {
@@ -34,8 +32,6 @@ export async function createHospital(data: {
       emergencyContact: data.emergencyContact,
       maps: data.maps,
       description: data.description,
-      latitude: data.latitude,
-      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/hospitals");
@@ -52,8 +48,6 @@ export async function updateHospital(
     maps: string;
     description: string;
     imageUrl: string;
-    latitude?: number | null;
-    longitude?: number | null;
   }
 ) {
   await prisma.hospital.update({
@@ -66,8 +60,6 @@ export async function updateHospital(
       emergencyContact: data.emergencyContact,
       maps: data.maps,
       description: data.description,
-      latitude: data.latitude,
-      longitude: data.longitude,
     },
   });
   revalidatePath("/campus/hospitals");
