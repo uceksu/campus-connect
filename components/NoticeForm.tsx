@@ -20,6 +20,8 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
     content: initialData?.content ?? "",
     category: initialData?.category ?? "General",
     isImportant: initialData?.isImportant ?? false,
+    noticeStatus: initialData?.status ?? "PUBLISHED",
+    publishAt: initialData?.publishAt ? new Date(initialData.publishAt).toISOString().slice(0, 16) : "",
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [removeInitialImage, setRemoveInitialImage] = useState(false);
@@ -52,10 +54,19 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
         : (removeInitialImage ? null : initialData?.image ?? null);
       
       setStatus("saving");
+      const submitData = {
+        title: values.title,
+        content: values.content,
+        category: values.category,
+        isImportant: values.isImportant,
+        status: values.noticeStatus,
+        publishAt: values.noticeStatus === "SCHEDULED" && values.publishAt ? new Date(values.publishAt) : null,
+      };
+
       if (noticeId) {
-        await updateNotice(noticeId, { ...values, image });
+        await updateNotice(noticeId, { ...submitData, image });
       } else {
-        await createNotice({ ...values, image });
+        await createNotice({ ...submitData, image });
       }
       router.push("/admin/notices");
     } catch (err) {
@@ -113,6 +124,36 @@ export default function NoticeForm({ submitLabel, noticeId, initialData }: Props
               Mark as Important Notice (Highlights list card)
             </label>
           </div>
+
+          {/* Status */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Status</label>
+            <select
+              name="noticeStatus"
+              value={values.noticeStatus}
+              onChange={handleChange}
+              className="w-full rounded-xl border border-white/10 bg-[#0f172a] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            >
+              <option value="PUBLISHED">Published (Visible immediately)</option>
+              <option value="DRAFT">Draft (Hidden from public)</option>
+              <option value="SCHEDULED">Scheduled (Visible at date)</option>
+            </select>
+          </div>
+
+          {/* Scheduled Date */}
+          {values.noticeStatus === "SCHEDULED" && (
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-1.5">Publish Date & Time *</label>
+              <input
+                type="datetime-local"
+                name="publishAt"
+                value={values.publishAt}
+                onChange={handleChange}
+                required={values.noticeStatus === "SCHEDULED"}
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all [color-scheme:dark]"
+              />
+            </div>
+          )}
 
           {/* Content */}
           <div className="sm:col-span-2">

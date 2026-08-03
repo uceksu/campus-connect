@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { AcademicNote, AcademicSubject } from "@/src/generated/prisma/client";
-import { BookOpen, ExternalLink, FileText, Download, Folder } from "lucide-react";
+import { BookOpen, ExternalLink, FileText, Download, Folder, CheckCircle2, Circle } from "lucide-react";
 
 const BRANCHES = ["ECE", "AD", "CS", "CY", "Polymer", "EEE"];
 const SEMESTERS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
@@ -47,6 +47,34 @@ export function NotesList({ notes, subjects }: Props) {
       setActiveSubject(null);
     }
   }, [activeBranch, activeSemester, availableSubjects, activeSubject]);
+
+  // Syllabus tracker state
+  const [completedModules, setCompletedModules] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    if (activeSubject) {
+      const stored = localStorage.getItem(`syllabus-${activeSubject}`);
+      if (stored) {
+        try {
+          setCompletedModules(JSON.parse(stored));
+        } catch {
+          setCompletedModules({});
+        }
+      } else {
+        setCompletedModules({});
+      }
+    }
+  }, [activeSubject]);
+
+  const toggleModuleCompletion = (moduleName: string) => {
+    setCompletedModules(prev => {
+      const updated = { ...prev, [moduleName]: !prev[moduleName] };
+      if (activeSubject) {
+        localStorage.setItem(`syllabus-${activeSubject}`, JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
 
   // Filter notes by active scheme, branch, semester, and subject
   const semesterNotes = notes.filter((n) => n.scheme === activeScheme && n.branch === activeBranch && n.semester === activeSemester);
@@ -169,6 +197,51 @@ export function NotesList({ notes, subjects }: Props) {
           </div>
         )}
       </div>
+
+      {/* Syllabus Tracker Section */}
+      {activeSubject && (
+        <div className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/60 p-6 shadow-sm dark:shadow-none backdrop-blur-md">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 className="text-lg font-black text-[#071333] dark:text-white flex items-center gap-2">
+                <CheckCircle2 className="size-5 text-[#456be5]" />
+                Syllabus Tracker
+              </h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Track your study progress for {activeSubject}.</p>
+            </div>
+            {availableSubjects.find(s => s.name === activeSubject)?.syllabusUrl && (
+              <a 
+                href={availableSubjects.find(s => s.name === activeSubject)?.syllabusUrl!} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold transition-colors"
+              >
+                <Download size={16} /> Official KTU Syllabus
+              </a>
+            )}
+          </div>
+          
+          <div className="flex flex-wrap gap-3">
+            {currentModules.map(moduleName => {
+              const isCompleted = !!completedModules[moduleName];
+              return (
+                <button
+                  key={moduleName}
+                  onClick={() => toggleModuleCompletion(moduleName)}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-bold transition-all duration-200 cursor-pointer ${
+                    isCompleted 
+                      ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400"
+                      : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 dark:bg-slate-900/40 dark:border-slate-800 dark:text-slate-400 dark:hover:bg-slate-900/80"
+                  }`}
+                >
+                  {isCompleted ? <CheckCircle2 size={16} /> : <Circle size={16} />}
+                  {moduleName}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Two-Column Grid: Notes vs Question Papers */}
       <div className="grid gap-8 lg:grid-cols-2">
