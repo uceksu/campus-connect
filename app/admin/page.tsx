@@ -3,8 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import MaintenanceToggle from "@/components/MaintenanceToggle";
 import AdminVisibilityToggle from "@/components/AdminVisibilityToggle";
-import SiteLogoSettings from "@/components/SiteLogoSettings";
-import { getMaintenanceMode, getAdminPortalVisibility, getSiteLogo } from "@/lib/actions/settings";
+import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import {
   Building2,
   Hospital,
@@ -17,7 +16,6 @@ import {
   TrendingUp,
   Users,
   Code2,
-  Shield,
 } from "lucide-react";
 
 async function getDashboardStats() {
@@ -34,7 +32,6 @@ async function getDashboardStats() {
     academicSubjects,
     departments,
     developers,
-    subAdmins,
   ] = await Promise.all([
     prisma.hostel.count(),
     prisma.hospital.count(),
@@ -48,7 +45,6 @@ async function getDashboardStats() {
     prisma.academicSubject.count(),
     prisma.department.count(),
     prisma.developer.count(),
-    prisma.user.count({ where: { role: "ADMIN" } }),
   ]);
 
   return {
@@ -64,22 +60,10 @@ async function getDashboardStats() {
     academicSubjects,
     departments,
     developers,
-    subAdmins,
   };
 }
 
 const cards = [
-  {
-    label: "Sub-Admins",
-    key: "subAdmins" as const,
-    href: "/admin/sub-admins",
-    addHref: "/admin/sub-admins/add",
-    icon: Shield,
-    color: "from-amber-600 to-amber-800",
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/20",
-    text: "text-amber-400",
-  },
   {
     label: "Hostels",
     key: "hostels" as const,
@@ -233,7 +217,6 @@ export default async function AdminDashboardPage() {
 
   const isMaintenanceOn = await getMaintenanceMode();
   const isAdminPortalVisible = await getAdminPortalVisibility();
-  const logoUrl = await getSiteLogo();
 
   return (
     <div className="space-y-8">
@@ -250,9 +233,6 @@ export default async function AdminDashboardPage() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <MaintenanceToggle initialStatus={isMaintenanceOn} />
           <AdminVisibilityToggle initialStatus={isAdminPortalVisible} />
-          <div className="xl:col-span-2">
-            <SiteLogoSettings initialLogo={logoUrl} />
-          </div>
         </div>
       )}
 

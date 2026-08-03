@@ -9,7 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PwaRegistry } from "@/components/PwaRegistry";
 import { AddToHomeScreen } from "@/components/AddToHomeScreen";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { getMaintenanceMode, getAdminPortalVisibility, getSiteLogo } from "@/lib/actions/settings";
+import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
 import NextTopLoader from "nextjs-toploader";
@@ -49,7 +49,6 @@ export default async function RootLayout({
 }>) {
   const isMaintenanceOn = await getMaintenanceMode();
   const isAdminPortalVisible = await getAdminPortalVisibility();
-  const logoUrl = await getSiteLogo();
   const session = await auth();
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-YCQKVK38P2";
@@ -65,7 +64,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <NextTopLoader color="#456be5" height={3} showSpinner={false} />
           <PwaRegistry />
-          <Navbar isAdminVisible={isAdminPortalVisible} logoUrl={logoUrl} />
+          <Navbar isAdminVisible={isAdminPortalVisible} />
           <main className="flex-1">
             {isMaintenanceOn && !isAdmin ? (
               <MaintenanceView />

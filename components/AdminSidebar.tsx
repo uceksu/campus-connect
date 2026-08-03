@@ -44,16 +44,9 @@ type SidebarProps = {
   userEmail?: string | null;
   userRole?: string | null;
   userPermissions?: string[];
-  logoUrl?: string | null;
 };
 
-export default function AdminSidebar({ 
-  userName, 
-  userEmail, 
-  userRole, 
-  userPermissions = [],
-  logoUrl = null
-}: SidebarProps) {
+export default function AdminSidebar({ userName, userEmail, userRole, userPermissions = [] }: SidebarProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -66,12 +59,8 @@ export default function AdminSidebar({
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-6 border-b border-white/10">
-        <div className="w-9 h-9 rounded-xl bg-[#456be5] overflow-hidden flex items-center justify-center shrink-0">
-          {logoUrl ? (
-            <img src={logoUrl} alt="Logo" className="w-full h-full object-cover" />
-          ) : (
-            <Shield size={18} className="text-white" />
-          )}
+        <div className="w-9 h-9 rounded-xl bg-[#456be5] flex items-center justify-center shrink-0">
+          <Shield size={18} className="text-white" />
         </div>
         <div>
           <p className="text-white font-bold text-sm leading-none">Campus Connect</p>

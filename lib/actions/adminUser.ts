@@ -7,13 +7,9 @@ import { auth } from "@/auth";
 
 export async function checkSuperAdmin() {
   const session = await auth();
-  const role = session?.user?.role;
-  const permissions = (session?.user as any)?.permissions || [];
-
-  if (role === "SUPER_ADMIN") return;
-  if (role === "ADMIN" && permissions.includes("sub-admins")) return;
-
-  throw new Error("Unauthorized: Only Super Admins or Admins with sub-admins permission can perform this action");
+  if (session?.user?.role !== "SUPER_ADMIN") {
+    throw new Error("Unauthorized: Only Super Admins can perform this action");
+  }
 }
 
 export async function createAdminUser(data: {
