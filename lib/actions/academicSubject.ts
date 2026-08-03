@@ -19,6 +19,7 @@ export async function createAcademicSubject(data: {
   branch: string;
   semester: string;
   scheme: string;
+  syllabusUrl?: string | null;
 }) {
   await prisma.academicSubject.create({
     data: {
@@ -26,6 +27,7 @@ export async function createAcademicSubject(data: {
       branch: data.branch,
       semester: data.semester,
       scheme: data.scheme,
+      syllabusUrl: data.syllabusUrl,
     },
   });
   revalidatePath("/academics");
@@ -39,6 +41,7 @@ export async function updateAcademicSubject(
     branch: string;
     semester: string;
     scheme: string;
+    syllabusUrl?: string | null;
   }
 ) {
   await prisma.academicSubject.update({
@@ -48,6 +51,7 @@ export async function updateAcademicSubject(
       branch: data.branch,
       semester: data.semester,
       scheme: data.scheme,
+      syllabusUrl: data.syllabusUrl,
     },
   });
   revalidatePath("/academics");

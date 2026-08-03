@@ -19,6 +19,7 @@ export default function SubjectForm({ submitLabel, subjectId, initialData }: Pro
     branch: initialData?.branch ?? "ECE",
     semester: initialData?.semester ?? "1st",
     scheme: initialData?.scheme ?? "2019",
+    syllabusUrl: initialData?.syllabusUrl ?? "",
   });
   const [status, setStatus] = useState<"idle" | "saving">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -107,15 +108,29 @@ export default function SubjectForm({ submitLabel, subjectId, initialData }: Pro
               required
               className="w-full rounded-xl border border-white/10 bg-[#0f172a] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
             >
-              <option value="1st">1st</option>
-              <option value="2nd">2nd</option>
-              <option value="3rd">3rd</option>
-              <option value="4th">4th</option>
-              <option value="5th">5th</option>
-              <option value="6th">6th</option>
-              <option value="7th">7th</option>
-              <option value="8th">8th</option>
+              <option value="1st">1st Semester</option>
+              <option value="2nd">2nd Semester</option>
+              <option value="3rd">3rd Semester</option>
+              <option value="4th">4th Semester</option>
+              <option value="5th">5th Semester</option>
+              <option value="6th">6th Semester</option>
+              <option value="7th">7th Semester</option>
+              <option value="8th">8th Semester</option>
             </select>
+          </div>
+
+          {/* Syllabus URL */}
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-medium text-slate-300 mb-1.5">Syllabus PDF Link (Optional)</label>
+            <input
+              name="syllabusUrl"
+              type="url"
+              value={values.syllabusUrl}
+              onChange={handleChange}
+              placeholder="e.g. https://ktu.edu.in/eu/core/announcements/syllabus.pdf"
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#456be5] transition-all"
+            />
+            <p className="mt-1.5 text-xs text-slate-500">Provide a link to the official KTU syllabus PDF. This enables the syllabus tracker feature.</p>
           </div>
         </div>
       </div>
