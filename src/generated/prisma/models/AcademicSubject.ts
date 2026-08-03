@@ -30,6 +30,7 @@ export type AcademicSubjectMinAggregateOutputType = {
   branch: string | null
   semester: string | null
   scheme: string | null
+  syllabusUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -40,6 +41,7 @@ export type AcademicSubjectMaxAggregateOutputType = {
   branch: string | null
   semester: string | null
   scheme: string | null
+  syllabusUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -50,6 +52,7 @@ export type AcademicSubjectCountAggregateOutputType = {
   branch: number
   semester: number
   scheme: number
+  syllabusUrl: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -62,6 +65,7 @@ export type AcademicSubjectMinAggregateInputType = {
   branch?: true
   semester?: true
   scheme?: true
+  syllabusUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -72,6 +76,7 @@ export type AcademicSubjectMaxAggregateInputType = {
   branch?: true
   semester?: true
   scheme?: true
+  syllabusUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +87,7 @@ export type AcademicSubjectCountAggregateInputType = {
   branch?: true
   semester?: true
   scheme?: true
+  syllabusUrl?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -165,6 +171,7 @@ export type AcademicSubjectGroupByOutputType = {
   branch: string
   semester: string
   scheme: string
+  syllabusUrl: string | null
   createdAt: Date
   updatedAt: Date
   _count: AcademicSubjectCountAggregateOutputType | null
@@ -196,6 +203,7 @@ export type AcademicSubjectWhereInput = {
   branch?: Prisma.StringFilter<"AcademicSubject"> | string
   semester?: Prisma.StringFilter<"AcademicSubject"> | string
   scheme?: Prisma.StringFilter<"AcademicSubject"> | string
+  syllabusUrl?: Prisma.StringNullableFilter<"AcademicSubject"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AcademicSubject"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AcademicSubject"> | Date | string
 }
@@ -206,6 +214,7 @@ export type AcademicSubjectOrderByWithRelationInput = {
   branch?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   scheme?: Prisma.SortOrder
+  syllabusUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -219,6 +228,7 @@ export type AcademicSubjectWhereUniqueInput = Prisma.AtLeast<{
   branch?: Prisma.StringFilter<"AcademicSubject"> | string
   semester?: Prisma.StringFilter<"AcademicSubject"> | string
   scheme?: Prisma.StringFilter<"AcademicSubject"> | string
+  syllabusUrl?: Prisma.StringNullableFilter<"AcademicSubject"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AcademicSubject"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AcademicSubject"> | Date | string
 }, "id">
@@ -229,6 +239,7 @@ export type AcademicSubjectOrderByWithAggregationInput = {
   branch?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   scheme?: Prisma.SortOrder
+  syllabusUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AcademicSubjectCountOrderByAggregateInput
@@ -245,6 +256,7 @@ export type AcademicSubjectScalarWhereWithAggregatesInput = {
   branch?: Prisma.StringWithAggregatesFilter<"AcademicSubject"> | string
   semester?: Prisma.StringWithAggregatesFilter<"AcademicSubject"> | string
   scheme?: Prisma.StringWithAggregatesFilter<"AcademicSubject"> | string
+  syllabusUrl?: Prisma.StringNullableWithAggregatesFilter<"AcademicSubject"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AcademicSubject"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AcademicSubject"> | Date | string
 }
@@ -255,6 +267,7 @@ export type AcademicSubjectCreateInput = {
   branch: string
   semester: string
   scheme?: string
+  syllabusUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -265,6 +278,7 @@ export type AcademicSubjectUncheckedCreateInput = {
   branch: string
   semester: string
   scheme?: string
+  syllabusUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -275,6 +289,7 @@ export type AcademicSubjectUpdateInput = {
   branch?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   scheme?: Prisma.StringFieldUpdateOperationsInput | string
+  syllabusUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -285,6 +300,7 @@ export type AcademicSubjectUncheckedUpdateInput = {
   branch?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   scheme?: Prisma.StringFieldUpdateOperationsInput | string
+  syllabusUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -295,6 +311,7 @@ export type AcademicSubjectCreateManyInput = {
   branch: string
   semester: string
   scheme?: string
+  syllabusUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -305,6 +322,7 @@ export type AcademicSubjectUpdateManyMutationInput = {
   branch?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   scheme?: Prisma.StringFieldUpdateOperationsInput | string
+  syllabusUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -315,6 +333,7 @@ export type AcademicSubjectUncheckedUpdateManyInput = {
   branch?: Prisma.StringFieldUpdateOperationsInput | string
   semester?: Prisma.StringFieldUpdateOperationsInput | string
   scheme?: Prisma.StringFieldUpdateOperationsInput | string
+  syllabusUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -325,6 +344,7 @@ export type AcademicSubjectCountOrderByAggregateInput = {
   branch?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   scheme?: Prisma.SortOrder
+  syllabusUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -335,6 +355,7 @@ export type AcademicSubjectMaxOrderByAggregateInput = {
   branch?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   scheme?: Prisma.SortOrder
+  syllabusUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -345,6 +366,7 @@ export type AcademicSubjectMinOrderByAggregateInput = {
   branch?: Prisma.SortOrder
   semester?: Prisma.SortOrder
   scheme?: Prisma.SortOrder
+  syllabusUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -357,6 +379,7 @@ export type AcademicSubjectSelect<ExtArgs extends runtime.Types.Extensions.Inter
   branch?: boolean
   semester?: boolean
   scheme?: boolean
+  syllabusUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["academicSubject"]>
@@ -367,6 +390,7 @@ export type AcademicSubjectSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   branch?: boolean
   semester?: boolean
   scheme?: boolean
+  syllabusUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["academicSubject"]>
@@ -377,6 +401,7 @@ export type AcademicSubjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   branch?: boolean
   semester?: boolean
   scheme?: boolean
+  syllabusUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["academicSubject"]>
@@ -387,11 +412,12 @@ export type AcademicSubjectSelectScalar = {
   branch?: boolean
   semester?: boolean
   scheme?: boolean
+  syllabusUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AcademicSubjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "branch" | "semester" | "scheme" | "createdAt" | "updatedAt", ExtArgs["result"]["academicSubject"]>
+export type AcademicSubjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "branch" | "semester" | "scheme" | "syllabusUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["academicSubject"]>
 
 export type $AcademicSubjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AcademicSubject"
@@ -402,6 +428,7 @@ export type $AcademicSubjectPayload<ExtArgs extends runtime.Types.Extensions.Int
     branch: string
     semester: string
     scheme: string
+    syllabusUrl: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["academicSubject"]>
@@ -832,6 +859,7 @@ export interface AcademicSubjectFieldRefs {
   readonly branch: Prisma.FieldRef<"AcademicSubject", 'String'>
   readonly semester: Prisma.FieldRef<"AcademicSubject", 'String'>
   readonly scheme: Prisma.FieldRef<"AcademicSubject", 'String'>
+  readonly syllabusUrl: Prisma.FieldRef<"AcademicSubject", 'String'>
   readonly createdAt: Prisma.FieldRef<"AcademicSubject", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AcademicSubject", 'DateTime'>
 }

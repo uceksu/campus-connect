@@ -19,6 +19,7 @@ import {
   Users,
   Globe,
   Code2,
+  Activity
 } from "lucide-react";
 import { useState } from "react";
 
@@ -99,21 +100,38 @@ export default function AdminSidebar({ userName, userEmail, userRole, userPermis
         })}
 
         {userRole === "SUPER_ADMIN" && (
-          <Link
-            href="/admin/sub-admins"
-            onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group mt-4 border-t border-white/10 pt-4 ${
-              isActive("/admin/sub-admins")
-                ? "bg-rose-500/20 text-rose-400 border border-rose-500/30"
-                : "text-slate-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            <Shield
-              size={18}
-              className={`shrink-0 ${isActive("/admin/sub-admins") ? "text-rose-400" : "text-slate-500 group-hover:text-slate-300"}`}
-            />
-            Sub-Admins
-          </Link>
+          <>
+            <Link
+              href="/admin/sub-admins"
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group mt-4 border-t border-white/10 pt-4 ${
+                isActive("/admin/sub-admins")
+                  ? "bg-rose-500/20 text-rose-400 border border-rose-500/30"
+                  : "text-slate-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <Shield
+                size={18}
+                className={`shrink-0 ${isActive("/admin/sub-admins") ? "text-rose-400" : "text-slate-500 group-hover:text-slate-300"}`}
+              />
+              Sub-Admins
+            </Link>
+            <Link
+              href="/admin/activity-logs"
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group mt-1 ${
+                isActive("/admin/activity-logs")
+                  ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                  : "text-slate-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <Activity
+                size={18}
+                className={`shrink-0 ${isActive("/admin/activity-logs") ? "text-blue-400" : "text-slate-500 group-hover:text-slate-300"}`}
+              />
+              Activity Logs
+            </Link>
+          </>
         )}
       </nav>
 

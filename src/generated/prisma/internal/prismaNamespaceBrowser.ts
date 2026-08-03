@@ -68,7 +68,9 @@ export const ModelName = {
   Setting: 'Setting',
   Developer: 'Developer',
   Department: 'Department',
-  Faculty: 'Faculty'
+  Faculty: 'Faculty',
+  AdminLog: 'AdminLog',
+  NoteRequest: 'NoteRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -239,6 +241,8 @@ export const NoticeScalarFieldEnum = {
   category: 'category',
   image: 'image',
   isImportant: 'isImportant',
+  status: 'status',
+  publishAt: 'publishAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -292,6 +296,7 @@ export const AcademicSubjectScalarFieldEnum = {
   branch: 'branch',
   semester: 'semester',
   scheme: 'scheme',
+  syllabusUrl: 'syllabusUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -352,6 +357,34 @@ export const FacultyScalarFieldEnum = {
 } as const
 
 export type FacultyScalarFieldEnum = (typeof FacultyScalarFieldEnum)[keyof typeof FacultyScalarFieldEnum]
+
+
+export const AdminLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  adminName: 'adminName',
+  action: 'action',
+  target: 'target',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminLogScalarFieldEnum = (typeof AdminLogScalarFieldEnum)[keyof typeof AdminLogScalarFieldEnum]
+
+
+export const NoteRequestScalarFieldEnum = {
+  id: 'id',
+  subject: 'subject',
+  semester: 'semester',
+  branch: 'branch',
+  studentName: 'studentName',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type NoteRequestScalarFieldEnum = (typeof NoteRequestScalarFieldEnum)[keyof typeof NoteRequestScalarFieldEnum]
 
 
 export const SortOrder = {

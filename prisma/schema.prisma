@@ -132,14 +132,16 @@ model NearbyPlace {
 }
 
 model Notice {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   content     String
   category    String
   image       String?
-  isImportant Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isImportant Boolean   @default(false)
+  status      String    @default("PUBLISHED") // "DRAFT", "SCHEDULED", "PUBLISHED"
+  publishAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Scholarship {
@@ -179,10 +181,11 @@ model AcademicSubject {
   id        String   @id @default(cuid())
   name      String
   branch    String
-  semester  String
-  scheme    String   @default("2019")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  semester    String
+  scheme      String   @default("2019")
+  syllabusUrl String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 enum Role {
@@ -233,4 +236,26 @@ model Faculty {
   department     Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
+}
+
+model AdminLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  adminName String
+  action    String
+  target    String
+  details   String?
+  createdAt DateTime @default(now())
+}
+
+model NoteRequest {
+  id          String   @id @default(cuid())
+  subject     String
+  semester    String
+  branch      String
+  studentName String
+  message     String?
+  status      String   @default("PENDING") // "PENDING", "RESOLVED"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

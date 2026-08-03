@@ -107,3 +107,13 @@ export type Department = Prisma.DepartmentModel
  * 
  */
 export type Faculty = Prisma.FacultyModel
+/**
+ * Model AdminLog
+ * 
+ */
+export type AdminLog = Prisma.AdminLogModel
+/**
+ * Model NoteRequest
+ * 
+ */
+export type NoteRequest = Prisma.NoteRequestModel

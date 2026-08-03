@@ -3,7 +3,7 @@
 import { prisma } from "../prisma";
 import { revalidatePath } from "next/cache";
 import type { Hostel } from "@/src/generated/prisma/client";
-
+import { logAdminAction } from "./adminLog";
 
 export async function getHostels(): Promise<Hostel[]> {
   return await prisma.hostel.findMany({
@@ -45,6 +45,8 @@ export async function createHostel(data: {
       description: data.description,
     },
   });
+  
+  await logAdminAction("CREATE_HOSTEL", data.name, `Created ${data.type} hostel`);
   revalidatePath("/campus/hostels");
   revalidatePath("/admin/hostels");
 }
@@ -79,11 +81,18 @@ export async function updateHostel(
       image: data.imageUrl,
     },
   });
+
+  await logAdminAction("UPDATE_HOSTEL", data.name, `Updated hostel details`);
   revalidatePath("/campus/hostels");
   revalidatePath("/admin/hostels");
 }
 
 export async function deleteHostel(id: string) {
+  const hostel = await getHostelById(id);
+  if (hostel) {
+    await logAdminAction("DELETE_HOSTEL", hostel.name, `Deleted hostel`);
+  }
+
   await prisma.hostel.delete({
     where: {
       id,

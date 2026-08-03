@@ -31,6 +31,8 @@ export type NoticeMinAggregateOutputType = {
   category: string | null
   image: string | null
   isImportant: boolean | null
+  status: string | null
+  publishAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -42,6 +44,8 @@ export type NoticeMaxAggregateOutputType = {
   category: string | null
   image: string | null
   isImportant: boolean | null
+  status: string | null
+  publishAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -53,6 +57,8 @@ export type NoticeCountAggregateOutputType = {
   category: number
   image: number
   isImportant: number
+  status: number
+  publishAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -66,6 +72,8 @@ export type NoticeMinAggregateInputType = {
   category?: true
   image?: true
   isImportant?: true
+  status?: true
+  publishAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -77,6 +85,8 @@ export type NoticeMaxAggregateInputType = {
   category?: true
   image?: true
   isImportant?: true
+  status?: true
+  publishAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -88,6 +98,8 @@ export type NoticeCountAggregateInputType = {
   category?: true
   image?: true
   isImportant?: true
+  status?: true
+  publishAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -172,6 +184,8 @@ export type NoticeGroupByOutputType = {
   category: string
   image: string | null
   isImportant: boolean
+  status: string
+  publishAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: NoticeCountAggregateOutputType | null
@@ -204,6 +218,8 @@ export type NoticeWhereInput = {
   category?: Prisma.StringFilter<"Notice"> | string
   image?: Prisma.StringNullableFilter<"Notice"> | string | null
   isImportant?: Prisma.BoolFilter<"Notice"> | boolean
+  status?: Prisma.StringFilter<"Notice"> | string
+  publishAt?: Prisma.DateTimeNullableFilter<"Notice"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Notice"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Notice"> | Date | string
 }
@@ -215,6 +231,8 @@ export type NoticeOrderByWithRelationInput = {
   category?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   isImportant?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  publishAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -229,6 +247,8 @@ export type NoticeWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.StringFilter<"Notice"> | string
   image?: Prisma.StringNullableFilter<"Notice"> | string | null
   isImportant?: Prisma.BoolFilter<"Notice"> | boolean
+  status?: Prisma.StringFilter<"Notice"> | string
+  publishAt?: Prisma.DateTimeNullableFilter<"Notice"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Notice"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Notice"> | Date | string
 }, "id">
@@ -240,6 +260,8 @@ export type NoticeOrderByWithAggregationInput = {
   category?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   isImportant?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  publishAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.NoticeCountOrderByAggregateInput
@@ -257,6 +279,8 @@ export type NoticeScalarWhereWithAggregatesInput = {
   category?: Prisma.StringWithAggregatesFilter<"Notice"> | string
   image?: Prisma.StringNullableWithAggregatesFilter<"Notice"> | string | null
   isImportant?: Prisma.BoolWithAggregatesFilter<"Notice"> | boolean
+  status?: Prisma.StringWithAggregatesFilter<"Notice"> | string
+  publishAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Notice"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Notice"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Notice"> | Date | string
 }
@@ -268,6 +292,8 @@ export type NoticeCreateInput = {
   category: string
   image?: string | null
   isImportant?: boolean
+  status?: string
+  publishAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -279,6 +305,8 @@ export type NoticeUncheckedCreateInput = {
   category: string
   image?: string | null
   isImportant?: boolean
+  status?: string
+  publishAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -290,6 +318,8 @@ export type NoticeUpdateInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isImportant?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  publishAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -301,6 +331,8 @@ export type NoticeUncheckedUpdateInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isImportant?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  publishAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -312,6 +344,8 @@ export type NoticeCreateManyInput = {
   category: string
   image?: string | null
   isImportant?: boolean
+  status?: string
+  publishAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -323,6 +357,8 @@ export type NoticeUpdateManyMutationInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isImportant?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  publishAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -334,6 +370,8 @@ export type NoticeUncheckedUpdateManyInput = {
   category?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isImportant?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  publishAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -345,6 +383,8 @@ export type NoticeCountOrderByAggregateInput = {
   category?: Prisma.SortOrder
   image?: Prisma.SortOrder
   isImportant?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  publishAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -356,6 +396,8 @@ export type NoticeMaxOrderByAggregateInput = {
   category?: Prisma.SortOrder
   image?: Prisma.SortOrder
   isImportant?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  publishAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -367,6 +409,8 @@ export type NoticeMinOrderByAggregateInput = {
   category?: Prisma.SortOrder
   image?: Prisma.SortOrder
   isImportant?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  publishAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -384,6 +428,8 @@ export type NoticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   category?: boolean
   image?: boolean
   isImportant?: boolean
+  status?: boolean
+  publishAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["notice"]>
@@ -395,6 +441,8 @@ export type NoticeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   category?: boolean
   image?: boolean
   isImportant?: boolean
+  status?: boolean
+  publishAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["notice"]>
@@ -406,6 +454,8 @@ export type NoticeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   category?: boolean
   image?: boolean
   isImportant?: boolean
+  status?: boolean
+  publishAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["notice"]>
@@ -417,11 +467,13 @@ export type NoticeSelectScalar = {
   category?: boolean
   image?: boolean
   isImportant?: boolean
+  status?: boolean
+  publishAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type NoticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "category" | "image" | "isImportant" | "createdAt" | "updatedAt", ExtArgs["result"]["notice"]>
+export type NoticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "category" | "image" | "isImportant" | "status" | "publishAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notice"]>
 
 export type $NoticePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Notice"
@@ -433,6 +485,8 @@ export type $NoticePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     category: string
     image: string | null
     isImportant: boolean
+    status: string
+    publishAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["notice"]>
@@ -864,6 +918,8 @@ export interface NoticeFieldRefs {
   readonly category: Prisma.FieldRef<"Notice", 'String'>
   readonly image: Prisma.FieldRef<"Notice", 'String'>
   readonly isImportant: Prisma.FieldRef<"Notice", 'Boolean'>
+  readonly status: Prisma.FieldRef<"Notice", 'String'>
+  readonly publishAt: Prisma.FieldRef<"Notice", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Notice", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Notice", 'DateTime'>
 }
