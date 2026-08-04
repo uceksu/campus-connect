@@ -23,7 +23,7 @@ export default async function DepartmentsPage() {
               Academic Departments
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              Explore the various branches of study at KSU UCE, meet our esteemed faculty, and learn about our academic offerings.
+              Explore the various branches of study at UCE, meet our esteemed faculty, and learn about our academic offerings.
             </p>
           </div>
 
