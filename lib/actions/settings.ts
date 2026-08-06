@@ -89,3 +89,45 @@ export async function toggleAdminPortalVisibility(isVisible: boolean) {
     return { success: false, error: "Internal server error" };
   }
 }
+
+/**
+ * Get the current custom site logo URL
+ */
+export async function getSiteLogo() {
+  try {
+    const setting = await prisma.setting.findUnique({
+      where: { key: "site_logo" },
+    });
+    return setting?.value || "";
+  } catch (error) {
+    console.error("Error fetching site logo:", error);
+    return "";
+  }
+}
+
+/**
+ * Update custom site logo URL (SUPER_ADMIN only)
+ */
+export async function updateSiteLogo(logoUrl: string) {
+  try {
+    const session = await auth();
+    
+    if (session?.user?.role !== "SUPER_ADMIN") {
+      return { success: false, error: "Unauthorized" };
+    }
+
+    await prisma.setting.upsert({
+      where: { key: "site_logo" },
+      update: { value: logoUrl },
+      create: { key: "site_logo", value: logoUrl },
+    });
+
+    revalidatePath("/", "layout");
+    revalidatePath("/admin");
+    
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating site logo:", error);
+    return { success: false, error: "Internal server error" };
+  }
+}

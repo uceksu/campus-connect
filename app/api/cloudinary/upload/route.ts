@@ -64,7 +64,7 @@ function computeSignature(params: Record<string, string | number>, apiSecret: st
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const file = formData.get("image");
+  const file = (formData.get("file") || formData.get("image")) as File | null;
 
   if (!file || typeof file === "string") {
     return NextResponse.json(

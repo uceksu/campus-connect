@@ -9,7 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PwaRegistry } from "@/components/PwaRegistry";
 import { AddToHomeScreen } from "@/components/AddToHomeScreen";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
+import { getMaintenanceMode, getAdminPortalVisibility, getSiteLogo } from "@/lib/actions/settings";
 import { auth } from "@/auth";
 import MaintenanceView from "@/components/MaintenanceView";
 import NextTopLoader from "nextjs-toploader";
@@ -25,22 +25,41 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://ksuconnectuce.vercel.app"),
-  title: "KSU UCE Portal",
-  description: "Campus Connect Portal for UCE KSU",
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const logo = await getSiteLogo();
+  const iconUrl = logo || "/icon.png";
+
+  return {
+    metadataBase: new URL("https://ksuconnectuce.vercel.app"),
     title: "KSU UCE Portal",
     description: "Campus Connect Portal for UCE KSU",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KSU UCE Portal",
-    description: "Campus Connect Portal for UCE KSU",
-  },
-};
+    icons: {
+      icon: iconUrl,
+      shortcut: iconUrl,
+      apple: iconUrl,
+    },
+    openGraph: {
+      title: "KSU UCE Portal",
+      description: "Campus Connect Portal for UCE KSU",
+      type: "website",
+      locale: "en_US",
+      images: [
+        {
+          url: logo || "/opengraph-image.png",
+          width: 1200,
+          height: 630,
+          alt: "KSU UCE Campus Connect",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "KSU UCE Portal",
+      description: "Campus Connect Portal for UCE KSU",
+      images: [logo || "/opengraph-image.png"],
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -49,6 +68,7 @@ export default async function RootLayout({
 }>) {
   const isMaintenanceOn = await getMaintenanceMode();
   const isAdminPortalVisible = await getAdminPortalVisibility();
+  const siteLogo = await getSiteLogo();
   const session = await auth();
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-YCQKVK38P2";
@@ -64,7 +84,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <NextTopLoader color="#456be5" height={3} showSpinner={false} />
           <PwaRegistry />
-          <Navbar isAdminVisible={isAdminPortalVisible} isMaintenanceOn={isMaintenanceOn} isAdmin={isAdmin} />
+          <Navbar isAdminVisible={isAdminPortalVisible} isMaintenanceOn={isMaintenanceOn} isAdmin={isAdmin} siteLogo={siteLogo} />
           <main className="flex-1">
             {isMaintenanceOn && !isAdmin ? (
               <MaintenanceView />

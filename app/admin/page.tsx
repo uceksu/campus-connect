@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import MaintenanceToggle from "@/components/MaintenanceToggle";
 import AdminVisibilityToggle from "@/components/AdminVisibilityToggle";
-import { getMaintenanceMode, getAdminPortalVisibility } from "@/lib/actions/settings";
+import LogoToggle from "@/components/LogoToggle";
+import { getMaintenanceMode, getAdminPortalVisibility, getSiteLogo } from "@/lib/actions/settings";
 import {
   Building2,
   Hospital,
@@ -217,6 +218,7 @@ export default async function AdminDashboardPage() {
 
   const isMaintenanceOn = await getMaintenanceMode();
   const isAdminPortalVisible = await getAdminPortalVisibility();
+  const siteLogo = await getSiteLogo();
 
   return (
     <div className="space-y-8">
@@ -230,9 +232,12 @@ export default async function AdminDashboardPage() {
       </div>
 
       {userRole === "SUPER_ADMIN" && (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <MaintenanceToggle initialStatus={isMaintenanceOn} />
-          <AdminVisibilityToggle initialStatus={isAdminPortalVisible} />
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <MaintenanceToggle initialStatus={isMaintenanceOn} />
+            <AdminVisibilityToggle initialStatus={isAdminPortalVisible} />
+          </div>
+          <LogoToggle initialLogo={siteLogo} />
         </div>
       )}
 

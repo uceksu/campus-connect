@@ -64,7 +64,12 @@ export default function ImageUpload({
       return;
     }
 
-    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+    const isImage =
+      file.type.startsWith("image/") ||
+      ALLOWED_FILE_TYPES.includes(file.type.toLowerCase()) ||
+      /\.(jpg|jpeg|png|webp|avif|gif|ico|svg)$/i.test(file.name);
+
+    if (!isImage) {
       setError("Please upload a JPG, PNG, WEBP, or AVIF image.");
       return;
     }
@@ -215,7 +220,7 @@ export default function ImageUpload({
               </div>
               <input
                 type="file"
-                accept="image/png,image/jpeg,image/webp,image/avif"
+                accept="image/*"
                 onChange={handleChange}
                 className="hidden"
                 id="image-upload-input"
