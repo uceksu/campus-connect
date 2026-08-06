@@ -6,6 +6,7 @@ import { createAdminUser, updateAdminUser } from "@/lib/actions/adminUser";
 import type { User } from "@/src/generated/prisma/client";
 
 const AVAILABLE_PERMISSIONS = [
+  { id: "members", label: "KSU Members" },
   { id: "hostels", label: "Hostels" },
   { id: "hospitals", label: "Hospitals" },
   { id: "academic-notes", label: "Academic Notes" },

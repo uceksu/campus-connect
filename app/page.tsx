@@ -96,6 +96,12 @@ export default function HomePage() {
             >
               About KSU
             </Link>
+            <Link
+              href="/join"
+              className="rounded-full bg-white px-6 py-3 text-sm font-bold text-[#071333] transition-colors hover:bg-slate-200"
+            >
+              Join KSU
+            </Link>
           </div>
         </div>
       </section>
@@ -144,7 +150,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>      {/* Help & Support Desk Section */}
+      </section>
+      {/* Help & Support Desk Section */}
       <section className="bg-slate-50 dark:bg-[#090e1a] border-t border-slate-100 dark:border-[#1e293b]/50 px-6 py-16 sm:px-10 lg:px-16 lg:py-24 transition-colors duration-300">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10">

@@ -122,3 +122,8 @@ export type AdminLog = Prisma.AdminLogModel
  * 
  */
 export type NoteRequest = Prisma.NoteRequestModel
+/**
+ * Model KsuMember
+ * 
+ */
+export type KsuMember = Prisma.KsuMemberModel

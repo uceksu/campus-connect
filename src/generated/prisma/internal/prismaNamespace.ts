@@ -417,7 +417,8 @@ export const ModelName = {
   Department: 'Department',
   Faculty: 'Faculty',
   AdminLog: 'AdminLog',
-  NoteRequest: 'NoteRequest'
+  NoteRequest: 'NoteRequest',
+  KsuMember: 'KsuMember'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -433,7 +434,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "restaurant" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting" | "developer" | "department" | "faculty" | "adminLog" | "noteRequest"
+    modelProps: "hostel" | "hospital" | "user" | "account" | "session" | "teaShop" | "restaurant" | "academicNote" | "club" | "nearbyPlace" | "notice" | "scholarship" | "verificationToken" | "committeeMember" | "academicSubject" | "setting" | "developer" | "department" | "faculty" | "adminLog" | "noteRequest" | "ksuMember"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1991,6 +1992,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    KsuMember: {
+      payload: Prisma.$KsuMemberPayload<ExtArgs>
+      fields: Prisma.KsuMemberFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.KsuMemberFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.KsuMemberFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        findFirst: {
+          args: Prisma.KsuMemberFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.KsuMemberFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        findMany: {
+          args: Prisma.KsuMemberFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>[]
+        }
+        create: {
+          args: Prisma.KsuMemberCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        createMany: {
+          args: Prisma.KsuMemberCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.KsuMemberCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>[]
+        }
+        delete: {
+          args: Prisma.KsuMemberDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        update: {
+          args: Prisma.KsuMemberUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        deleteMany: {
+          args: Prisma.KsuMemberDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.KsuMemberUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.KsuMemberUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>[]
+        }
+        upsert: {
+          args: Prisma.KsuMemberUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$KsuMemberPayload>
+        }
+        aggregate: {
+          args: Prisma.KsuMemberAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateKsuMember>
+        }
+        groupBy: {
+          args: Prisma.KsuMemberGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KsuMemberGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.KsuMemberCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.KsuMemberCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2345,6 +2420,21 @@ export const NoteRequestScalarFieldEnum = {
 export type NoteRequestScalarFieldEnum = (typeof NoteRequestScalarFieldEnum)[keyof typeof NoteRequestScalarFieldEnum]
 
 
+export const KsuMemberScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  name: 'name',
+  email: 'email',
+  department: 'department',
+  year: 'year',
+  location: 'location',
+  photoUrl: 'photoUrl',
+  joinedAt: 'joinedAt'
+} as const
+
+export type KsuMemberScalarFieldEnum = (typeof KsuMemberScalarFieldEnum)[keyof typeof KsuMemberScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2623,6 +2713,7 @@ export type GlobalOmitConfig = {
   faculty?: Prisma.FacultyOmit
   adminLog?: Prisma.AdminLogOmit
   noteRequest?: Prisma.NoteRequestOmit
+  ksuMember?: Prisma.KsuMemberOmit
 }
 
 /* Types for Logging */

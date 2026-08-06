@@ -71,7 +71,8 @@ export const ModelName = {
   Department: 'Department',
   Faculty: 'Faculty',
   AdminLog: 'AdminLog',
-  NoteRequest: 'NoteRequest'
+  NoteRequest: 'NoteRequest',
+  KsuMember: 'KsuMember'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -403,6 +404,21 @@ export const NoteRequestScalarFieldEnum = {
 } as const
 
 export type NoteRequestScalarFieldEnum = (typeof NoteRequestScalarFieldEnum)[keyof typeof NoteRequestScalarFieldEnum]
+
+
+export const KsuMemberScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  name: 'name',
+  email: 'email',
+  department: 'department',
+  year: 'year',
+  location: 'location',
+  photoUrl: 'photoUrl',
+  joinedAt: 'joinedAt'
+} as const
+
+export type KsuMemberScalarFieldEnum = (typeof KsuMemberScalarFieldEnum)[keyof typeof KsuMemberScalarFieldEnum]
 
 
 export const SortOrder = {
