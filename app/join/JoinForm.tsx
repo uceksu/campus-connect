@@ -131,34 +131,34 @@ export default function JoinForm({ settings }: { settings: Settings }) {
               )}
               
               {/* Details Area */}
-              <div className="space-y-4 flex-1">
+              <div className="space-y-3 flex-1 pb-4">
                 <div>
-                  <span className="block font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Name</span>
-                  <span className="block font-bold text-xl uppercase tracking-tight leading-tight">{member.name}</span>
+                  <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Name</span>
+                  <span className="block font-bold text-lg sm:text-xl uppercase tracking-tight leading-tight line-clamp-2">{member.name}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <span className="block font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Department</span>
-                    <span className="block font-semibold text-sm leading-tight">{member.department}</span>
+                    <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Department</span>
+                    <span className="block font-semibold text-xs leading-tight line-clamp-2 pr-2">{member.department.replace(/\s*\([^)]*\)/, '')}</span>
                   </div>
                   {member.year && (
                     <div>
-                      <span className="block font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Year</span>
-                      <span className="block font-semibold text-sm leading-tight">{member.year}</span>
+                      <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Year</span>
+                      <span className="block font-semibold text-xs leading-tight">{member.year}</span>
                     </div>
                   )}
                 </div>
                 {member.location && (
                   <div>
-                    <span className="block font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Native Place</span>
-                    <span className="block font-semibold text-sm leading-tight">{member.location}</span>
+                    <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Native Place</span>
+                    <span className="block font-semibold text-xs leading-tight line-clamp-1">{member.location}</span>
                   </div>
                 )}
               </div>
             </div>
             
-            <div className="absolute bottom-0 right-0 p-4">
-              <span className="font-mono text-[8px] text-slate-400 uppercase tracking-widest">
+            <div className="absolute bottom-2 right-3">
+              <span className="font-mono text-[7px] text-slate-400/80 uppercase tracking-widest">
                 {settings.cardSignature || "Official KSU Member"}
               </span>
             </div>
