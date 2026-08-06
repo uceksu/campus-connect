@@ -411,6 +411,7 @@ export const KsuMemberScalarFieldEnum = {
   memberId: 'memberId',
   name: 'name',
   email: 'email',
+  phone: 'phone',
   department: 'department',
   year: 'year',
   location: 'location',

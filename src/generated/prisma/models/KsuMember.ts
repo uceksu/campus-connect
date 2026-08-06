@@ -29,6 +29,7 @@ export type KsuMemberMinAggregateOutputType = {
   memberId: string | null
   name: string | null
   email: string | null
+  phone: string | null
   department: string | null
   year: string | null
   location: string | null
@@ -41,6 +42,7 @@ export type KsuMemberMaxAggregateOutputType = {
   memberId: string | null
   name: string | null
   email: string | null
+  phone: string | null
   department: string | null
   year: string | null
   location: string | null
@@ -53,6 +55,7 @@ export type KsuMemberCountAggregateOutputType = {
   memberId: number
   name: number
   email: number
+  phone: number
   department: number
   year: number
   location: number
@@ -67,6 +70,7 @@ export type KsuMemberMinAggregateInputType = {
   memberId?: true
   name?: true
   email?: true
+  phone?: true
   department?: true
   year?: true
   location?: true
@@ -79,6 +83,7 @@ export type KsuMemberMaxAggregateInputType = {
   memberId?: true
   name?: true
   email?: true
+  phone?: true
   department?: true
   year?: true
   location?: true
@@ -91,6 +96,7 @@ export type KsuMemberCountAggregateInputType = {
   memberId?: true
   name?: true
   email?: true
+  phone?: true
   department?: true
   year?: true
   location?: true
@@ -176,6 +182,7 @@ export type KsuMemberGroupByOutputType = {
   memberId: string
   name: string
   email: string
+  phone: string | null
   department: string
   year: string | null
   location: string | null
@@ -209,6 +216,7 @@ export type KsuMemberWhereInput = {
   memberId?: Prisma.StringFilter<"KsuMember"> | string
   name?: Prisma.StringFilter<"KsuMember"> | string
   email?: Prisma.StringFilter<"KsuMember"> | string
+  phone?: Prisma.StringNullableFilter<"KsuMember"> | string | null
   department?: Prisma.StringFilter<"KsuMember"> | string
   year?: Prisma.StringNullableFilter<"KsuMember"> | string | null
   location?: Prisma.StringNullableFilter<"KsuMember"> | string | null
@@ -221,6 +229,7 @@ export type KsuMemberOrderByWithRelationInput = {
   memberId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.SortOrder
   year?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -236,6 +245,7 @@ export type KsuMemberWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.KsuMemberWhereInput | Prisma.KsuMemberWhereInput[]
   name?: Prisma.StringFilter<"KsuMember"> | string
   email?: Prisma.StringFilter<"KsuMember"> | string
+  phone?: Prisma.StringNullableFilter<"KsuMember"> | string | null
   department?: Prisma.StringFilter<"KsuMember"> | string
   year?: Prisma.StringNullableFilter<"KsuMember"> | string | null
   location?: Prisma.StringNullableFilter<"KsuMember"> | string | null
@@ -248,6 +258,7 @@ export type KsuMemberOrderByWithAggregationInput = {
   memberId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.SortOrder
   year?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -266,6 +277,7 @@ export type KsuMemberScalarWhereWithAggregatesInput = {
   memberId?: Prisma.StringWithAggregatesFilter<"KsuMember"> | string
   name?: Prisma.StringWithAggregatesFilter<"KsuMember"> | string
   email?: Prisma.StringWithAggregatesFilter<"KsuMember"> | string
+  phone?: Prisma.StringNullableWithAggregatesFilter<"KsuMember"> | string | null
   department?: Prisma.StringWithAggregatesFilter<"KsuMember"> | string
   year?: Prisma.StringNullableWithAggregatesFilter<"KsuMember"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"KsuMember"> | string | null
@@ -278,6 +290,7 @@ export type KsuMemberCreateInput = {
   memberId: string
   name: string
   email?: string
+  phone?: string | null
   department: string
   year?: string | null
   location?: string | null
@@ -290,6 +303,7 @@ export type KsuMemberUncheckedCreateInput = {
   memberId: string
   name: string
   email?: string
+  phone?: string | null
   department: string
   year?: string | null
   location?: string | null
@@ -302,6 +316,7 @@ export type KsuMemberUpdateInput = {
   memberId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -314,6 +329,7 @@ export type KsuMemberUncheckedUpdateInput = {
   memberId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -326,6 +342,7 @@ export type KsuMemberCreateManyInput = {
   memberId: string
   name: string
   email?: string
+  phone?: string | null
   department: string
   year?: string | null
   location?: string | null
@@ -338,6 +355,7 @@ export type KsuMemberUpdateManyMutationInput = {
   memberId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -350,6 +368,7 @@ export type KsuMemberUncheckedUpdateManyInput = {
   memberId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.StringFieldUpdateOperationsInput | string
   year?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -362,6 +381,7 @@ export type KsuMemberCountOrderByAggregateInput = {
   memberId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   year?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -374,6 +394,7 @@ export type KsuMemberMaxOrderByAggregateInput = {
   memberId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   year?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -386,6 +407,7 @@ export type KsuMemberMinOrderByAggregateInput = {
   memberId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
   department?: Prisma.SortOrder
   year?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -400,6 +422,7 @@ export type KsuMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   memberId?: boolean
   name?: boolean
   email?: boolean
+  phone?: boolean
   department?: boolean
   year?: boolean
   location?: boolean
@@ -412,6 +435,7 @@ export type KsuMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   memberId?: boolean
   name?: boolean
   email?: boolean
+  phone?: boolean
   department?: boolean
   year?: boolean
   location?: boolean
@@ -424,6 +448,7 @@ export type KsuMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   memberId?: boolean
   name?: boolean
   email?: boolean
+  phone?: boolean
   department?: boolean
   year?: boolean
   location?: boolean
@@ -436,6 +461,7 @@ export type KsuMemberSelectScalar = {
   memberId?: boolean
   name?: boolean
   email?: boolean
+  phone?: boolean
   department?: boolean
   year?: boolean
   location?: boolean
@@ -443,7 +469,7 @@ export type KsuMemberSelectScalar = {
   joinedAt?: boolean
 }
 
-export type KsuMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "memberId" | "name" | "email" | "department" | "year" | "location" | "photoUrl" | "joinedAt", ExtArgs["result"]["ksuMember"]>
+export type KsuMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "memberId" | "name" | "email" | "phone" | "department" | "year" | "location" | "photoUrl" | "joinedAt", ExtArgs["result"]["ksuMember"]>
 
 export type $KsuMemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "KsuMember"
@@ -453,6 +479,7 @@ export type $KsuMemberPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     memberId: string
     name: string
     email: string
+    phone: string | null
     department: string
     year: string | null
     location: string | null
@@ -885,6 +912,7 @@ export interface KsuMemberFieldRefs {
   readonly memberId: Prisma.FieldRef<"KsuMember", 'String'>
   readonly name: Prisma.FieldRef<"KsuMember", 'String'>
   readonly email: Prisma.FieldRef<"KsuMember", 'String'>
+  readonly phone: Prisma.FieldRef<"KsuMember", 'String'>
   readonly department: Prisma.FieldRef<"KsuMember", 'String'>
   readonly year: Prisma.FieldRef<"KsuMember", 'String'>
   readonly location: Prisma.FieldRef<"KsuMember", 'String'>
