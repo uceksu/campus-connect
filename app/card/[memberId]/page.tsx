@@ -74,12 +74,12 @@ export default async function MemberCardPage({ params }: { params: Promise<{ mem
           )}
           
           {/* Details Area */}
-          <div className="space-y-3 flex-1 pb-4">
+          <div className="space-y-4 flex-1 pb-4">
             <div>
               <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Name</span>
               <span className="block font-bold text-lg sm:text-xl uppercase tracking-tight leading-tight line-clamp-2">{member.name}</span>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 mt-4">
               <div>
                 <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Department</span>
                 <span className="block font-semibold text-xs leading-tight line-clamp-2 pr-2">{member.department.replace(/\s*\([^)]*\)/, '')}</span>
@@ -91,12 +91,6 @@ export default async function MemberCardPage({ params }: { params: Promise<{ mem
                 </div>
               )}
             </div>
-            {member.location && (
-              <div>
-                <span className="block font-mono text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">Native Place</span>
-                <span className="block font-semibold text-xs leading-tight line-clamp-1">{member.location}</span>
-              </div>
-            )}
           </div>
         </div>
         
