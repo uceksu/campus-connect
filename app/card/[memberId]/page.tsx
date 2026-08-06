@@ -9,9 +9,11 @@ export const metadata: Metadata = {
   description: "View your official KSU Digital Membership Card.",
 };
 
-export default async function MemberCardPage({ params }: { params: { memberId: string } }) {
+export default async function MemberCardPage({ params }: { params: Promise<{ memberId: string }> | { memberId: string } }) {
+  const resolvedParams = await params;
+  
   const member = await prisma.ksuMember.findUnique({
-    where: { memberId: params.memberId },
+    where: { memberId: resolvedParams.memberId },
   });
 
   if (!member) {
