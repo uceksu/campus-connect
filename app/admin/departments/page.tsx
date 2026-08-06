@@ -2,9 +2,18 @@ import Link from "next/link";
 import { getDepartments } from "@/lib/actions/department";
 import { Plus, Building2, Users } from "lucide-react";
 import DeleteDepartmentButton from "@/components/DeleteDepartmentButton";
+import ExportCSVButton from "@/components/ExportCSVButton";
 
 export default async function AdminDepartmentsPage() {
   const departments = await getDepartments();
+
+  const csvData = departments.map(d => ({
+    "Department ID": d.id,
+    "Department Name": d.name,
+    "Short Name": d.shortName,
+    "Description": d.description,
+    "Faculty Count": d._count.faculty
+  }));
 
   return (
     <div className="space-y-6">
@@ -13,13 +22,16 @@ export default async function AdminDepartmentsPage() {
           <h1 className="text-2xl font-bold text-white">Departments</h1>
           <p className="text-slate-400 text-sm mt-1">{departments.length} entries</p>
         </div>
-        <Link
-          href="/admin/departments/add"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
-        >
-          <Plus size={16} />
-          Add Department
-        </Link>
+        <div className="flex items-center gap-3">
+          <ExportCSVButton data={csvData} filename="departments_report.csv" />
+          <Link
+            href="/admin/departments/add"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#456be5] hover:bg-[#5b7df0] text-white text-sm font-semibold transition-colors"
+          >
+            <Plus size={16} />
+            Add Department
+          </Link>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
