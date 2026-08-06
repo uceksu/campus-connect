@@ -20,7 +20,12 @@ export async function sendWelcomeEmail(
     },
   });
 
-  const cardLink = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/card/${data.memberId}`;
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL 
+    || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null)
+    || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null)
+    || "http://localhost:3000";
+
+  const cardLink = `${baseUrl}/card/${data.memberId}`;
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
