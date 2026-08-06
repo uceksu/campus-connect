@@ -8,6 +8,7 @@ export async function getDepartments() {
   return await prisma.department.findMany({
     orderBy: { createdAt: "asc" },
     include: {
+      faculty: true,
       _count: {
         select: { faculty: true }
       }

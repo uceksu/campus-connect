@@ -7,13 +7,28 @@ import ExportCSVButton from "@/components/ExportCSVButton";
 export default async function AdminDepartmentsPage() {
   const departments = await getDepartments();
 
-  const csvData = departments.map(d => ({
-    "Department ID": d.id,
-    "Department Name": d.name,
-    "Short Name": d.shortName,
-    "Description": d.description,
-    "Faculty Count": d._count.faculty
-  }));
+  const csvData = departments.flatMap(d => {
+    if (d.faculty.length === 0) {
+      return [{
+        "Department": d.name,
+        "Faculty Name": "No Faculty Added",
+        "Designation": "-",
+        "Specialization": "-",
+        "Phone": "-",
+        "Email": "-",
+        "Is HOD": "-"
+      }];
+    }
+    return d.faculty.map(f => ({
+      "Department": d.name,
+      "Faculty Name": f.name,
+      "Designation": f.designation,
+      "Specialization": f.specialization || "-",
+      "Phone": f.phone || "-",
+      "Email": f.email || "-",
+      "Is HOD": f.isHOD ? "Yes" : "No"
+    }));
+  });
 
   return (
     <div className="space-y-6">
