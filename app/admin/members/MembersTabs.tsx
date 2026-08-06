@@ -139,6 +139,7 @@ export default function MembersTabs({ members, initialSettings }: { members: Ksu
                     <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Member ID</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Name</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Department</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Phone</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Year</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Location</th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Joined At</th>
@@ -166,6 +167,7 @@ export default function MembersTabs({ members, initialSettings }: { members: Ksu
                     </td>
                     <td className="px-6 py-4 text-white font-bold">{member.name}</td>
                     <td className="px-6 py-4 text-slate-400 text-sm">{member.department}</td>
+                    <td className="px-6 py-4 text-slate-400 text-sm">{member.phone || "-"}</td>
                     <td className="px-6 py-4 text-slate-400 text-sm">{member.year || "-"}</td>
                     <td className="px-6 py-4 text-slate-400 text-sm">{member.location || "-"}</td>
                     <td className="px-6 py-4 text-slate-400 text-sm">{format(new Date(member.joinedAt), "MMM d, yyyy HH:mm")}</td>
@@ -175,7 +177,7 @@ export default function MembersTabs({ members, initialSettings }: { members: Ksu
                   </tr>
                 ))}
                 {members.length === 0 && (
-                  <tr><td colSpan={8} className="px-6 py-16 text-center text-slate-500">No members have joined yet.</td></tr>
+                  <tr><td colSpan={9} className="px-6 py-16 text-center text-slate-500">No members have joined yet.</td></tr>
                 )}
               </tbody>
             </table>

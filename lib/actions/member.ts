@@ -13,6 +13,7 @@ const generateShortId = customAlphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 4
 export async function registerKsuMember(data: {
   name: string;
   email: string;
+  phone?: string;
   department: string;
   year?: string;
   location?: string;
@@ -33,6 +34,7 @@ export async function registerKsuMember(data: {
       memberId,
       name: data.name,
       email: data.email,
+      phone: data.phone,
       department: data.department,
       year: data.year,
       location: data.location,

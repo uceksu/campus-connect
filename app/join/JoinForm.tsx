@@ -39,6 +39,7 @@ export default function JoinForm({ settings }: { settings: Settings }) {
     const data = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
+      phone: formData.get("phone") as string | undefined,
       department: formData.get("department") as string,
       year: formData.get("year") as string | undefined,
       location: formData.get("location") as string | undefined,
@@ -208,6 +209,18 @@ export default function JoinForm({ settings }: { settings: Settings }) {
             type="email"
             required
             placeholder="john@example.com"
+            className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-transparent px-4 py-3 text-[#071333] dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#456be5]"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Phone Number *</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="9876543210"
             className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-transparent px-4 py-3 text-[#071333] dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#456be5]"
           />
         </div>

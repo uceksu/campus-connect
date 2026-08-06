@@ -279,6 +279,7 @@ model KsuMember {
   memberId   String   @unique
   name       String
   email      String   @default("")
+  phone      String?
   department String
   year       String?
   location   String?
