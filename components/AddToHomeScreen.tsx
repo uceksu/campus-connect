@@ -86,7 +86,7 @@ export function AddToHomeScreen() {
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-sm sm:bottom-8 sm:left-auto sm:right-8 sm:max-w-md animate-in slide-in-from-bottom-10 fade-in duration-500">
-      <div className="relative rounded-3xl border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-xl bg-[#0b1120]/90">
+      <div className="relative rounded-3xl border border-slate-700 bg-[#0f172a] p-5 shadow-2xl">
         <button
           onClick={dismissPrompt}
           className="absolute right-3 top-3 rounded-full p-1.5 text-slate-400 hover:bg-white/10 hover:text-white transition-colors"
