@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL("https://ksuconnectuce.vercel.app"),
-    title: "KSU UCE Portal",
+    title: "UCE Portal",
     description: "Campus Connect Portal for UCE KSU",
     icons: {
       icon: iconUrl,
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: iconUrl,
     },
     openGraph: {
-      title: "KSU UCE Portal",
+      title: "UCE Portal",
       description: "Campus Connect Portal for UCE KSU",
       type: "website",
       locale: "en_US",
@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "KSU UCE Portal",
+      title: "UCE Portal",
       description: "Campus Connect Portal for UCE KSU",
       images: [logo || "/opengraph-image.png"],
     },
